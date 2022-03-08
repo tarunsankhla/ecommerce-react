@@ -7,6 +7,45 @@
   pointer-events: none;
 }
 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+:root{
+  --bg-color:rgb(249 250 251);
+  --container-bg-color: #f1f3f3;
+  --banner-bg-color:#d4d9dd;
+  --cart-button-color : rgb(53, 53, 80);
+  --border-radius:7px;
+  --shadow-bg :#f2f2f2;
+
+  --footer-bg-color:rgb(59, 59, 59);
+  --pink-bg-color:#ffe0e5;
+  --text-color:#27474e;
+}
+body::-webkit-scrollbar{
+  width: 1rem;
+}
+body::-webkit-scrollbar-track{
+  background-color: var(--shade-1);
+}
+body::-webkit-scrollbar-thumb{
+  background-color: var(--btn-text-color-2);
+  border-radius: 1rem;
+  border: 3px solid  var(--shade-1);
+}
+
+body::-webkit-scrollbar:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
