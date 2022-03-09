@@ -6,7 +6,7 @@
     background-color: #27474e;
     background-color: var(--footer-bg-color);
     color: #d4d9dd;
-    bottom: 0;
+    /* bottom: 0; */
     position: absolute;
     width: 100%;
 }
