@@ -1,0 +1,32 @@
+.wishlist-page-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+.main{
+    flex-grow: 1;
+    flex-basis: 30rem;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+
+.wishlist-main-list{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: space-evenly;
+}
+
+.title-wishlist{
+    margin: auto;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.badge{
+    padding: 0.5rem;
+}
