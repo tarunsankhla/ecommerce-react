@@ -1,0 +1,33 @@
+.navbar{
+    background-color: #f3f7f8;
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 1rem;
+}
+
+
+.navbar-action{
+    display: flex;
+    justify-content: space-evenly;
+    min-width:  20%;
+    /* width: fit-content; */
+    align-items: center;
+}
+
+.navbar-action a{
+    text-decoration: none;
+}
+.navbar-action a:hover{
+    transform: scale(1.1);
+    opacity: 1.1;
+}
+
+
+.title-logo{
+    height: 6rem;
+    width: 9rem;
+    border-radius: 50%;
+}
