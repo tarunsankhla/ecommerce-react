@@ -1,14 +1,15 @@
 import "../Navbar/Navbar.css";
 import React, { PureComponent } from 'react'
-import { Link } from "react-router-dom";
+// // import { Link, NavLink } from "react-router-dom";
 import { logo as LogoImage} from "../../assets/images/Products/Products";
+import { Link, NavLink } from "react-router-dom";
 
 export function Navbar(){
     return (
         <div className="navbar">
-            <a className="project-title" href="./">
-                <img src={LogoImage}  alt="" srcset="" className="title-logo" />
-            </a>
+            <NavLink className="project-title" to="./">
+                <img src={LogoImage}  alt=""  className="title-logo" />
+            </NavLink>
             
             <div className="input-icons">
                 <span className="material-icons-round icon">
@@ -18,21 +19,21 @@ export function Navbar(){
             
             </div>
             <div className="navbar-action">
-                <a className="btn btn-login" href="./src/Login/login.html">Login</a>
-                <Link>
-                    <a href="./src/WishListPage/wishListPage.html" className="badge-container">
+                <NavLink className="btn btn-login" to="./src/Login/login.html">Login</NavLink>
+                <Link to="/wishlist">
+                    <NavLink to="/wishlist" className="badge-container">
                             <span className="material-icons-round drawer-icons">
                                 favorite_border
                                 </span>
                         <div className="badge  badge-warning topright-badge">0</div>            
-                            </a>
+                            </NavLink>
                 </Link>
-                <a className="badge-container" href="./src/CartPage/CartPage.html">
+                <NavLink className="badge-container" to="./src/CartPage/CartPage.html">
                     <span className="material-icons-round drawer-icons">
                         shopping_cart_checkout
                         </span>
                     <div className="badge  badge-warning topright-badge">0</div>            
-                </a>
+                </NavLink>
             
             </div>
         </div>

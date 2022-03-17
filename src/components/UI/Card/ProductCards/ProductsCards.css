@@ -1,0 +1,55 @@
+@media screen and (max-width: 780px) {
+    .cart-card{
+        width: 20rem;
+        font-size: 1rem;
+    }
+    .cart-card > .card-img {
+        height: 20rem;
+    }  
+    .card-title span h2{
+        font-size: 3rem;
+    }  
+}
+
+
+@media screen and (max-width: 660px) {
+    .cart-card{
+        width: 15rem;
+        font-size: 0.85rem;
+    }
+    .cart-card > .card-img {
+        height: 18rem;
+    } 
+    .card-title span h2{
+        font-size: 2rem;
+    } 
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .cart-card{
+        width: 13rem;
+        font-size: 0.75rem;
+    }
+    .cart-card > .card-img {
+        height: 15rem;
+    } 
+    .card-title span h2{
+        font-size: 1.5rem;
+    } 
+}
+
+
+@media screen and (max-width: 360px) {
+    .cart-card{
+        width: 10rem;
+        font-size: 0.65rem;
+    }
+    .cart-card > .card-img {
+        height: 12rem;
+    } 
+    .card-title span h2{
+        font-size: 1rem;
+    } 
+}
