@@ -19,7 +19,7 @@ export function Navbar(){
             
             </div>
             <div className="navbar-action">
-                <NavLink className="btn btn-login" to="./src/Login/login.html">Login</NavLink>
+                <NavLink className="btn btn-login" to="/login">Login</NavLink>
                 <Link to="/wishlist">
                     <NavLink to="/wishlist" className="badge-container">
                             <span className="material-icons-round drawer-icons">
