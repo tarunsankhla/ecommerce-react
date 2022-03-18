@@ -17,7 +17,7 @@ function CartPage() {
 
             <div className="product-main-list">
                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-                    <img className="card-img" src={product15} alt="shoe Image" srcset=""/>
+                    <img className="card-img" src={product15} alt="shoe Image" />
                     <div className="cart-card-horizontal-layout">
                         <div className="card-content">
                             <div className="card-body">
@@ -44,7 +44,7 @@ function CartPage() {
                     </div>
                 </div>
                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-                    <img className="card-img" src={product14} alt="shoe Image" srcset=""/>
+                    <img className="card-img" src={product14} alt="shoe Image" />
                     <div className="cart-card-horizontal-layout">
                         <div className="card-content">
                             <div className="card-body">
@@ -72,7 +72,7 @@ function CartPage() {
                     </div>
                 </div>
                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-                    <img className="card-img" src={product13} alt="shoe Image" srcset=""/>
+                    <img className="card-img" src={product13} alt="shoe Image" />
                     <div className="cart-card-horizontal-layout">
                         <div className="card-content">
                             <div className="card-body">
@@ -100,7 +100,7 @@ function CartPage() {
                     </div>
                 </div>
                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-                    <img className="card-img" src={product12} alt="shoe Image" srcset=""/>
+                    <img className="card-img" src={product12} alt="shoe Image" />
                     <div className="cart-card-horizontal-layout">
                         <div className="card-content">
                             <div className="card-body">

@@ -1,14 +1,16 @@
 import React from 'react';
 import "./WishListPage.css";
 import {
-    product1,product2,
-    product3,product4,
-    product5,product6,
-    product8,product7,
-    product9,product12,
+    product1,
+    // product2,
+    // product3,product4,
+    // product5,product6,
+    // product8,product7,
+    // product9,product12,
      product10,product13,
-      product11,product14,product15
- } from "../../../assets/images/Products/Products"
+    //   product11,product14,
+      product15
+  } from "./../../../src/assets/images/Products/Products";
 function WishListPage() {
   return (
     <div className="wishlist-page-container">
@@ -17,7 +19,7 @@ function WishListPage() {
 
             <div className="wishlist-main-list">
                 <div className="card cart-card">
-                    <img className="card-img" src={product10} alt="Food Image" srcset=""/>
+                    <img className="card-img" src={product10} alt="Food Image" />
                 
                     <div className="card-content">
                         <div className="card-body">
@@ -40,7 +42,7 @@ function WishListPage() {
                         </span>
                 </div>
                 <div className="card cart-card">
-                    <img className="card-img" src={product13} alt="Food Image" srcset=""/>
+                    <img className="card-img" src={product13} alt="Food Image" />
                 
                     <div className="card-content">
                         <div className="card-body">
@@ -62,7 +64,7 @@ function WishListPage() {
                         </span>
                 </div>
                 <div className="card cart-card">
-                    <img className="card-img" src={product1} alt="Food Image" srcset=""/>
+                    <img className="card-img" src={product1} alt="Food Image" />
                 
                     <div className="card-content">
                         <div className="card-body">
@@ -85,7 +87,7 @@ function WishListPage() {
                         </span>
                 </div>
                 <div className="card cart-card">
-                    <img className="card-img" src={product15} alt="Food Image" srcset=""/>
+                    <img className="card-img" src={product15} alt="Food Image" />
                 
                     <div className="card-content">
                         <div className="card-body">
