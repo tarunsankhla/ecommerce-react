@@ -17,28 +17,28 @@ function ProductCards(props) {
   return (
     <>
         <div className="card cart-card">
-                  <img className="card-img" src={productImage} alt="Food " />
-              
-                  <div className="card-content">
-                      <div className="card-body">
-                         {title}
-                      </div>
-                      <div className="card-title">
-                          <h2>₹{price}</h2>
-                          <span className="text-grey">{discount}</span>
-                          <span className="text-linethrough">₹{discountedPrice}</span>
-                      </div>   
-                  
-                  </div> 
-                  <div className="card-footer">
-                      <div className="card-footer-view">
-                          <button>Add to Cart</button>
-                      </div>
-                  </div>
-                  <span className="material-icons-round badge topright-badge ">
-                      favorite_border
-                      </span>
-              </div>
+            <img className="card-img" src={productImage} alt={author} />
+        
+            <div className="card-content">
+                <div className="card-body">
+                    {title}
+                </div>
+                <div className="card-title">
+                    <h2>₹{price}</h2>
+                    <span className="text-grey">{discount}</span>
+                    <span className="text-linethrough">₹{discountedPrice}</span>
+                </div>   
+            
+            </div> 
+            <div className="card-footer">
+                <div className="card-footer-view">
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+            <span className="material-icons-round badge topright-badge ">
+                favorite_border
+            </span>
+        </div>
     </>
   )
 }

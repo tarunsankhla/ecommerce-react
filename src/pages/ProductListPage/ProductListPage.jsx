@@ -16,25 +16,20 @@ import {
 import "./ProductListPage.css"
 export const ProductListPage = () => {
 
-    const [ProductList,setProductList] = useState([ {
-        _id: 1,
-        title: "Men Premium Shoe",
-        author: "Sneaker",
-        price: "5000",
-        categoryName: "non-fiction",
-        url:{product2},
-        discount:"-30% off",
-    discountedPrice:3000,
-        description:""
-      }]);
+    const [ProductList,setProductList] = useState([ ]);
     useEffect(()=>{
+      try{
         (async() => {
         var res = await axios.get("/api/products");
         console.log(res);
-        console.log(res.data.products);
+        // console.log(res.data.products);
         setProductList(res.data.products);
        
-    })()},[]);
+    })()}
+    catch(error){
+      console.log("Product list page error",error);
+    }
+  },[]);
   return (
     <div className='product-page-container'>
       <FilterProduct />

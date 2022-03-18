@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate as navigate } from 'react-router-dom';
 import "./LoginPage.css"
 
 function LoginPage() {
@@ -19,7 +19,8 @@ function LoginPage() {
             var userId =res.data.foundUser._id;
             localStorage.setItem("feetzId",userId);
             console.log(user,userId,token);
-            History.push("/products");
+            navigate("/");
+            // History.push("/products");   
         }
     }
     return (
