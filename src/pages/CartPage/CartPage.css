@@ -105,3 +105,8 @@
 .card-body select{
     padding: 0.5rem;
 }
+
+.animation-login{
+    height: 70vh;
+    width: 100%;
+}

@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, useNavigate as navigate } from 'react-router-dom';
-import "./LoginPage.css"
+import { Link, useNavigate } from 'react-router-dom';
+import "./LoginPage.css";
+import { useAuth } from '../../context/AuthContext';
 
 function LoginPage() {
+    const {login ,setlogin } = useAuth();
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
+    const navigate = useNavigate();
+
     const onSubmittFunc = async () =>{
         var object = {"email":email,"password":password};
         console.log(object)
@@ -19,22 +23,25 @@ function LoginPage() {
             var userId =res.data.foundUser._id;
             localStorage.setItem("feetzId",userId);
             console.log(user,userId,token);
-            navigate("/");
+            setlogin(true);
+            // navigate("/");
             // History.push("/products");   
         }
     }
     return (
         <>
         <div className="login-body-container">
-            <div className="login-container">
-                <div className="title-header">Login</div>
+            <button onClick={()=>{navigate("/")}}>clickc it</button>
+            <div className="login-container">   
+                <div className="title-header">
+                    <iframe src="https://embed.lottiefiles.com/animation/83168" loading='lazy' className='animation-login-1' ></iframe></div>
                 <div className="login-credential-container">
-                    <label>Email Address</label>
-                    <input placeholder="xyz@gmail.com" onChange={(e)=>setEmail(e.target.value)} />
+                    {/* <label>Email Address</label> */}
+                    <input placeholder="Email Address - xyz@gmail.com" onChange={(e)=>setEmail(e.target.value)} />
                 </div>
                 <div className="login-credential-container">
-                    <label>Password</label>
-                    <input type="password" onChange={(e)=>setPassword(e.target.value)} name="" placeholder="***********" id="" />
+                    {/* <label>Password</label> */}
+                    <input type="password" onChange={(e)=>setPassword(e.target.value)} name="" placeholder="Password" id="" />
                 </div>
                 <div className="login-rem-forgetpass-container">
                     <div>

@@ -12,7 +12,9 @@ import { formatDate, requiresAuth } from "../utils/authUtils";
  * send GET Request at /api/user/cart
  * */
 export const getCartItemsHandler = function (schema, request) {
+  console.log("Get cart mock ",request);
   const userId = requiresAuth.call(this, request);
+  console.log("Get cart mock ",userId);
   if (!userId) {
     new Response(
       404,

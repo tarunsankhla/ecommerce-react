@@ -11,10 +11,18 @@ import {
     //   product11,product14,
       product15
   } from "./../../../src/assets/images/Products/Products";
+import { useAuth } from '../../context/AuthContext';
 function WishListPage() {
+    const { login } = useAuth();
+    console.log("auth login ",login);
+
   return (
     <div className="wishlist-page-container">
-        <h1 className="title-wishlist">My WishList (4 items)</h1>
+       { !login ?
+        <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
+        :
+        <> 
+        <h1 className="title-wishlist">My WishList 4 items</h1>
         <main className="main">
 
             <div className="wishlist-main-list">
@@ -105,12 +113,14 @@ function WishListPage() {
                             <button>Move to Cart</button>
                         </div>
                     </div>
-                    <span classNameName="material-icons-round badge topright-badge ">
+                    <span className="material-icons-round badge topright-badge ">
                         favorite_border
                         </span>
                 </div>
             </div>
-        </main>
+        </main> 
+        </>
+                 }
     </div>
   )
 }

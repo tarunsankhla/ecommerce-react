@@ -11,8 +11,8 @@
 
 .navbar-action{
     display: flex;
-    justify-content: space-evenly;
-    min-width:  20%;
+    justify-content: space-between;
+    min-width:  25%;
     /* width: fit-content; */
     align-items: center;
 }
