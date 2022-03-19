@@ -12,7 +12,9 @@ import { formatDate, requiresAuth } from "../utils/authUtils";
  * send GET Request at /api/user/cart
  * */
 export const getCartItemsHandler = function (schema, request) {
+  console.log("Get cart mock ",request);
   const userId = requiresAuth.call(this, request);
+  console.log("Get cart mock ",userId);
   if (!userId) {
     new Response(
       404,
@@ -46,12 +48,14 @@ export const addItemToCartHandler = function (schema, request) {
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
     const { product } = JSON.parse(request.requestBody);
+    console.log("user Cart  Controller request body: ",product)
     userCart.push({
       ...product,
       createdAt: formatDate(),
       updatedAt: formatDate(),
       qty: 1,
     });
+    console.log("user Cart  Controller:",userCart)
     this.db.users.update({ _id: userId }, { cart: userCart });
     return new Response(201, {}, { cart: userCart });
   } catch (error) {
