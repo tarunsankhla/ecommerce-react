@@ -4,11 +4,13 @@ import React, { PureComponent } from 'react'
 import { logo as LogoImage} from "../../assets/images/Products/Products";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 
 export function Navbar(){
     const { login, setlogin } = useAuth();
+    const { cartState : cartItems,setCartState } =useCart();
     console.log("Auther Login", login, setlogin);
-
+    console.log("card context", cartItems, setCartState);
 
     const OnSignOut = () =>{
         setlogin(false);
@@ -17,8 +19,8 @@ export function Navbar(){
     }
     return (
         <div className="navbar">
-            <NavLink className="project-title" to="./">
-                <img src={LogoImage}  alt=""  className="title-logo" />
+            <NavLink className="project-title" to="/">
+                <img src={LogoImage}  alt="logo"  className="title-logo" />
             </NavLink>
             
             <div className="input-icons">
@@ -42,7 +44,7 @@ export function Navbar(){
                     <span className="material-icons-round drawer-icons">
                         shopping_cart_checkout
                         </span>
-                        {login && <div className="badge  badge-warning topright-badge">0</div>   }         
+                        {login && <div className="badge  badge-warning topright-badge">{cartItems.length}</div>   }         
                 </NavLink>
                 <div>
                     {

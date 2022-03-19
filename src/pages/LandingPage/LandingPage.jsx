@@ -12,6 +12,7 @@ export function LandingPage(){
     
     return(
         <>
+        <marquee> we have special discount on sneakers</marquee>
         <SlideShow/>
         <div className="home-container-main-1">
             <img className="container-img" src={landingPageHeadImg1} alt="Landing page"/>
