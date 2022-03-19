@@ -10,7 +10,7 @@ function LoginPage() {
     const [password,setPassword] = useState();
     const navigate = useNavigate();
 
-    const onSubmittFunc = async () =>{
+    const onSubmitHandler = async () =>{
         var object = {"email":email,"password":password};
         console.log(object)
         var res = await axios.post("/api/auth/login",object);
@@ -51,7 +51,7 @@ function LoginPage() {
                     <a className="btn-link">Forgot your password?</a>
                 </div>
                 <div className="login-btn-container">
-                    <a className="btn login-action-btn" onClick={onSubmittFunc}>Login</a>
+                    <a className="btn login-action-btn" onClick={onSubmitHandler}>Login</a>
                     </div>
                 <Link className="login-footer" to="/signup">
                     Create New Account <span className="material-icons-round">

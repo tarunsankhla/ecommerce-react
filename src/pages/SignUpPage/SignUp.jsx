@@ -81,10 +81,10 @@ function SignUpPage() {
             console.log(res);   
             if(res.status === 201)
             {
-                var token = res.data.encodedToken;
+                var token = res?.data?.encodedToken;
                 localStorage.setItem("feetz",token)
-                var user = res.data.createdUser;
-                var userId =res.data.createdUser._id;
+                var user = res?.data?.createdUser;
+                var userId =res?.data?.createdUser._id;
                 localStorage.setItem("feetzId",userId);
                 console.log(user,userId,token);
                 setlogin(true);

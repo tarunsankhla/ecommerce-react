@@ -16,7 +16,7 @@ import CartCards from '../../components/UI/Card/CartCards/CartCards';
 
 function CartPage() {
     const {login} = useAuth();
-    const [CartProductList,setCartProductList] = useState([ ]);
+    const [CartProductList,setCartProductList] = useState([]);
 
 
 
@@ -24,7 +24,7 @@ function CartPage() {
     useEffect(()=>{
         try{
             (() => {
-                console.log("res");
+                // console.log("res");
                 const header ={
                     "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
                 }
