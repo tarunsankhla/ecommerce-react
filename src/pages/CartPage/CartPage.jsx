@@ -18,16 +18,14 @@ function CartPage() {
     const {login} = useAuth();
     const [CartProductList,setCartProductList] = useState([]);
 
-
-
     console.log("login auth",login);
     useEffect(()=>{
         try{
             (() => {
                 // console.log("res");
-                const header ={
-                    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
-                }
+                // const header ={
+                //     "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
+                // }
                 var res = axios.get("/api/user/cart",{ headers:{
                     authorization:localStorage.getItem("feetz")}})
                                 .then((res)=>{
@@ -55,16 +53,18 @@ function CartPage() {
             <main className="main">
 
                 <div className="product-main-list">
-                {CartProductList.length ==0 ? "Cart is empty": CartProductList?.map((item)=>(
-                    <CartCards 
-                    key={item._id}
-                    _id={item._id}
-                    title={item.title}  
-                    productImage={item.url}   
-                    author={item.author} 
-                    price={item.price}
-                    discount={item.discount}  
-                    discountedPrice={item.discountedPrice} />
+                {CartProductList.length ===0 ? 
+                    "Cart is empty": 
+                    CartProductList?.map((item)=>(
+                        <CartCards 
+                            key={item._id}
+                            _id={item._id}
+                            title={item.title}  
+                            productImage={item.url}   
+                            author={item.author} 
+                            price={item.price}
+                            discount={item.discount}  
+                            discountedPrice={item.discountedPrice} />
             ))}
                 
                 </div>
@@ -105,7 +105,7 @@ function CartPage() {
   )
 }
 
-export default CartPage
+export default CartPage;
     //  <div className="card cart-card cart-card-horizontal cart-banner-stretch">
     //                     <img className="card-img" src={product15} alt="shoe Image" />
     //                     <div className="cart-card-horizontal-layout">

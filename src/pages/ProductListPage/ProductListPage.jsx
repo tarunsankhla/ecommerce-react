@@ -13,10 +13,12 @@ import {
   //  product10,product13,
   //   product11,product14,product15
 } from "./../../../src/assets/images/Products/Products";
-import "./ProductListPage.css"
+import "./ProductListPage.css";
+
+
 export const ProductListPage = () => {
 
-    const [ProductList,setProductList] = useState([ ]);
+    const [ProductList,setProductList] = useState([]);
     useEffect(()=>{
       try{
         (async() => {
@@ -30,6 +32,8 @@ export const ProductListPage = () => {
       console.log("Product list page error",error);
     }
   },[]);
+
+  
   return (
     <div className='product-page-container'>
       <FilterProduct />
@@ -39,6 +43,7 @@ export const ProductListPage = () => {
             {ProductList?.map((item)=>(
                 <ProductCards 
                 key={item._id}
+                _id={item._id}
                 title={item.title}  
                 productImage={item.url}   
                 author={item.author} 

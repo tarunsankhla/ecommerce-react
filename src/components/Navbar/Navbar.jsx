@@ -5,12 +5,15 @@ import { logo as LogoImage} from "../../assets/images/Products/Products";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
+import { useWishList } from "../../context/WishListContext";
 
 export function Navbar(){
     const { login, setlogin } = useAuth();
     const { cartState : cartItems,setCartState } =useCart();
+    const {WishListState,setWishListState} =useWishList();
     console.log("Auther Login", login, setlogin);
     console.log("card context", cartItems, setCartState);
+    console.log("wishlist context", WishListState, setWishListState);
 
     const OnSignOut = () =>{
         setlogin(false);
@@ -37,8 +40,8 @@ export function Navbar(){
                             <span className="material-icons-round drawer-icons">
                                 favorite_border
                                 </span>
-                        {login && <div className="badge  badge-warning topright-badge">0</div> }           
-                            </NavLink>
+                        {login && <div className="badge  badge-warning topright-badge">{WishListState.length}</div> }           
+                    </NavLink>
                 </Link>
                 <NavLink className="badge-container" to="/cart">
                     <span className="material-icons-round drawer-icons">
