@@ -81,14 +81,14 @@ function SignUpPage() {
             console.log(res);   
             if(res.status === 201)
             {
-                var token = res.encodedToken;
+                var token = res.data.encodedToken;
                 localStorage.setItem("feetz",token)
-                var user = res.createdUser;
-                var userId =res.createdUser._id;
+                var user = res.data.createdUser;
+                var userId =res.data.createdUser._id;
                 localStorage.setItem("feetzId",userId);
                 console.log(user,userId,token);
                 setlogin(true);
-                navigate("/");
+                // navigate("/");
                 // History.push("/products");   
             }
             if(res.status === 422)

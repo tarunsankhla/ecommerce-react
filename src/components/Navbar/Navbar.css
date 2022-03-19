@@ -31,3 +31,15 @@
     width: 9rem;
     border-radius: 50%;
 }
+
+.signout-btn{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.signout-btn:hover{
+    transform: scale(1.05);
+    opacity: 1.05;
+}

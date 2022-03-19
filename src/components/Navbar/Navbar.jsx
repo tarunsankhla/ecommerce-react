@@ -8,6 +8,13 @@ import { useAuth } from "../../context/AuthContext";
 export function Navbar(){
     const { login, setlogin } = useAuth();
     console.log("Auther Login", login, setlogin);
+
+
+    const OnSignOut = () =>{
+        setlogin(false);
+        localStorage.removeItem("feetz");
+        localStorage.removeItem("feetzId");
+    }
     return (
         <div className="navbar">
             <NavLink className="project-title" to="./">
@@ -38,8 +45,15 @@ export function Navbar(){
                         {login && <div className="badge  badge-warning topright-badge">0</div>   }         
                 </NavLink>
                 <div>
-                    <NavLink className="btn-login" to="/login">Login</NavLink> {" | "}
-                    <NavLink className="btn-login" to="/signup">SignUp</NavLink>
+                    {
+                        login ? 
+                        <button className="signout-btn text-underLine text-bold" onClick={OnSignOut}> Signout</button>
+                        :
+                        <>
+                            <NavLink className="btn-login" to="/login">Login</NavLink>  | 
+                            <NavLink className="btn-login" to="/signup">SignUp</NavLink>
+                        </>
+                    }
                 </div>
             </div>
         </div>
