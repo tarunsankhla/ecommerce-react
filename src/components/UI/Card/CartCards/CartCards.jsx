@@ -2,6 +2,22 @@ import React from 'react'
 
 function CartCards(props) {
     const { _id, title ,productImage , author,price,discount,discountedPrice } =props;
+
+
+
+    // {
+    //     "product":{
+    //       "_id": "7980eb16-d3c7-4121-9835-06e1c5669717",
+    //       "title": "Men Premium Shoe",
+    //       "author": "Sneaker",
+    //       "price": "5000",
+    //       "categoryName": "non-fiction",
+    //       "url": "/static/media/product1.9ed97c94.jpg",
+    //       "discount": "-30% off",
+    //       "discountedPrice": 3000,
+    //       "description": "",
+    //       "id": "1"}
+    //     }
   return (
     <>
          <div className="card cart-card cart-card-horizontal cart-banner-stretch">
