@@ -26,7 +26,7 @@ function WishListPage() {
     useEffect(()=>{
         try{
             (() => {
-                var res = axios.get("/api/user/wishlist",{ headers:{
+                let res = axios.get("/api/user/wishlist",{ headers:{
                     authorization:localStorage.getItem("feetz")}})
                                 .then((res)=>{
                                     console.log(res);
@@ -88,94 +88,3 @@ function WishListPage() {
 }
 
 export default WishListPage;
-//  <div className="card cart-card">
-//                     <img className="card-img" src={product10} alt="Food Image" />
-                
-//                     <div className="card-content">
-//                         <div className="card-body">
-//                             Men Premium Shoe
-//                         </div>
-//                         <div className="card-title">
-//                              <h2>₹4000</h2>
-//                             <span className="text-grey">-20% off</span>
-//                             <span className="text-linethrough">₹5000</span>
-//                         </div>   
-                    
-//                     </div> 
-//                     <div className="card-footer">
-//                         <div className="card-footer-view">
-//                             <button>Move to Cart</button>
-//                         </div>
-//                     </div>
-//                     <span className="material-icons-round badge topright-badge ">
-//                         favorite_border
-//                         </span>
-//                 </div>
-//                 <div className="card cart-card">
-//                     <img className="card-img" src={product13} alt="Food Image" />
-                
-//                     <div className="card-content">
-//                         <div className="card-body">
-//                             Men Premium Shoe
-//                         </div>
-//                         <div className="card-title">
-//                              <h2>₹4000</h2> <span className="text-grey">-20% off</span>
-//                             <span className="text-linethrough">₹5000</span>
-//                         </div>   
-                    
-//                     </div> 
-//                     <div className="card-footer">
-//                         <div className="card-footer-view">
-//                             <button>Move to Cart</button>
-//                         </div>
-//                     </div>
-//                     <span className="material-icons-round badge topright-badge ">
-//                         favorite_border
-//                         </span>
-//                 </div>
-//                 <div className="card cart-card">
-//                     <img className="card-img" src={product1} alt="Food Image" />
-                
-//                     <div className="card-content">
-//                         <div className="card-body">
-//                             Men Premium Shoe
-//                         </div>
-//                         <div className="card-title">
-//                              <h2>₹3500</h2>
-//                             <span className="text-grey">-40% off</span>
-//                             <span className="text-linethrough">₹6000</span>
-//                         </div>   
-                    
-//                     </div> 
-//                     <div className="card-footer">
-//                         <div className="card-footer-view">
-//                             <button>Move to Cart</button>
-//                         </div>
-//                     </div>
-//                     <span className="material-icons-round badge topright-badge ">
-//                         favorite_border
-//                         </span>
-//                 </div>
-//                 <div className="card cart-card">
-//                     <img className="card-img" src={product15} alt="Food Image" />
-                
-//                     <div className="card-content">
-//                         <div className="card-body">
-//                             Men Premium Shoe
-//                         </div>
-//                         <div className="card-title">
-//                              <h2>₹2800</h2>
-//                             <span className="text-grey">-15% off</span>
-//                             <span className="text-linethrough">₹4500</span>
-//                         </div>   
-                    
-//                     </div> 
-//                     <div className="card-footer">
-//                         <div className="card-footer-view">
-//                             <button>Move to Cart</button>
-//                         </div>
-//                     </div>
-//                     <span className="material-icons-round badge topright-badge ">
-//                         favorite_border
-//                         </span>
-//                 </div>

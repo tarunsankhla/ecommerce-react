@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const WishListContext = createContext();
+const WishListContext = createContext({});
 
 const WishListProvider =({children})=>{
     const [WishListState,setWishListState] = useState([]);

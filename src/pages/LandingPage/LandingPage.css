@@ -18,7 +18,8 @@
 	
 .product-check-navigator:hover{
     transform: scale(0.9) 2s;
-    opacity: 0.83;
+    /* opacity: 0.83; */
+    filter: brightness(0.8);
 }
 
 

@@ -61,7 +61,8 @@
 .cart-aside-footer > button:hover{
     transform: scale(0.98);
     transition: transform 1s;
-    opacity: 0.9;
+    /* opacity: 0.9; */
+    filter: brightness(0.9);
     /* background-color: var(--cart-button-color) */
 }
 

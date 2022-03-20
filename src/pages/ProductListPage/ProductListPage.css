@@ -103,7 +103,8 @@ label{
 
 .filter-btn:hover{
     transform: scale(1.1);
-    opacity: 1.1;
+    /* opacity: 1.1; */
+    filter: brightness(1.1);
 }
 @media screen and (max-width: 800px) {
     aside{

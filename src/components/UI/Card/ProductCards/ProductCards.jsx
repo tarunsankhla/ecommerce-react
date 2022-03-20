@@ -22,11 +22,11 @@ function ProductCards(props) {
                             }
                         })
                         .catch((error)=>{
-                            console.log(error)
+                            console.log(error.message);
                         });
         }
         catch(err){
-            console.log("error ",err)
+            console.log("error ",err.message);
         }
     }
     
