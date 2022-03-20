@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+:root{
+  --hovershadow1 : rgba(0,0,0,0.02);
+  --hovershadow2 : rgba(0,0,0,0.03);
+  --hovershadow3 : rgba(0,0,0,0.04);
+  --hovershadow4 : rgba(0,0,0,0.05);
+}

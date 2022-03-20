@@ -18,16 +18,14 @@ function CartPage() {
     const {login} = useAuth();
     const [CartProductList,setCartProductList] = useState([]);
 
-
-
     console.log("login auth",login);
     useEffect(()=>{
         try{
             (() => {
                 // console.log("res");
-                const header ={
-                    "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
-                }
+                // const header ={
+                //     "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
+                // }
                 var res = axios.get("/api/user/cart",{ headers:{
                     authorization:localStorage.getItem("feetz")}})
                                 .then((res)=>{
@@ -55,16 +53,18 @@ function CartPage() {
             <main className="main">
 
                 <div className="product-main-list">
-                {CartProductList.length ==0 ? "Cart is empty": CartProductList?.map((item)=>(
-                    <CartCards 
-                    key={item._id}
-                    _id={item._id}
-                    title={item.title}  
-                    productImage={item.url}   
-                    author={item.author} 
-                    price={item.price}
-                    discount={item.discount}  
-                    discountedPrice={item.discountedPrice} />
+                {CartProductList.length ===0 ? 
+                    "Cart is empty": 
+                    CartProductList?.map((item)=>(
+                        <CartCards 
+                            key={item._id}
+                            _id={item._id}
+                            title={item.title}  
+                            productImage={item.url}   
+                            author={item.author} 
+                            price={item.price}
+                            discount={item.discount}  
+                            discountedPrice={item.discountedPrice} />
             ))}
                 
                 </div>
@@ -105,115 +105,4 @@ function CartPage() {
   )
 }
 
-export default CartPage
-    //  <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-    //                     <img className="card-img" src={product15} alt="shoe Image" />
-    //                     <div className="cart-card-horizontal-layout">
-    //                         <div className="card-content">
-    //                             <div className="card-body">
-    //                                 Men Premium Jacket
-    //                             </div>
-    //                             <div className="card-body">
-    //                                 <h3>₹2000</h3>
-    //                                 <h4>50% off</h4>
-    //                             </div>   
-    //                             <div className="card-body">
-    //                                 Quantity
-    //                                 <select>
-    //                                     <option>1</option>
-    //                                     <option>2</option>
-    //                                     <option>3</option>
-    //                                     <option>4</option>
-    //                                 </select>
-    //                             </div>
-    //                         </div> 
-    //                         <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-    //                             <button>Remove from Cart</button>
-    //                             <button>Move to Wishlist</button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-    //                     <img className="card-img" src={product14} alt="shoe Image" />
-    //                     <div className="cart-card-horizontal-layout">
-    //                         <div className="card-content">
-    //                             <div className="card-body">
-    //                                 Men Premium Jacket
-    //                             </div>
-    //                             <div className="card-body">
-    //                                 <h3>₹2000</h3>
-    //                                 <h4>50% off</h4>
-    //                             </div>   
-                            
-    //                             <div className="card-body">
-    //                                 Quantity
-    //                                 <select>
-    //                                     <option>1</option>
-    //                                     <option>2</option>
-    //                                     <option>3</option>
-    //                                     <option>4</option>
-    //                                 </select>
-    //                             </div>
-    //                         </div> 
-    //                         <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-    //                             <button>Remove from Cart</button>
-    //                             <button>Move to Wishlist</button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-    //                     <img className="card-img" src={product13} alt="shoe Image" />
-    //                     <div className="cart-card-horizontal-layout">
-    //                         <div className="card-content">
-    //                             <div className="card-body">
-    //                                 Men Premium Jacket
-    //                             </div>
-    //                             <div className="card-body">
-    //                                 <h3>₹2000</h3>
-    //                                 <h4>50% off</h4>
-    //                             </div>   
-    //                             <div className="card-body">
-    //                                 Quantity
-    //                                 <select>
-    //                                     <option>1</option>
-    //                                     <option>2</option>
-    //                                     <option>3</option>
-    //                                     <option>4</option>
-    //                                 </select>
-    //                             </div>
-                            
-    //                         </div> 
-    //                         <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-    //                             <button>Remove from Cart</button>
-    //                             <button>Move to Wishlist</button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-    //                     <img className="card-img" src={product12} alt="shoe Image" />
-    //                     <div className="cart-card-horizontal-layout">
-    //                         <div className="card-content">
-    //                             <div className="card-body">
-    //                                 Men Premium Jacket
-    //                             </div>
-    //                             <div className="card-body">
-    //                                 <h3>₹2000</h3>
-    //                                 <h4>50% off</h4>    
-    //                             </div>   
-    //                             <div className="card-body">
-    //                                 Quantity
-    //                                 <select>
-    //                                     <option>1</option>
-    //                                     <option>2</option>
-    //                                     <option>3</option>
-    //                                     <option>4</option>
-    //                                 </select>
-    //                             </div>
-                            
-    //                         </div> 
-    //                         <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-    //                             <button>Remove from Cart</button>
-    //                             <button>Move to Wishlist</button>
-    //                         </div>
-    //                     </div>
-    //                 </div>
+export default CartPage;

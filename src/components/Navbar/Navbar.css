@@ -22,7 +22,8 @@
 }
 .navbar-action a:hover{
     transform: scale(1.1);
-    opacity: 1.1;
+    /* opacity: 1.1; */
+    filter: brightness(1.1);
 }
 
 
@@ -41,5 +42,6 @@
 
 .signout-btn:hover{
     transform: scale(1.05);
-    opacity: 1.05;
+    /* opacity: 1.05; */
+    filter: brightness(1.1);
 }
