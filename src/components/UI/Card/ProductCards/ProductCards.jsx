@@ -66,7 +66,7 @@ function ProductCards(props) {
   return (
     <>
         <div className="card cart-card">
-            <img className="card-img" src={productImage} alt={author} />
+            <img className="card-img" src={productImage} alt={author} loading="lazy"/>
 
             <div className="card-content">
                 <div className="card-body">
@@ -75,7 +75,7 @@ function ProductCards(props) {
                 <div className="card-title">
                     <h2>₹{price}</h2>
                     <span className="text-grey">{discount}</span>
-                    <span className="text-linethrough">₹{discountedPrice}</span>
+                    <span className="text-linethrough discount-price">₹{discountedPrice}</span>
                 </div>
             </div>
             <div className="card-footer">

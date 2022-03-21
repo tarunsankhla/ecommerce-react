@@ -52,11 +52,11 @@ export function Navbar(){
                 <div>
                     {
                         login ? 
-                        <button className="signout-btn text-underLine text-bold" onClick={OnSignOut}> Signout</button>
+                        <button className="btn signout-btn text-underLine text-bold" onClick={OnSignOut}> Signout</button>
                         :
                         <>
-                            <NavLink className="btn-login" to="/login">Login</NavLink>  | 
-                            <NavLink className="btn-login" to="/signup">SignUp</NavLink>
+                            <NavLink className="btn btn-login" to="/login">Login</NavLink>  | 
+                            <NavLink className="btn btn-login" to="/signup">SignUp</NavLink>
                         </>
                     }
                 </div>

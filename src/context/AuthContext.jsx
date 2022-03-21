@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 
 const AuthProvider = ( {children})=>{
-    const [login,setlogin ] = useState(false);
+    const [login,setlogin ] = useState(!!localStorage.getItem("feetaz") && !!localStorage.getItem("feetzId"));
     return (
         <AuthContext.Provider value={{ login, setlogin}}>
             {children}

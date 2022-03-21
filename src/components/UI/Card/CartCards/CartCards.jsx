@@ -50,7 +50,7 @@ function CartCards(props) {
     return (
         <>
             <div className="card cart-card cart-card-horizontal cart-banner-stretch">
-                <img className="card-img" src={productImage} alt={author} />
+                <img className="card-img" src={productImage} alt={author}  loading="lazy" />
                 <div className="cart-card-horizontal-layout">
                     <div className="card-content">
                         <div className="card-body">

@@ -9,10 +9,11 @@
 
 .cart-card{
     height: fit-content;
+    width:23rem;
 }
 
 .card-title span, h2{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }  
 .cart-card:hover{
     transform: scale(1.01);
@@ -24,6 +25,18 @@
     0 26px 18px rgba(0,0,0,0.05);
 }
 
+.discount-price{
+    color: red;
+    margin:1.2em
+}
+
+@media screen and (max-width: 1030px) {
+    .cart-card{
+        height: fit-content;
+        width:21rem;
+    }
+}
+
 @media screen and (max-width: 780px) {
     .cart-card{
         width: 20rem;
@@ -33,7 +46,7 @@
         height: 19em;
     }  
     .card-title span, h2{
-        font-size: 2rem;
+        font-size: 1.3rem;
     }  
 }
 
@@ -47,7 +60,7 @@
         height: 17em;
     } 
     .card-title span, h2{
-        font-size: 1.8rem;
+        font-size: 1.2rem;
     } 
 }
 
@@ -62,7 +75,7 @@
         height: 15rem;
     } 
     .card-title span, h2{
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     } 
 }
 

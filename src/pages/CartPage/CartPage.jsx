@@ -9,6 +9,7 @@ import {
      product10,product13,
       product11,product14,product15
  } from "./../../../src/assets/images/Products/Products";
+ import cartLogoSrc from "./../../assets/images/SVG/cart.svg"
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import CartCards from '../../components/UI/Card/CartCards/CartCards';
@@ -49,7 +50,8 @@ function CartPage() {
   return (
     <div className="product-page-container">
        { !login ?
-        <iframe src="https://embed.lottiefiles.com/animation/94113" loading='lazy' className='animation-login'></iframe> : 
+        // <iframe src="https://embed.lottiefiles.com/animation/94113" loading='lazy' className='animation-login'></iframe> : 
+        <img src={cartLogoSrc} className="cart-logo" />:
         <>
             <main className="main">
 

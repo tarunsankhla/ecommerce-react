@@ -11,6 +11,7 @@ import {
     //   product11,product14,
       product15
   } from "./../../../src/assets/images/Products/Products";
+  import wishListLogoSrc from "./../../assets/images/SVG/wishlist.svg";
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import WishListsCards from '../../components/UI/Card/WishListCards/WishListsCards';
@@ -47,7 +48,8 @@ function WishListPage() {
     return (
         <div className="wishlist-page-container">
         {   !login ?
-            <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
+            // <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
+            <img src={wishListLogoSrc} className="wishlist-logo" />
             :
             <> 
                 <h1 className="title-wishlist">My WishList 4 items</h1>

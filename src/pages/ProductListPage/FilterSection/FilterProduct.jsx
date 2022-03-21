@@ -21,19 +21,19 @@ function FilterProduct() {
                 <h4>Category</h4>
                 <div>
                     <input className="checkbox-sneakers" type="checkbox" name="sneakers" value="sneakers"/>
-                    <label for="sneakers">Sneakers</label>
+                    <label htmlFor="sneakers">Sneakers</label>
                 </div>
                 <div>
                     <input className="checkbox-vans" type="checkbox" name="vans" value="vans"/>
-                    <label for="vans">vans</label>
+                    <label htmlFor="vans">vans</label>
                 </div>
                 <div>
                     <input className="checkbox-converse" type="checkbox" name="converse" value="converse"/>
-                    <label for="converse">converse</label>
+                    <label htmlFor="converse">converse</label>
                 </div>
                 <div>
                     <input className="checkbox-yezzy" type="checkbox" name="yezzy" value="yezzy"/>
-                    <label for="yezzy">yezzy</label>
+                    <label htmlFor="yezzy">yezzy</label>
                 </div>
             </div>
             <div className="rating-container">
@@ -41,21 +41,21 @@ function FilterProduct() {
                 <div>
                     <input type="radio" id="4stars" name="drone" value="4stars"
                         checked/>
-                    <label for="4stars">4 stars and above</label>
+                    <label htmlFor="4stars">4 stars and above</label>
                 </div>
                 
                 <div>
                     <input type="radio" id="3stars" name="drone" value="3stars"/>
-                    <label for="3stars">3 stars and above</label>
+                    <label htmlFor="3stars">3 stars and above</label>
                 </div>
                 
                 <div>
                     <input type="radio" id="2stars" name="drone" value="2stars"/>
-                    <label for="2stars">2 stars and above</label>
+                    <label htmlFor="2stars">2 stars and above</label>
                 </div>
                 <div>
                     <input type="radio" id="1stars" name="drone" value="1stars"/>
-                    <label for="1stars">1 stars and above</label>
+                    <label htmlFor="1stars">1 stars and above</label>
                 </div>
 
             </div>
@@ -64,12 +64,12 @@ function FilterProduct() {
                 <div>
                     <input type="radio" id="lth" name="price" value="lth"
                         checked />
-                    <label for="lth">Price - Low to High </label>
+                    <label htmlFor="lth">Price - Low to High </label>
                 </div>
                 
                 <div>
                     <input type="radio" id="htl" name="price" value="htl" />
-                    <label for="htl">Price - High to Low</label>
+                    <label htmlFor="htl">Price - High to Low</label>
                 </div>
             </div>
         </div>

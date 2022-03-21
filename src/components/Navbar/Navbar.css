@@ -17,6 +17,20 @@
     align-items: center;
 }
 
+.btn-login:hover
+{
+    transform: scale(1.05);
+    /* opacity: 1.05; */
+    filter: brightness(1.05);
+}
+
+
+.btn-login{
+    background-color: rgba(0,0,0,0.05);
+    color: black;
+    padding: 0.5em 1em;
+}
+
 .navbar-action a{
     text-decoration: none;
 }
@@ -38,10 +52,12 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
+    color: black;
 }
 
 .signout-btn:hover{
     transform: scale(1.05);
     /* opacity: 1.05; */
-    filter: brightness(1.1);
+    filter: brightness(1.05);
 }
+
