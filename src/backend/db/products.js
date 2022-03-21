@@ -26,23 +26,53 @@ import product12 from  "./../../../src/assets/images/Products/product12.jpg";
 import product13 from  "./../../../src/assets/images/Products/product13.jpg";
 import product14 from  "./../../../src/assets/images/Products/product14.jpg";
 import product15 from  "./../../../src/assets/images/Products/product15.jpg";
+import product16_slides  from  "./../../../src/assets/images/Products/product16_slides.webp";
+import product17_sportshoe  from  "./../../../src/assets/images/Products/product17_sportshoe.webp";
+import product18_sportshoe  from  "./../../../src/assets/images/Products/product18_sportsshoe.webp";
+import product19_sportshoe  from  "./../../../src/assets/images/Products/product19_sportshoe.webp";
+import product20_sportshoe  from  "./../../../src/assets/images/Products/product20_sportshoe.webp";
+import product21_sportshoe  from  "./../../../src/assets/images/Products/product21_sportshoe.webp";
+import product22_sportShoe  from  "./../../../src/assets/images/Products/product22_sportShoe.webp";
+import product23_sportshoe  from  "./../../../src/assets/images/Products/product23_sportshoe.webp";
+import product24_sportshoe  from  "./../../../src/assets/images/Products/product24_sportshoe.webp";
+import product25_sportshoe  from  "./../../../src/assets/images/Products/product25_sportshoe.webp";
+import product26_sportshoe  from  "./../../../src/assets/images/Products/product26_sportsho.webp";
+import product27_slides  from  "./../../../src/assets/images/Products/product27_slides.webp";
+import product28_slides  from  "./../../../src/assets/images/Products/product28_slides.webp";
+import product29_slides  from  "./../../../src/assets/images/Products/product29_slides.webp";
+import product30_slides  from  "./../../../src/assets/images/Products/product30_slides.webp";
+import product31_slides  from  "./../../../src/assets/images/Products/product31_slides.webp";
+import product32_slides  from  "./../../../src/assets/images/Products/product32_slides.webp";
+
+
+
+
 // var prodct = require("./../../../public/img/arrival-banner-1.jpg");
 /**
  * Product Database can be added here.
  * You can add products of your wish with different attributes
  * */
-
+//  categoryType:"Football Cricket Gym",
+//     stock : true,
+//     stockType : "Newest TopSeller",
+//     freature : "waterResistant NoLace GhostLace",
+//     productType : "slides shoes"
 export const products = [
   {
     _id: uuid(),
     title: "Men Premium Shoe",
     author: "Sneaker",
     price: "5000",
-    categoryName: "non-fiction",
-    url:product1,
+    categoryName: "Sports",
+    url:product32_slides,
     discount:"-30% off",
-discountedPrice:3000,
-    description:""
+    discountedPrice:3000,
+    description:"",
+    categoryType:"Football Cricket Gym",
+    stock : true,
+    stockType : "Newest TopSeller",
+    freature : "waterResistant NoLace GhostLace",
+    productType : "slides shoes"
   },
   {
     _id: uuid(),

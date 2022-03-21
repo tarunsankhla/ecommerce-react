@@ -26,6 +26,23 @@ import product12 from  "./product12.jpg";
 import product13 from  "./product13.jpg";
 import product14 from  "./product14.jpg";
 import product15 from  "./product15.jpg";
+import product16_slides from  "./product16_slides.webp";
+import product17_sportshoe from  "./product17_sportshoe.webp";
+import product18_sportshoe from  "./product18_sportsshoe.webp";
+import product19_sportshoe from  "./product19_sportshoe.webp";
+import product20_sportshoe from  "./product20_sportshoe.webp";
+import product21_sportshoe from  "./product21_sportshoe.webp";
+import product22_sportshoe from  "./product22_sportShoe.webp";
+import product23_sportshoe from  "./product23_sportshoe.webp";
+import product24_sportshoe from  "./product24_sportshoe.webp";
+import product25_sportshoe from  "./product25_sportshoe.webp";
+import product26_sportshoe from  "./product26_sportsho.webp";
+import product27_slides from  "./product27_slides.webp";
+import product28_slides from  "./product28_slides.webp";
+import product29_slides from  "./product29_slides.webp";
+import product30_slides from  "./product30_slides.webp";
+import product31_slides from  "./product31_slides.webp";
+import product32_slides from  "./product32_slides.webp";
 
 
 
@@ -56,4 +73,21 @@ export {
      product13,
      product14,
      product15,
+     product16_slides,
+     product17_sportshoe,
+     product18_sportshoe,
+     product19_sportshoe,
+     product20_sportshoe,
+     product21_sportshoe,
+     product22_sportshoe,
+     product23_sportshoe,
+     product24_sportshoe,
+     product25_sportshoe,
+     product26_sportshoe,
+     product27_slides,
+     product28_slides,
+     product29_slides,
+     product30_slides,
+     product31_slides,
+     product32_slides
     }

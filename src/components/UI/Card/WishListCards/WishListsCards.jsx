@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React from 'react'
+import { useCart } from '../../../../context/CartContext';
 import { useWishList } from '../../../../context/WishListContext';
 
 function WishListsCards(props) {
     const { _id, title ,productImage , author,price,discount,discountedPrice } =props;
     const {WishListState,setWishListState} =useWishList();
-
+    const {cartState,setCartState}= useCart();
     console.log(props);
     const RemoveItemsFromWishListHandler=async(id)=>{
         try{
@@ -26,6 +27,26 @@ function WishListsCards(props) {
             console.log("error ",err)
         }
     }
+    const AddProductsInCartHandler = async (item)=>{
+        try{
+            console.log(item);
+            await axios.post("/api/user/cart",
+                    { "product":item},
+                    { headers:{authorization:localStorage.getItem("feetz")}})
+                        .then((res)=>{
+                            console.log(res);
+                            if(res.status===201){
+                                setCartState(res.data.cart);
+                            }
+                        })
+                        .catch((error)=>{
+                            console.log(error.message);
+                        });
+        }
+        catch(err){
+            console.log("error ",err.message);
+        }
+    }
     return (
         <>
             <div className="card cart-card">
@@ -44,7 +65,9 @@ function WishListsCards(props) {
                 </div> 
                 <div className="card-footer">
                     <div className="card-footer-view">
-                        <button onClick={()=>RemoveItemsFromWishListHandler(_id)}>Move to Cart</button>
+                        <button onClick={()=>{
+                            AddProductsInCartHandler(props);
+                            RemoveItemsFromWishListHandler(_id)}}>Move to Cart</button>
                     </div>
                 </div>
                 <span className="material-icons-round badge topright-badge ">

@@ -53,7 +53,7 @@ function WishListPage() {
                 <h1 className="title-wishlist">My WishList 4 items</h1>
                 <main className="main">
                     <div className="wishlist-main-list">
-                        {WishListProductList?.length ===0 ? 
+                        {/* {WishListProductList?.length ===0 ? 
                                 "WishList is empty": 
                                 WishListProductList?.map((item)=>(
                                     <WishListsCards 
@@ -65,7 +65,7 @@ function WishListPage() {
                                         price={item.price}
                                         discount={item.discount}  
                                         discountedPrice={item.discountedPrice} />
-                        ))}
+                        ))} */}
                         {
                             WishListState.map((item)=>(
                                 <WishListsCards 

@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react'
 import { useCart } from '../../../../context/CartContext';
+import { useWishList } from '../../../../context/WishListContext';
 
 function CartCards(props) {
     const { _id, title ,productImage , author,price,discount,discountedPrice } =props;
     const {cartState,setCartState}= useCart();
+    const {WishListState,setWishListState} =useWishList();
     const RemoveItemsFromCartHandler=async(id)=>{
         try{
             console.log(id);
@@ -22,6 +24,27 @@ function CartCards(props) {
         }
         catch(err){
             console.log("error ",err.message);
+        }
+    }
+
+    const AddProductsInWishListHandler = async (item)=>{
+        try{
+            console.log(item);
+            await axios.post("/api/user/wishlist",
+                    { "product":item},
+                    { headers:{authorization:localStorage.getItem("feetz")}})
+                        .then((res)=>{
+                            console.log(res);
+                            if(res.status===201){
+                                setWishListState(res.data.wishlist);
+                            }
+                        })
+                        .catch((error)=>{
+                            console.log(error)
+                        });
+        }
+        catch(err){
+            console.log("error ",err)
         }
     }
     return (
@@ -49,7 +72,7 @@ function CartCards(props) {
                     </div> 
                     <div className="card-footer-view cart-card-footer cart-card-footer-flex">
                         <button onClick={()=>{RemoveItemsFromCartHandler(_id)}}>Remove from Cart</button>
-                        <button>Move to Wishlist</button>
+                        <button onClick={()=>{AddProductsInWishListHandler(props)}}>Move to Wishlist</button>
                     </div>
                 </div>
             </div>

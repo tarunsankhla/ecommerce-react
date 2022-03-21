@@ -12,12 +12,13 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import CartCards from '../../components/UI/Card/CartCards/CartCards';
+import { useCart } from '../../context/CartContext';
 
 
 function CartPage() {
     const {login} = useAuth();
     const [CartProductList,setCartProductList] = useState([]);
-
+    const { cartState,setCartState } =useCart();
     console.log("login auth",login);
     useEffect(()=>{
         try{
@@ -53,9 +54,9 @@ function CartPage() {
             <main className="main">
 
                 <div className="product-main-list">
-                {CartProductList.length ===0 ? 
+                {cartState.length ===0 ? 
                     "Cart is empty": 
-                    CartProductList?.map((item)=>(
+                    cartState?.map((item)=>(
                         <CartCards 
                             key={item._id}
                             _id={item._id}
