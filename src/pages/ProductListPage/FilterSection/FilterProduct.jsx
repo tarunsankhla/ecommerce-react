@@ -1,6 +1,8 @@
 import React from 'react'
 
-function FilterProduct() {
+const FilterProduct = ({props}) =>{
+    const {ProductList,setProductList} = props;
+    console.log("filter product", ProductList,setProductList);
   return (
     <aside className="aside">
         {/* <div className="toggler">

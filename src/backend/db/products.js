@@ -11,41 +11,73 @@ import { v4 as uuid } from "uuid";
 
 
 
-import product1 from   "./../../../src/assets/images/Products/product1.jpg";
-import product2 from   "./../../../src/assets/images/Products/product2.jpg";
-import product3 from   "./../../../src/assets/images/Products/product3.jpg";
-import product4 from   "./../../../src/assets/images/Products/product4.jpg";
-import product5 from   "./../../../src/assets/images/Products/product5.jpg";
-import product6 from   "./../../../src/assets/images/Products/product6.jpg";
-import product7 from   "./../../../src/assets/images/Products/product7.jpg";
-import product8 from   "./../../../src/assets/images/Products/product8.jpg";
-import product9 from   "./../../../src/assets/images/Products/product9.jpg";
-import product10 from  "./../../../src/assets/images/Products/product10.jpg";
-import product11 from  "./../../../src/assets/images/Products/product11.jpg";
-import product12 from  "./../../../src/assets/images/Products/product12.jpg";
-import product13 from  "./../../../src/assets/images/Products/product13.jpg";
-import product14 from  "./../../../src/assets/images/Products/product14.jpg";
-import product15 from  "./../../../src/assets/images/Products/product15.jpg";
-import product16_slides  from  "./../../../src/assets/images/Products/product16_slides.webp";
-import product17_sportshoe  from  "./../../../src/assets/images/Products/product17_sportshoe.webp";
-import product18_sportshoe  from  "./../../../src/assets/images/Products/product18_sportsshoe.webp";
-import product19_sportshoe  from  "./../../../src/assets/images/Products/product19_sportshoe.webp";
-import product20_sportshoe  from  "./../../../src/assets/images/Products/product20_sportshoe.webp";
-import product21_sportshoe  from  "./../../../src/assets/images/Products/product21_sportshoe.webp";
-import product22_sportShoe  from  "./../../../src/assets/images/Products/product22_sportShoe.webp";
-import product23_sportshoe  from  "./../../../src/assets/images/Products/product23_sportshoe.webp";
-import product24_sportshoe  from  "./../../../src/assets/images/Products/product24_sportshoe.webp";
-import product25_sportshoe  from  "./../../../src/assets/images/Products/product25_sportshoe.webp";
-import product26_sportshoe  from  "./../../../src/assets/images/Products/product26_sportsho.webp";
-import product27_slides  from  "./../../../src/assets/images/Products/product27_slides.webp";
-import product28_slides  from  "./../../../src/assets/images/Products/product28_slides.webp";
-import product29_slides  from  "./../../../src/assets/images/Products/product29_slides.webp";
-import product30_slides  from  "./../../../src/assets/images/Products/product30_slides.webp";
-import product31_slides  from  "./../../../src/assets/images/Products/product31_slides.webp";
-import product32_slides  from  "./../../../src/assets/images/Products/product32_slides.webp";
+// import product1 from   "./../../../src/assets/images/Products/product1.jpg";
+// import product2 from   "./../../../src/assets/images/Products/product2.jpg";
+// import product3 from   "./../../../src/assets/images/Products/product3.jpg";
+// import product4 from   "./../../../src/assets/images/Products/product4.jpg";
+// import product5 from   "./../../../src/assets/images/Products/product5.jpg";
+// import product6 from   "./../../../src/assets/images/Products/product6.jpg";
+// import product7 from   "./../../../src/assets/images/Products/product7.jpg";
+// import product8 from   "./../../../src/assets/images/Products/product8.jpg";
+// import product9 from   "./../../../src/assets/images/Products/product9.jpg";
+// import product10 from  "./../../../src/assets/images/Products/product10.jpg";
+// import product11 from  "./../../../src/assets/images/Products/product11.jpg";
+// import product12 from  "./../../../src/assets/images/Products/product12.jpg";
+// import product13 from  "./../../../src/assets/images/Products/product13.jpg";
+// import product14 from  "./../../../src/assets/images/Products/product14.jpg";
+// import product15 from  "./../../../src/assets/images/Products/product15.jpg";
+// import product16_slides  from  "./../../../src/assets/images/Products/product16_slides.webp";
+// import product17_sportshoe  from  "./../../../src/assets/images/Products/product17_sportshoe.webp";
+// import product18_sportshoe  from  "./../../../src/assets/images/Products/product18_sportsshoe.webp";
+// import product19_sportshoe  from  "./../../../src/assets/images/Products/product19_sportshoe.webp";
+// import product20_sportshoe  from  "./../../../src/assets/images/Products/product20_sportshoe.webp";
+// import product21_sportshoe  from  "./../../../src/assets/images/Products/product21_sportshoe.webp";
+// import product22_sportShoe  from  "./../../../src/assets/images/Products/product22_sportShoe.webp";
+// import product23_sportshoe  from  "./../../../src/assets/images/Products/product23_sportshoe.webp";
+// import product24_sportshoe  from  "./../../../src/assets/images/Products/product24_sportshoe.webp";
+// import product25_sportshoe  from  "./../../../src/assets/images/Products/product25_sportshoe.webp";
+// import product26_sportshoe  from  "./../../../src/assets/images/Products/product26_sportsho.webp";
+// import product27_slides  from  "./../../../src/assets/images/Products/product27_slides.webp";
+// import product28_slides  from  "./../../../src/assets/images/Products/product28_slides.webp";
+// import product29_slides  from  "./../../../src/assets/images/Products/product29_slides.webp";
+// import product30_slides  from  "./../../../src/assets/images/Products/product30_slides.webp";
+// import product31_slides  from  "./../../../src/assets/images/Products/product31_slides.webp";
+// import product32_slides  from  "./../../../src/assets/images/Products/product32_slides.webp";
 
-
-
+import {  product1,
+  product2,
+  product3,
+  product4,
+  product5,
+  product6,
+  product7,
+  product8,
+  product9,
+  product10,
+  product11,
+  product12,
+  product13,
+  product14,
+  product15,
+  product16_slides,
+  product17_sportshoe,
+  product18_sportshoe,
+  product19_sportshoe,
+  product20_sportshoe,
+  product21_sportshoe,
+  product22_sportshoe,
+  product23_sportshoe,
+  product24_sportshoe,
+  product25_sportshoe,
+  product26_sportshoe,
+  product27_slides,
+  product28_slides,
+  product29_slides,
+  product30_slides,
+  product31_slides,
+  product32_slides
+ }
+from "./../../assets/images/Products/Products";
 
 // var prodct = require("./../../../public/img/arrival-banner-1.jpg");
 /**
@@ -402,7 +434,7 @@ export const products = [
     author: "Sneaker",
     price: "5000",
     categoryName: "Football shoes",
-    url:product22_sportShoe,
+    url:product22_sportshoe,
     discount:"-30% off",
     discountedPrice:3000,
     description:"Football shoes",
