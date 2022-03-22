@@ -4,17 +4,28 @@ import { useCart } from '../../../../context/CartContext';
 import { useWishList } from '../../../../context/WishListContext';
 import "./ProductsCards.css";
 
-
+// rating={item.rating}
+// productType={item.productType}
+// feature={item.feature}
+// stockType={item.stockType}
+// stock={item.stock}
+// categoryType={item.categoryType}
 function ProductCards(props) {
-    const { title ,productImage , author,price,discount,discountedPrice } =props;
+    const { title ,productImage , author,price,discount,discountedPrice,rating,
+         productType,feature,stockType,stock,categoryType} =props;
     const {cartState,setCartState}= useCart();
     const {WishListState,setWishListState} =useWishList();
+    
     const AddProductsInCartHandler = async (item)=>{
         try{
             console.log(item);
             await axios.post("/api/user/cart",
                     { "product":item},
-                    { headers:{authorization:localStorage.getItem("feetz")}})
+                    { headers:
+                        {
+                            authorization:localStorage.getItem("feetz")
+                        }
+                    })
                         .then((res)=>{
                             console.log(res);
                             if(res.status===201){

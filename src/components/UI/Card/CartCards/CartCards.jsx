@@ -57,8 +57,8 @@ function CartCards(props) {
                             {title}
                         </div>
                         <div className="card-body">
-                            <h3>{price}</h3>
-                            <h4>{discount}</h4>
+                            <h2>₹{price}</h2>
+                    <span className="text-grey">{discount}</span>
                         </div>   
                         <div className="card-body">
                             Quantity

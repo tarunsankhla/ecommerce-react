@@ -31,12 +31,15 @@ label{
 }
 
 .product-page-category input{
-    padding: 1rem;
+    /* padding: 1rem; */
     margin-left: 10px;
 }
 
 .product-page-category div{
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
+    text-align: start;
+    /* margin: auto; */
+    margin-left: 25%;
 }
 
 .aside-header{

@@ -23,3 +23,32 @@
     0 16px 10px var(--hovershadow2),
     0 26px 18px var(--hovershadow2);
 }
+
+
+@media screen and (max-width: 780px) { 
+    .card-title span, h2{
+        font-size: 1.3rem;
+    }  
+}
+
+
+@media screen and (max-width: 660px) {
+    .card-title span, h2{
+        font-size: 1.2rem;
+    } 
+}
+
+
+
+@media screen and (max-width: 480px) {
+    .card-title span, h2{
+        font-size: 1.1rem;
+    } 
+}
+
+
+@media screen and (max-width: 360px) {
+    .card-title span, h2{
+        font-size: 1rem;
+    } 
+}

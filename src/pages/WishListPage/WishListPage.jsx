@@ -52,7 +52,7 @@ function WishListPage() {
             <img src={wishListLogoSrc} className="wishlist-logo" />
             :
             <> 
-                <h1 className="title-wishlist">My WishList 4 items</h1>
+                <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
                 <main className="main">
                     <div className="wishlist-main-list">
                         {/* {WishListProductList?.length ===0 ? 
@@ -69,12 +69,14 @@ function WishListPage() {
                                         discountedPrice={item.discountedPrice} />
                         ))} */}
                         {
+                            WishListState?.length ===0 ?
+                            <img src={wishListLogoSrc} className="wishlist-logo" /> :
                             WishListState.map((item)=>(
                                 <WishListsCards 
                                     key={item._id}
                                     _id={item._id}
                                     title={item.title}  
-                                    productImage={item.url}   
+                                    productImage={item.productImage}   
                                     author={item.author} 
                                     price={item.price}
                                     discount={item.discount}  

@@ -12,7 +12,7 @@
 }
 
 .card-title span, h2{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }  
 .cart-card:hover{
     transform: scale(1.01);
@@ -22,4 +22,37 @@
     0 8px 16px rgba(0,0,0,0.03),
     0 16px 10px rgba(0,0,0,0.04),
     0 26px 18px rgba(0,0,0,0.05);
+}
+
+
+
+@media screen and (max-width: 780px) { 
+    .card-title span, h2{
+        font-size: 1.3rem;
+    }  
+}
+
+
+@media screen and (max-width: 660px) {
+ 
+    .card-title span, h2{
+        font-size: 1.2rem;
+    } 
+}
+
+
+
+@media screen and (max-width: 480px) {
+    
+    .card-title span, h2{
+        font-size: 1.1rem;
+    } 
+}
+
+
+@media screen and (max-width: 360px) {
+
+    .card-title span, h2{
+        font-size: 1rem;
+    } 
 }

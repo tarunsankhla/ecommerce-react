@@ -104,7 +104,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "waterResistant",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
   {
     _id: uuid(),
@@ -119,7 +120,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "shoes"
+    productType : "shoes",
+    rating :2
   },
   {
     _id: uuid(),
@@ -135,7 +137,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -151,7 +154,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
   {
     _id: uuid(),
@@ -167,7 +171,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -183,7 +188,8 @@ export const products = [
     stock : false,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -199,7 +205,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -215,7 +222,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "waterResistant",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
   {
     _id: uuid(),
@@ -231,7 +239,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -247,7 +256,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "NoLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -263,7 +273,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -279,7 +290,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -295,7 +307,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
   {
     _id: uuid(),
@@ -311,7 +324,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :2
   },
   {
     _id: uuid(),
@@ -327,7 +341,8 @@ export const products = [
     stock : false,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :2
   },
 
   {
@@ -344,7 +359,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :4
   },
     {
     _id: uuid(),
@@ -360,7 +376,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -376,7 +393,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :2
   },
 
     {
@@ -393,7 +411,8 @@ export const products = [
     stock : false,
     stockType : "TopSeller",
     feature : "NoLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
 
     {
@@ -410,7 +429,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
     {
     _id: uuid(),
@@ -426,7 +446,8 @@ export const products = [
     stock : false,
     stockType : "TopSeller",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -442,7 +463,8 @@ export const products = [
     stock : false,
     stockType : "Newest",
     feature : "NoLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :1
   },
   {
     _id: uuid(),
@@ -458,7 +480,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -474,7 +497,8 @@ export const products = [
     stock : false,
     stockType : "Newest",
     feature : "GhostLace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :4
   },
   {
     _id: uuid(),
@@ -490,7 +514,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "shoes"
+    productType : "shoes",
+    rating :2
   },
   {
     _id: uuid(),
@@ -506,7 +531,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "Lace",
-    productType : "shoes"
+    productType : "shoes",
+    rating :3
   },
   {
     _id: uuid(),
@@ -522,7 +548,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :4
   },
   {
     _id: uuid(),
@@ -538,7 +565,8 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :2
   },
   {
     _id: uuid(),
@@ -570,7 +598,8 @@ export const products = [
     stock : false,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :3
   },
   {
     _id: uuid(),
@@ -586,7 +615,8 @@ export const products = [
     stock : true,
     stockType : "Newest",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :2
   },
   {
     _id: uuid(),
@@ -602,6 +632,7 @@ export const products = [
     stock : true,
     stockType : "TopSeller",
     feature : "waterResistant",
-    productType : "slides"
+    productType : "slides",
+    rating :1
   },
 ];

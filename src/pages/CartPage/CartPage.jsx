@@ -54,16 +54,16 @@ function CartPage() {
         <img src={cartLogoSrc} className="cart-logo" />:
         <>
             <main className="main">
-
+                <h3>Total Items in Cart: {cartState.length}</h3>
                 <div className="product-main-list">
                 {cartState.length ===0 ? 
-                    "Cart is empty": 
+                      <img src={cartLogoSrc} className="cart-logo" />: 
                     cartState?.map((item)=>(
                         <CartCards 
                             key={item._id}
                             _id={item._id}
                             title={item.title}  
-                            productImage={item.url}   
+                            productImage={item.productImage}   
                             author={item.author} 
                             price={item.price}
                             discount={item.discount}  
@@ -78,20 +78,29 @@ function CartPage() {
                 </div>
                 <div className="cart-aside-container">
                     <div className="cart-aside-list">
-                        <span>Price(2 items)</span>
-                        <span>$4999</span>
+                        <span>Price({cartState.length} items)</span>
+                        <span>$
+                            {
+                                cartState?.reduce((acc,cur)=>acc += cur.price,0)
+                            }
+                            
+                        </span>
                     </div>
-                    <div className="cart-aside-list">
+                    {/* <div className="cart-aside-list">
                         <span>Discount</span>
                         <span>-$1999</span>
-                    </div>
+                    </div> */}
                     <div className="cart-aside-list">
                         <span>Delivery Charges</span>
                         <span>$49</span>
                     </div>
                     <div className="cart-aside-list cart-total-amount">
                         <span>Total Amount</span>
-                        <span>$3499</span>
+                        <span>$
+                        {
+                                cartState?.reduce((acc,cur)=>acc += cur.price,0) + 49
+                            }
+                        </span>
                     </div>
                 </div>
             <div className="cart-aside-footer">

@@ -19,6 +19,7 @@ import "./ProductListPage.css";
 export const ProductListPage = () => {
 
     const [ProductList,setProductList] = useState([]);
+    var products;
     useEffect(()=>{
       try{
         (async() => {
@@ -26,6 +27,7 @@ export const ProductListPage = () => {
         console.log(res);
         // console.log(res.data.products);
         setProductList(res.data.products);
+        products=res.data.products;
        
     })()}
     catch(error){
@@ -38,7 +40,21 @@ export const ProductListPage = () => {
     <div className='product-page-container'>
       <FilterProduct props={{ProductList,setProductList}}/>
        <main className="main">
-
+{/*   _id: uuid(),
+    title: "Comfort Flip/Flops",
+    author: "Sneaker",
+    price: "1000",
+    categoryName: "slides / slippers",
+    url:product32_slides,
+    discount:"-8% off",
+    discountedPrice:920,
+    description:"slides / slippers",
+    categoryType:"Gym",
+    stock : true,
+    stockType : "TopSeller",
+    feature : "waterResistant",
+    productType : "slides",
+    rating :1 */}
           <div className="product-main-list">
             {ProductList?.map((item)=>(
                 <ProductCards 
@@ -49,7 +65,13 @@ export const ProductListPage = () => {
                 author={item.author} 
                 price={item.price}
                 discount={item.discount}  
-                discountedPrice={item.discountedPrice} />
+                discountedPrice={item.discountedPrice}
+                rating={item.rating}
+                productType={item.productType}
+                feature={item.feature}
+                stockType={item.stockType}
+                stock={item.stock}
+                categoryType={item.categoryType} />
             ))}
           </div>
           </main>
