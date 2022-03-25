@@ -67,7 +67,13 @@ function WishListsCards(props) {
                     <div className="card-footer-view">
                         <button onClick={()=>{
                             AddProductsInCartHandler(props);
-                            RemoveItemsFromWishListHandler(_id)}}>Move to Cart</button>
+                            RemoveItemsFromWishListHandler(_id)
+                        }}>Move to Cart
+                        <span class="material-icons-round">
+                        shopping_cart
+                        </span>
+
+                        </button>
                     </div>
                 </div>
                 <span className="material-icons-round badge topright-badge ">

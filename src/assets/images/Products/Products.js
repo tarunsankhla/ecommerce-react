@@ -6,26 +6,31 @@ import arrivalBanner4 from  "./arrival-banner-4.jpg";
 import arrivalBanner5 from  "./arrival-banner-5.jpg";
 import arrivalBanner6 from  "./arrival-banner-6.jpg";
 import arrivalBanner7 from  "./arrival-banner-7.jpg";
-
+import arrivalBannerhead from  "./arrival-banner.jpg";
 import landingPageHeadImg1 from  "./landing-page-head-img-1.jpg";
 import landingPageHeadImg2 from  "./landing-page-head-img-2.jpg";
-import landingPageHeadImg3 from  "./landing-page-head-img-3.jpg";
-
-import product1 from  "./product1.jpg";
-import product2 from  "./product2.jpg";
-import product3 from  "./product3.jpg";
-import product4 from  "./product4.jpg";
-import product5 from  "./product5.jpg";
-import product6 from  "./product6.jpg";
-import product7 from  "./product7.jpg";
-import product8 from  "./product8.jpg";
-import product9 from  "./product9.jpg";
-import product10 from  "./product10.jpg";
-import product11 from  "./product11.jpg";
-import product12 from  "./product12.jpg";
-import product13 from  "./product13.jpg";
-import product14 from  "./product14.jpg";
-import product15 from  "./product15.jpg";
+import landingPageHeadImg3 from "./landing-page-head-img-3.jpg";
+import landingPageHeadImg4 from "./landing-page-head-img-4.jpg";
+import landingPageHeadImg4webp from  "./landing-page-head-img-4.webp";
+import landingPageHeadImg5 from  "./landing-page-head-5.jpeg";
+import landingPageHeadImg6 from "./landing-page-head-img-6.jpg";
+import landingPageHeadImg7 from "./landing-page-head-7.png";
+import landingPageHeadImg7webp from  "./landing-page-head-7.webp";
+import product1 from  "./product1.webp";
+import product2 from  "./product2.webp";
+import product3 from  "./product3.webp";
+import product4 from  "./product4.webp";
+import product5 from  "./product5.webp";
+import product6 from  "./product6.webp";
+import product7 from  "./product7.webp";
+import product8 from  "./product8.webp";
+import product9 from  "./product9.webp";
+import product10 from  "./product10.webp";
+import product11 from  "./product11.webp";
+import product12 from  "./product12.webp";
+import product13 from  "./product13.webp";
+import product14 from  "./product14.webp";
+import product15 from  "./product15.webp";
 import product16_slides from  "./product16_slides.webp";
 import product17_sportshoe from  "./product17_sportshoe.webp";
 import product18_sportshoe from  "./product18_sportsshoe.webp";
@@ -55,9 +60,16 @@ export {
      arrivalBanner5,
      arrivalBanner6,
      arrivalBanner7,
+     arrivalBannerhead,
      landingPageHeadImg1,
      landingPageHeadImg2,
      landingPageHeadImg3,
+     landingPageHeadImg4,
+     landingPageHeadImg4webp,
+     landingPageHeadImg5,
+     landingPageHeadImg6,
+     landingPageHeadImg7,
+     landingPageHeadImg7webp,
      product1,
      product2,
      product3,

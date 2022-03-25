@@ -10,7 +10,8 @@ import { useWishList } from "../../context/WishListContext";
 export function Navbar(){
     const { login, setlogin } = useAuth();
     const { cartState : cartItems,setCartState } =useCart();
-    const {WishListState,setWishListState} =useWishList();
+    const { WishListState, setWishListState } = useWishList();
+    
     console.log("Auther Login", login, setlogin);
     console.log("card context", cartItems, setCartState);
     console.log("wishlist context", WishListState, setWishListState);
@@ -61,6 +62,9 @@ export function Navbar(){
                                 <NavLink className="btn btn-login" to="/signup">SignUp</NavLink>
                             </>
                         }
+                    </div>
+                    <div>
+                        {login && <div className="profile-initials">TS</div>}
                     </div>
                 </div>
             </div>

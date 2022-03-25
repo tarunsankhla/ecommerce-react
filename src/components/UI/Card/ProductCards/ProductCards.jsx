@@ -91,7 +91,12 @@ function ProductCards(props) {
             </div>
             <div className="card-footer">
                 <div className="card-footer-view">
-                    <button onClick={()=>{AddProductsInCartHandler(props)}}>Add to Cart</button>
+                      <button onClick={() => { AddProductsInCartHandler(props) }}>Add to Cart
+                      <span class="material-icons-round">
+                        shopping_cart
+                        </span>
+
+                        </button>
                 </div>
             </div>
             <span className="material-icons-round badge topright-badge " onClick={()=>{AddProductsInWishListHandler(props)}}>

@@ -32,6 +32,12 @@
     margin:1.2em
 }
 
+.cart-card > .card-footer > .card-footer-view > button {
+    padding: 0;
+    align-items: center;
+    display: flex;
+}
+
 @media screen and (max-width: 1030px) {
     .cart-card{
         height: fit-content;
@@ -50,6 +56,9 @@
     .card-title span, h2{
         font-size: 1.3rem;
     }  
+    .card-content{
+        font-size: 1.4rem;
+    }
 }
 
 
@@ -64,6 +73,10 @@
     .card-title span, h2{
         font-size: 1.2rem;
     } 
+    .card-content{
+        font-size: 1.3rem;
+    }
+    
 }
 
 
@@ -79,6 +92,9 @@
     .card-title span, h2{
         font-size: 1.1rem;
     } 
+    .card-content{
+        font-size: 1.2rem;
+    }
 }
 
 
@@ -93,4 +109,7 @@
     .card-title span, h2{
         font-size: 1rem;
     } 
+    .card-content{
+        font-size: 1.1rem;
+    }
 }

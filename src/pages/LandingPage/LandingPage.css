@@ -1,21 +1,57 @@
 .home-container-main-1{
     height: fit-content;
     width: 100%;
-    background-color: var(--container-bg-color);
+    /* background-color: var(--container-bg-color); */
     /* margin-top: 2rem; */
     position: relative;
+    top:-15em;
+    z-index: -1;
+    height: 95vh;
+    display: flex;
+    /* background: rgb(61,77,119);
+    background: linear-gradient(15deg, rgba(61,77,119,1) 7%, rgba(76,93,131,1) 30%, rgba(74,95,142,1) 46%, rgba(108,130,173,1) 65%, rgba(138,160,187,1) 100%); */
+    /* background: rgb(63,118,156);
+background: linear-gradient(202deg, rgba(63,118,156,1) 35%, rgba(204,215,255,1) 100%); */
+justify-content: start;
+/* flex-direction: column; */
+    background: linear-gradient(205deg, rgb(67 92 112) 7%, rgb(69 90 111) 20%, rgb(74 101 122) 30%, rgb(92 120 141) 46%, rgb(97 133 157) 53%, rgb(137 164 181) 65%, rgb(107 142 162) 74%, rgb(107 138 159) 86%, rgb(75 100 120) 100%);
 }
 
 
 .container-img{
+    /* width: 100%; */
+    /* height: auto; */
+    /* object-fit: contain; */
     width: 100%;
-    height: auto;
+    /* height: 60%; */
     object-fit: contain;
     cursor: pointer;
 }
 
+/* background: rgb(76,118,147);
+    background: linear-gradient(202deg, rgba(76,118,147,1) 35%, rgba(175,191,250,1) 100%);
+	 */
 
-	
+     /*besrt
+      background: rgb(70,97,120);
+     background: linear-gradient(349deg, rgba(70,97,120,1) 35%, rgba(177,189,231,1) 100%);
+  */
+
+.landing-page-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.landing-page-display{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 1em;
+}
+     
 .product-check-navigator:hover{
     transform: scale(0.9) 2s;
     /* opacity: 0.83; */
@@ -25,13 +61,17 @@
 
 .product-check-navigator{
     text-decoration: none;
-    position: absolute;
-    top: 4rem;
-    left: 2rem;
+    /* position: absolute; */
+    /* top: 34rem;
+    left: 2rem; */
     padding: 2rem;
     display: flex;
     align-items: center;
     font-size: 2rem;
     background-color: var(--pink-bg-color);
     color: var(--text-color);
+    z-index: 9999;
+}
+.btn{
+    cursor: pointer;
 }

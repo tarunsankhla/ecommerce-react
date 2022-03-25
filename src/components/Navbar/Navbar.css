@@ -1,11 +1,12 @@
 .navbar{
-    background-color: #f3f7f8;
+    background-color: transparent;
     display: flex;
     justify-content: space-around;
     font-size: 2rem;
     flex-wrap: wrap;
     flex-direction: row;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
+    z-index: 999;
 }
 
 
@@ -22,6 +23,12 @@
     transform: scale(1.05);
     /* opacity: 1.05; */
     filter: brightness(1.05);
+}
+
+.input-field{
+    outline: none;
+    border: none;
+    background: rgba(0,0,0,0.2);
 }
 
 
@@ -62,4 +69,15 @@
 }
 marquee{
     color: red;
+}
+
+.profile-initials{
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    padding: 0.5em;
+    color: rgba(0,0,0,0.5);
+    font-weight: 800;
 }

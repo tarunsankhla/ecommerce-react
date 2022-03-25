@@ -31,6 +31,13 @@
 
 input[type=checkbox]{
     margin : 1em;
+    cursor: pointer;
+}
+
+
+input[type=radio]{
+    cursor: pointer;
+    margin: 1em;
 }
 .signup-credential-container{
     width: 70%;

@@ -23,8 +23,12 @@
     0 16px 10px rgba(0,0,0,0.04),
     0 26px 18px rgba(0,0,0,0.05);
 }
-
-
+.cart-card > .card-footer > .card-footer-view > button{
+    padding: 0;
+}
+button{
+    padding: 0;
+}
 
 @media screen and (max-width: 780px) { 
     .card-title span, h2{

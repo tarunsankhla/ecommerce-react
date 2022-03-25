@@ -15,12 +15,9 @@ import React, { useEffect, useReducer, useState } from 'react'
 //     }
 // }
 
-
-
 const FilterProduct = ({props}) =>{
-    const {ProductList,setProductList} = props;
-
-    console.log("filter product", ProductList,setProductList);
+    const {ProductList,setProductList,DefaultProductList} = props;
+    // console.log("filter product", ProductList,setProductList);
     // const [state,dispatch] = useReducer(FilterByInStock,{categorytype:[]})
     const [categoryType,setCategoryType] = useState([]);
     const [feature,setFeature] = useState([]);
@@ -28,7 +25,8 @@ const FilterProduct = ({props}) =>{
     const [rating,setRating] =useState(null);
     const [productType,setProductType] =useState(null); // shoe = true & slides =false
     const [productStockType,setProductStockType] =useState(null);  // topseller = true & newest =false
-    
+    // const [unCheck, setUnCheck] = useState("");
+
     useEffect(()=>{
         // console.log("state useEffect",categoryType,feature,"sortByPrice",sortByPrice,"rating");
         var obj ={
@@ -41,35 +39,49 @@ const FilterProduct = ({props}) =>{
         }
         console.log(obj);
         Filter(obj)
+        
        
     },[categoryType,feature,sortByPrice,rating,productType,productStockType])
     
+    // console.log("default",DefaultProductList)
+    useEffect(()=>{
+        if(sortByPrice !== ""){
+           SortByPrice(sortByPrice);
+        }
+    },[ProductList]);
+
     function Filter(object){
-        (async() => {
-            var res = await axios.get("/api/products");
-            console.log(res);
-            var products=res.data.products;
+        (async () => {
+            // var res = await axios.get("/api/products");
+            // console.log(res);
+            // var products=res.data.products;
             // setProductList(()=>{
-               console.log(products.filter((item) =>{
-                    console.log(object.categoryType.includes(item.categoryType));
-                    return ((  object.categoryType.includes(item.categoryType)) 
+            console.log(DefaultProductList.filter((item) => {
+                console.log(object.categoryType.includes(item.categoryType));
+                return ((object.categoryType.includes(item.categoryType))
                     || (object.feature.includes(item.feature))
-                    || (object.rating  ? item.rating >= object.rating : false)
-                    || (object.productType  ? item.productType === object.productType : false)
-                    || (object.productStockType  ? item.stockType ===object.productStockType : false) )
-                }))
+                    || (object.rating ? item.rating >= object.rating : false)
+                    || (object.productType ? item.productType === object.productType : false)
+                    || (object.productStockType ? item.stockType === object.productStockType : false))
+            }))
             // })
-            setProductList(
-                [...products.filter((item) =>{
-                    console.log(object.categoryType.includes(item.categoryType));
-                    return (object.categoryType.includes(item.categoryType)
-                    || (object.feature.includes(item.feature))
-                    || (object.rating  ? item.rating >= object.rating : false)
-                    || (object.productType  ? item.productType === object.productType : false)
-                    || (object.productStockType  ? item.stockType ===object.productStockType : false) )
+            if (object.categoryType.length || object.feature.length || object.rating || object.productStockType || object.productType) {
+                setProductList(
+                    [...DefaultProductList.filter((item) => {
+                        console.log(object.categoryType.includes(item.categoryType));
+                        return (object.categoryType.includes(item.categoryType)
+                            || (object.feature.includes(item.feature))
+                            || (object.rating ? item.rating >= object.rating : false)
+                            || (object.productType ? item.productType === object.productType : false)
+                            || (object.productStockType ? item.stockType === object.productStockType : false))
             
-            })])
-        })()
+                    })])
+            }
+            else {
+                setProductList([...DefaultProductList]);
+            }
+        }) ()
+        
             
     }
 
@@ -77,83 +89,42 @@ const FilterProduct = ({props}) =>{
         setProductList(
             [...ProductList.sort((a,b)=>{
                 if(orderBool){
-                    return a.discountedPrice < b.discountedPrice ? -1 : a.discountedPrice > b.discountedPrice ? 1 :0;
+                    return a.price < b.price ? -1 : a.price > b.price ? 1 :0;
                 }
-                return a.discountedPrice > b.discountedPrice ? -1 : a.discountedPrice < b.discountedPrice ? 1 :0;
+                return a.price > b.price ? -1 : a.price < b.price ? 1 :0;
             })]
         )
     }
+
+    const ClearFilterHandler = () => { 
+        setProductList([...DefaultProductList]);
+        // setUnCheck(false);
+        
+    }
+
     return (
         <aside className="aside">
             <div className="aside-header">
                 <h3>Filters</h3>
-                <a>Clear</a>
+                <button onClick={()=>ClearFilterHandler()}>Clear</button>
             </div>
             <div className='aside-body'>
                 {/* <div className="price-container">
                     <h4>Price</h4>
                     <input type="range" value="50" max="100" min="0" className="price-slider"/>
                 </div> */}
-                {/*  categoryType:"Football Cricket Gym Running Regular */}
-                <div className="product-page-category">
-                    <h4>Category</h4>
-                    <div>
-                        <input className="checkbox-sneakers" onClick={()=>{
-                            setCategoryType(()=>( categoryType.includes("Football") 
-                                                    ? [...categoryType.filter(item=>item !=="Football")]
-                                                    : [...categoryType,"football"])
-                                                    )}} 
-                        type="checkbox" name="Football" value="Football"/>
-                        <label htmlFor="Football">Football</label>
-                    </div>
-                    <div>
-                        <input className="checkbox-vans" type="checkbox" name="Cricket" value="Cricket"
-                        onClick={()=>{
-                            setCategoryType(()=>( categoryType.includes("Cricket") 
-                                                    ? [...categoryType.filter(item=>item !=="Cricket")]
-                                                    : [...categoryType,"Cricket"])
-                                                    )}} />
-                        <label htmlFor="Cricket">Cricket</label>
-                    </div>
-                    <div>
-                        <input className="checkbox-converse" type="checkbox" name="Gym" value="Gym"
-                            onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Gym") 
-                                                        ? [...categoryType.filter(item=>item !=="Gym")]
-                                                        : [...categoryType,"Gym"])
-                                                        )}}/>
-                        <label htmlFor="Gym">Gym</label>
-                    </div>
-                    <div>
-                        <input className="checkbox-yezzy" type="checkbox" name="Running" value="Running"
-                            onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Running") 
-                                                        ? [...categoryType.filter(item=>item !=="Running")]
-                                                        : [...categoryType,"Running"])
-                                                        )}}/>
-                        <label htmlFor="Running">Running</label>
-                    </div>
-                    <div>
-                        <input className="checkbox-yezzy" type="checkbox" name="Regular" value="Regular"
-                            onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Regular") 
-                                                        ? [...categoryType.filter(item=>item !=="Regular")]
-                                                        : [...categoryType,"Regular"])
-                                                        )}}/>
-                        <label htmlFor="Regular">Regular</label>
-                    </div>
-                </div>
+               
                 {/* stockType : "Newest TopSeller",radio */}
                 <div className="sort-by-conatianer">
                     <h4>Product Stock Type</h4>
                     <div>
-                        <input type="radio" id="newest" name="stocktype" value="Newest"
+                        <input type="radio" id="newest" name="stocktype" value="Newest" 
                             onClick={(e)=>setProductStockType(e.target.value)} />
                         <label htmlFor="newest">Newest</label>
                     </div>
                     
                     <div>
-                        <input type="radio" id="topseller" name="stocktype" value="TopSeller"
+                        <input type="radio" id="topseller" name="stocktype" value="TopSeller" 
                         onClick={(e)=>setProductStockType(e.target.value)} />
                         <label htmlFor="topseller">TopSeller</label>
                     </div>
@@ -171,6 +142,55 @@ const FilterProduct = ({props}) =>{
                         <input type="radio" id="shoes" name="producttype" value="shoes"
                         onClick={(e)=>setProductType(e.target.value)} />
                         <label htmlFor="shoes">Shoes</label>
+                    </div>
+                </div>
+                 {/*  categoryType:"Football Cricket Gym Running Regular */}
+                 <div className="product-page-category">
+                    <h4>Category</h4>
+                    <div>
+                        <input className="checkbox-sneakers" onClick={()=>{
+                            setCategoryType(()=>( categoryType.includes("Football") 
+                                                    ? [...categoryType.filter(item=>item !=="Football")]
+                                                    : [...categoryType,"Football"])
+                                                    )}} 
+                        type="checkbox" name="Football" value="Football"  />
+                        <label htmlFor="Football">Football</label>
+                    </div>
+                    <div>
+                        <input className="checkbox-vans" type="checkbox" name="Cricket" value="Cricket" 
+                        onClick={()=>{
+                            setCategoryType(()=>( categoryType.includes("Cricket") 
+                                                    ? [...categoryType.filter(item=>item !=="Cricket")]
+                                                    : [...categoryType,"Cricket"])
+                                                    )}} />
+                        <label htmlFor="Cricket">Cricket</label>
+                    </div>
+                    <div>
+                        <input className="checkbox-converse" type="checkbox" name="Gym" value="Gym" 
+                            onClick={()=>{
+                                setCategoryType(()=>( categoryType.includes("Gym") 
+                                                        ? [...categoryType.filter(item=>item !=="Gym")]
+                                                        : [...categoryType,"Gym"])
+                                                        )}}/>
+                        <label htmlFor="Gym">Gym</label>
+                    </div>
+                    <div>
+                        <input className="checkbox-yezzy" type="checkbox" name="Running" value="Running" 
+                            onClick={()=>{
+                                setCategoryType(()=>( categoryType.includes("Running") 
+                                                        ? [...categoryType.filter(item=>item !=="Running")]
+                                                        : [...categoryType,"Running"])
+                                                        )}}/>
+                        <label htmlFor="Running">Running</label>
+                    </div>
+                    <div>
+                        <input className="checkbox-yezzy" type="checkbox" name="Regular" value="Regular" 
+                            onClick={()=>{
+                                setCategoryType(()=>( categoryType.includes("Regular") 
+                                                        ? [...categoryType.filter(item=>item !=="Regular")]
+                                                        : [...categoryType,"Regular"])
+                                                        )}}/>
+                        <label htmlFor="Regular">Regular</label>
                     </div>
                 </div>
                 {/* ratin 1,2,3,4 */}
@@ -245,13 +265,19 @@ const FilterProduct = ({props}) =>{
                     <h4>Sort by</h4>
                     <div>
                         <input type="radio" id="lth" name="price" value="lth"
-                            onClick={()=>SortByPrice(true)} />
+                            onClick={() => {
+                                SortByPrice(true);
+                                setSortByType(true);
+                            }} />
                         <label htmlFor="lth">Price - Low to High </label>
                     </div>
                     
                     <div>
                         <input type="radio" id="htl" name="price" value="htl"
-                        onClick={()=>SortByPrice(false)} />
+                            onClick={() => {
+                                SortByPrice(false);
+                                setSortByType(false);
+                            }} />
                         <label htmlFor="htl">Price - High to Low</label>
                     </div>
                 </div>
