@@ -9,15 +9,17 @@ import {
      product10,product13,
       product11,product14,product15
  } from "./../../../src/assets/images/Products/Products";
+ import cartLogoSrc from "./../../assets/images/SVG/cart.svg"
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import CartCards from '../../components/UI/Card/CartCards/CartCards';
+import { useCart } from '../../context/CartContext';
 
 
 function CartPage() {
     const {login} = useAuth();
     const [CartProductList,setCartProductList] = useState([]);
-
+    const { cartState,setCartState } =useCart();
     console.log("login auth",login);
     useEffect(()=>{
         try{
@@ -48,19 +50,20 @@ function CartPage() {
   return (
     <div className="product-page-container">
        { !login ?
-        <iframe src="https://embed.lottiefiles.com/animation/94113" loading='lazy' className='animation-login'></iframe> : 
+        // <iframe src="https://embed.lottiefiles.com/animation/94113" loading='lazy' className='animation-login'></iframe> : 
+        <img src={cartLogoSrc} className="cart-logo" />:
         <>
             <main className="main">
-
+                <h3>Total Items in Cart: {cartState.length}</h3>
                 <div className="product-main-list">
-                {CartProductList.length ===0 ? 
-                    "Cart is empty": 
-                    CartProductList?.map((item)=>(
+                {cartState.length ===0 ? 
+                      <img src={cartLogoSrc} className="cart-logo" />: 
+                    cartState?.map((item)=>(
                         <CartCards 
                             key={item._id}
                             _id={item._id}
                             title={item.title}  
-                            productImage={item.url}   
+                            productImage={item.productImage}   
                             author={item.author} 
                             price={item.price}
                             discount={item.discount}  
@@ -75,20 +78,29 @@ function CartPage() {
                 </div>
                 <div className="cart-aside-container">
                     <div className="cart-aside-list">
-                        <span>Price(2 items)</span>
-                        <span>$4999</span>
+                        <span>Price({cartState.length} items)</span>
+                        <span>$
+                            {
+                                cartState?.reduce((acc,cur)=>acc += cur.price,0)
+                            }
+                            
+                        </span>
                     </div>
-                    <div className="cart-aside-list">
+                    {/* <div className="cart-aside-list">
                         <span>Discount</span>
                         <span>-$1999</span>
-                    </div>
+                    </div> */}
                     <div className="cart-aside-list">
                         <span>Delivery Charges</span>
                         <span>$49</span>
                     </div>
                     <div className="cart-aside-list cart-total-amount">
                         <span>Total Amount</span>
-                        <span>$3499</span>
+                        <span>$
+                        {
+                                cartState?.reduce((acc,cur)=>acc += cur.price,0) + 49
+                            }
+                        </span>
                     </div>
                 </div>
             <div className="cart-aside-footer">

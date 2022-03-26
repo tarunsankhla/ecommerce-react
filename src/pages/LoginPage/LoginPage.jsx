@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./LoginPage.css";
 import { useAuth } from '../../context/AuthContext';
+import loginLogoSrc from "./../../assets/images/SVG/login.svg";
 
 function LoginPage() {
     const {login ,setlogin } = useAuth();
@@ -31,33 +32,37 @@ function LoginPage() {
     return (
         <>
         <div className="login-body-container">
-            <button onClick={()=>{navigate("/")}}>clickc it</button>
+            {/* <button onClick={()=>{navigate("/")}}>clickc it</button>  */}
+            <img src={loginLogoSrc} className="login-logo" />
+            {/* <iframe src="https://embed.lottiefiles.com/animation/83168" loading='lazy' className='animation-login-1' ></iframe> */}
+            {/* </div> */}
             <div className="login-container">   
                 <div className="title-header">
-                    <iframe src="https://embed.lottiefiles.com/animation/83168" loading='lazy' className='animation-login-1' ></iframe></div>
-                <div className="login-credential-container">
-                    {/* <label>Email Address</label> */}
-                    <input placeholder="Email Address - xyz@gmail.com" onChange={(e)=>setEmail(e.target.value)} />
-                </div>
-                <div className="login-credential-container">
-                    {/* <label>Password</label> */}
-                    <input type="password" onChange={(e)=>setPassword(e.target.value)} name="" placeholder="Password" id="" />
-                </div>
-                <div className="login-rem-forgetpass-container">
-                    <div>
-                        <input type="checkbox" name="" id="" />
-                        Remember me
+                   
+                    <div className="login-credential-container">
+                        {/* <label>Email Address</label> */}
+                        <input placeholder="Email Address - xyz@gmail.com" onChange={(e)=>setEmail(e.target.value)} />
                     </div>
-                    <a className="btn-link">Forgot your password?</a>
-                </div>
-                <div className="login-btn-container">
-                    <a className="btn login-action-btn" onClick={onSubmitHandler}>Login</a>
+                    <div className="login-credential-container">
+                        {/* <label>Password</label> */}
+                        <input type="password" onChange={(e)=>setPassword(e.target.value)} name="" placeholder="Password" id="" />
                     </div>
-                <Link className="login-footer" to="/signup">
-                    Create New Account <span className="material-icons-round">
-                    navigate_next
-                    </span>
-                </Link>
+                    <div className="login-rem-forgetpass-container">
+                        <div>
+                            <input type="checkbox" name="" id="" />
+                            Remember me
+                        </div>
+                        <a className="btn-link">Forgot your password?</a>
+                    </div>
+                    <div className="login-btn-container">
+                        <a className="btn login-action-btn" onClick={onSubmitHandler}>Login</a>
+                        </div>
+                    <Link className="login-footer" to="/signup">
+                        Create New Account <span className="material-icons-round">
+                        navigate_next
+                        </span>
+                    </Link>
+                </div>
             </div>
         </div>
     </>

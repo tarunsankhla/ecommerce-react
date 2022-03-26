@@ -31,16 +31,25 @@
 
 input[type=checkbox]{
     margin : 1em;
+    cursor: pointer;
+}
+
+
+input[type=radio]{
+    cursor: pointer;
+    margin: 1em;
 }
 .signup-credential-container{
     width: 70%;
 }
 .signup-credential-container > input{
     width: 100%;
-    padding: 0.7rem;
-    margin: 1em;    
+    padding: 1em;
+    margin: 1em 0.5em;
     border-radius: 0.5em;
+    border: 2px solid transparent !important;
     outline: none;
+    background-color: white !important;
 }
 
 
@@ -53,16 +62,21 @@ input[type=checkbox]{
 {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    /* width: 70%; */
+    gap: 1em;
+    font-size: 0.7em;
 }
 
 .signup-action-btn   {
     display:block;
     font-size: 2rem;
+    width: 100%;
+    border: 1px solid transparent;
 }
 
 .signup-btn-container{
-    width:70%   
+    width: 70%;
+    padding: 1em;
 }
 
 .title-header{

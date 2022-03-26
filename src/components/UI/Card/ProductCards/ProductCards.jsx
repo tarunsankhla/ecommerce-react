@@ -4,17 +4,27 @@ import { useCart } from '../../../../context/CartContext';
 import { useWishList } from '../../../../context/WishListContext';
 import "./ProductsCards.css";
 
-
+// rating={item.rating}
+// productType={item.productType}
+// feature={item.feature}
+// stockType={item.stockType}
+// stock={item.stock}
+// categoryType={item.categoryType}
 function ProductCards(props) {
-    const { title ,productImage , author,price,discount,discountedPrice } =props;
+    const { title,productImage,author,price,discount,discountedPrice,rating,productType,feature,stockType,stock,categoryType} =props;
     const {cartState,setCartState}= useCart();
     const {WishListState,setWishListState} =useWishList();
+    
     const AddProductsInCartHandler = async (item)=>{
         try{
             console.log(item);
             await axios.post("/api/user/cart",
                     { "product":item},
-                    { headers:{authorization:localStorage.getItem("feetz")}})
+                    { headers:
+                        {
+                            authorization:localStorage.getItem("feetz")
+                        }
+                    })
                         .then((res)=>{
                             console.log(res);
                             if(res.status===201){
@@ -66,7 +76,7 @@ function ProductCards(props) {
   return (
     <>
         <div className="card cart-card">
-            <img className="card-img" src={productImage} alt={author} />
+            <img className="card-img" src={productImage} alt={author} loading="lazy"/>
 
             <div className="card-content">
                 <div className="card-body">
@@ -75,12 +85,17 @@ function ProductCards(props) {
                 <div className="card-title">
                     <h2>₹{price}</h2>
                     <span className="text-grey">{discount}</span>
-                    <span className="text-linethrough">₹{discountedPrice}</span>
+                    <span className="text-linethrough discount-price">₹{discountedPrice}</span>
                 </div>
             </div>
             <div className="card-footer">
                 <div className="card-footer-view">
-                    <button onClick={()=>{AddProductsInCartHandler(props)}}>Add to Cart</button>
+                      <button onClick={() => { AddProductsInCartHandler(props) }}>Add to Cart
+                      <span class="material-icons-round">
+                        shopping_cart
+                        </span>
+
+                        </button>
                 </div>
             </div>
             <span className="material-icons-round badge topright-badge " onClick={()=>{AddProductsInWishListHandler(props)}}>

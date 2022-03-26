@@ -11,6 +11,7 @@ import {
     //   product11,product14,
       product15
   } from "./../../../src/assets/images/Products/Products";
+  import wishListLogoSrc from "./../../assets/images/SVG/wishlist.svg";
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import WishListsCards from '../../components/UI/Card/WishListCards/WishListsCards';
@@ -47,13 +48,14 @@ function WishListPage() {
     return (
         <div className="wishlist-page-container">
         {   !login ?
-            <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
+            // <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
+            <img src={wishListLogoSrc} className="wishlist-logo" />
             :
             <> 
-                <h1 className="title-wishlist">My WishList 4 items</h1>
+                <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
                 <main className="main">
                     <div className="wishlist-main-list">
-                        {WishListProductList?.length ===0 ? 
+                        {/* {WishListProductList?.length ===0 ? 
                                 "WishList is empty": 
                                 WishListProductList?.map((item)=>(
                                     <WishListsCards 
@@ -65,14 +67,16 @@ function WishListPage() {
                                         price={item.price}
                                         discount={item.discount}  
                                         discountedPrice={item.discountedPrice} />
-                        ))}
+                        ))} */}
                         {
+                            WishListState?.length ===0 ?
+                            <img src={wishListLogoSrc} className="wishlist-logo" /> :
                             WishListState.map((item)=>(
                                 <WishListsCards 
                                     key={item._id}
                                     _id={item._id}
                                     title={item.title}  
-                                    productImage={item.url}   
+                                    productImage={item.productImage}   
                                     author={item.author} 
                                     price={item.price}
                                     discount={item.discount}  
