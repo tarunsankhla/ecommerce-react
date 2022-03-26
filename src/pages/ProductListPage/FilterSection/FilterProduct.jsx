@@ -1,19 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useReducer, useState } from 'react'
+import { FilterCategoryHandler } from "../../../utils/FiilterCategory";
+import { FilterFeatureHandler } from "../../../utils/FilterFeature";
 
-// function FilterByInStock(state,action){
-//     console.log(state,action);
-//     if(Object.keys(action)[0] === "categorytype"){
-//         console.log(action.categorytype,state.categorytype);
-//         if(state.categorytype.includes(action.categorytype)){
-//             return { categorytype : state.categorytype.filter((i)=>
-//                 state.categorytype.indexOf(i) !== state.categorytype.indexOf(action.categorytype))
-//             }
-//         }else{
-//             return { categorytype : state.categorytype.push(action.categorytype)}
-//         }
-//     }
-// }
 
 const FilterProduct = ({props}) =>{
     const {ProductList,setProductList,DefaultProductList} = props;
@@ -44,11 +33,11 @@ const FilterProduct = ({props}) =>{
     },[categoryType,feature,sortByPrice,rating,productType,productStockType])
     
     // console.log("default",DefaultProductList)
-    useEffect(()=>{
-        if(sortByPrice !== ""){
-           SortByPrice(sortByPrice);
-        }
-    },[ProductList]);
+    // useEffect(()=>{
+    //     if(sortByPrice !== ""){
+    //        SortByPrice(sortByPrice);
+    //     }
+    // },[ProductList]);
 
     function Filter(object){
         (async () => {
@@ -159,37 +148,25 @@ const FilterProduct = ({props}) =>{
                     <div>
                         <input className="checkbox-vans" type="checkbox" name="Cricket" value="Cricket" 
                         onClick={()=>{
-                            setCategoryType(()=>( categoryType.includes("Cricket") 
-                                                    ? [...categoryType.filter(item=>item !=="Cricket")]
-                                                    : [...categoryType,"Cricket"])
-                                                    )}} />
+                            setCategoryType(()=>FilterCategoryHandler(categoryType,"Cricket") )}} />
                         <label htmlFor="Cricket">Cricket</label>
                     </div>
                     <div>
                         <input className="checkbox-converse" type="checkbox" name="Gym" value="Gym" 
                             onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Gym") 
-                                                        ? [...categoryType.filter(item=>item !=="Gym")]
-                                                        : [...categoryType,"Gym"])
-                                                        )}}/>
+                                setCategoryType(()=>FilterCategoryHandler(categoryType,"Gym") )}}/>
                         <label htmlFor="Gym">Gym</label>
                     </div>
                     <div>
                         <input className="checkbox-yezzy" type="checkbox" name="Running" value="Running" 
                             onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Running") 
-                                                        ? [...categoryType.filter(item=>item !=="Running")]
-                                                        : [...categoryType,"Running"])
-                                                        )}}/>
+                                setCategoryType(()=>FilterCategoryHandler( categoryType,"Running"))}}/>
                         <label htmlFor="Running">Running</label>
                     </div>
                     <div>
                         <input className="checkbox-yezzy" type="checkbox" name="Regular" value="Regular" 
                             onClick={()=>{
-                                setCategoryType(()=>( categoryType.includes("Regular") 
-                                                        ? [...categoryType.filter(item=>item !=="Regular")]
-                                                        : [...categoryType,"Regular"])
-                                                        )}}/>
+                                setCategoryType(()=>FilterCategoryHandler(categoryType,"Regular"))}}/>
                         <label htmlFor="Regular">Regular</label>
                     </div>
                 </div>
@@ -235,28 +212,19 @@ const FilterProduct = ({props}) =>{
                     <div>
                         <input className="checkbox-vans" type="checkbox" name="NoLace" value="NoLace"
                         onClick={()=>{
-                            setFeature(()=>( feature.includes("NoLace") 
-                                                    ? [...feature.filter(item=>item !=="NoLace")]
-                                                    : [...feature,"NoLace"])
-                                                    )}}/>
+                            setFeature(()=>FilterFeatureHandler( feature,"NoLace"))}}/>
                         <label htmlFor="NoLace">NoLace</label>
                     </div>
                     <div>
                         <input className="checkbox-converse" type="checkbox" name="GhostLace" value="GhostLace"
                         onClick={()=>{
-                            setFeature(()=>( feature.includes("GhostLace") 
-                                                    ? [...feature.filter(item=>item !=="GhostLace")]
-                                                    : [...feature,"GhostLace"])
-                                                    )}}/>
+                            setFeature(()=>FilterFeatureHandler(feature,"GhostLace") )}}/>
                         <label htmlFor="GhostLace">GhostLace</label>
                     </div>
                     <div>
                         <input className="checkbox-yezzy" type="checkbox" name="Lace" value="Lace"
                         onClick={()=>{
-                            setFeature(()=>( feature.includes("Lace") 
-                                                    ? [...feature.filter(item=>item !=="Lace")]
-                                                    : [...feature,"Lace"])
-                                                    )}}/>
+                            setFeature(()=>FilterFeatureHandler(feature,"Lace"))}}/>
                         <label htmlFor="Lace">Lace</label>
                     </div>
                 </div>

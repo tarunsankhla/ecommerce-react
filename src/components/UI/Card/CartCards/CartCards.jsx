@@ -6,7 +6,8 @@ import { useWishList } from '../../../../context/WishListContext';
 function CartCards(props) {
     const { _id, title ,productImage , author,price,discount,discountedPrice } =props;
     const {cartState,setCartState}= useCart();
-    const {WishListState,setWishListState} =useWishList();
+    const { WishListState, setWishListState } = useWishList();
+    
     const RemoveItemsFromCartHandler=async(id)=>{
         try{
             console.log(id);
@@ -27,7 +28,7 @@ function CartCards(props) {
         }
     }
 
-    const AddProductsInWishListHandler = async (item)=>{
+    const addToWishlistHandler = async (item)=>{
         try{
             console.log(item);
             await axios.post("/api/user/wishlist",
@@ -76,7 +77,7 @@ function CartCards(props) {
                             </span>
 
                             </button>
-                        <button onClick={()=>{AddProductsInWishListHandler(props)}}>Move to Wishlist</button>
+                        <button onClick={()=>{addToWishlistHandler(props)}}>Move to Wishlist</button>
                     </div>
                 </div>
             </div>

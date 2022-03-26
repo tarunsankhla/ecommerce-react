@@ -11,8 +11,7 @@ import "./ProductsCards.css";
 // stock={item.stock}
 // categoryType={item.categoryType}
 function ProductCards(props) {
-    const { title ,productImage , author,price,discount,discountedPrice,rating,
-         productType,feature,stockType,stock,categoryType} =props;
+    const { title,productImage,author,price,discount,discountedPrice,rating,productType,feature,stockType,stock,categoryType} =props;
     const {cartState,setCartState}= useCart();
     const {WishListState,setWishListState} =useWishList();
     
