@@ -91,3 +91,7 @@ a{
     color: var(--icons-color);
     font-weight: 100
   }
+
+  .card-footer-view * {
+    padding: 0;
+  }

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-
+import { memo } from "react";
 const CartContext = createContext({});
 
 const CartProvider =({children})=>{

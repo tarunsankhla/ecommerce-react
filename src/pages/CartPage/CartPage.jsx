@@ -62,12 +62,13 @@ function CartPage() {
                         <CartCards 
                             key={item._id}
                             _id={item._id}
-                            title={item.title}  
-                            productImage={item.productImage}   
-                            author={item.author} 
+                            title={item.title}
+                            productImage={item.productImage}
+                            author={item.author}
                             price={item.price}
-                            discount={item.discount}  
-                            discountedPrice={item.discountedPrice} />
+                            discount={item.discount}
+                            discountedPrice={item.discountedPrice}
+                            quantity={item.qty} />
             ))}
                 
                 </div>
@@ -78,7 +79,7 @@ function CartPage() {
                 </div>
                 <div className="cart-aside-container">
                     <div className="cart-aside-list">
-                        <span>Price({cartState.length} items)</span>
+                        <span>Price({cartState?.reduce((acc,cur)=>acc +=  cur.qty,0)} items)</span>
                         <span>$
                             {
                                 cartState?.reduce((acc,cur)=>acc += cur.price,0)
@@ -98,7 +99,7 @@ function CartPage() {
                         <span>Total Amount</span>
                         <span>$
                         {
-                                cartState?.reduce((acc,cur)=>acc += cur.price,0) + 49
+                                cartState?.reduce((acc,cur)=>acc += cur.price * cur.qty,0) + 49
                             }
                         </span>
                     </div>
