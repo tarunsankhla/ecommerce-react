@@ -28,6 +28,8 @@ html{
   --footer-bg-color:rgb(59, 59, 59);
   --pink-bg-color:#ffe0e5;
   --text-color:#27474e;
+  --card-bg-color:#f5efff;
+  --icons-color :rgb(77, 136, 123);
 }
 body::-webkit-scrollbar{
   width: 1rem;
@@ -75,3 +77,17 @@ body::-webkit-scrollbar:hover{
     transform: rotate(360deg);
   }
 }
+.badge{
+  background-color: var(--boldy-light-purple);
+}
+
+a{
+  text-decoration: none;
+  color: var(--dark-theme-nav-text);
+}
+
+
+.icons-style{
+    color: var(--icons-color);
+    font-weight: 100
+  }

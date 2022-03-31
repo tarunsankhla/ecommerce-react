@@ -2,7 +2,12 @@ import axios from 'axios';
 import React from 'react';
 import { useCart } from '../../../../context/CartContext';
 import { useWishList } from '../../../../context/WishListContext';
+import Palette from "react-palette";
+import {
+    arrivalBanner5
+} from "../../../../assets/images/Products/Products";
 import "./ProductsCards.css";
+import { IcTwotoneShoppingCart } from "../../Icons/IcTwotoneAddShoppingCart";
 
 // rating={item.rating}
 // productType={item.productType}
@@ -14,7 +19,7 @@ function ProductCards(props) {
     const { title,productImage,author,price,discount,discountedPrice,rating,productType,feature,stockType,stock,categoryType} =props;
     const {cartState,setCartState}= useCart();
     const {WishListState,setWishListState} =useWishList();
-    
+    console.log(arrivalBanner5);
     const AddProductsInCartHandler = async (item)=>{
         try{
             console.log(item);
@@ -74,34 +79,35 @@ function ProductCards(props) {
 //           "id": "1"}
 //         }
   return (
-    <>
-        <div className="card cart-card">
-            <img className="card-img" src={productImage} alt={author} loading="lazy"/>
+      <>
+              <div className="card cart-card card-bg">
+                  <img className="card-img" src={productImage} alt={author} loading="lazy" />
 
-            <div className="card-content">
-                <div className="card-body">
-                    {title}
-                </div>
-                <div className="card-title">
-                    <h2>₹{price}</h2>
-                    <span className="text-grey">{discount}</span>
-                    <span className="text-linethrough discount-price">₹{discountedPrice}</span>
-                </div>
-            </div>
-            <div className="card-footer">
-                <div className="card-footer-view">
-                      <button onClick={() => { AddProductsInCartHandler(props) }}>Add to Cart
-                      <span class="material-icons-round">
-                        shopping_cart
-                        </span>
-
-                        </button>
-                </div>
-            </div>
-            <span className="material-icons-round badge topright-badge " onClick={()=>{AddProductsInWishListHandler(props)}}>
-                favorite_border
-            </span>
-        </div>
+                  <div className="card-content card-bg" >
+                      <div className="card-body">
+                          {title}
+                      </div>
+                      <div className="card-content-container">
+                          <h2>₹{price}</h2>
+                          <span className="text-grey">{discount}</span>
+                          <span className="text-linethrough discount-price">₹{discountedPrice}</span>
+                      </div>
+                  </div>
+                  <div className="card-footer">
+                      <div className="card-footer-view">
+                      <button onClick={() => { AddProductsInCartHandler(props) }}>
+                                <span className='hide'>Add to Cart</span>
+                              <span className="material-icons-round icons-style">
+                              add_shopping_cart
+                              </span>
+                                
+                          </button>
+                      </div>
+                  </div>
+                  <span className="material-icons-round badge topright-badge badge-border" onClick={() => { AddProductsInWishListHandler(props) }}>
+                      favorite_border
+                  </span>
+          </div>
     </>
   )
 }

@@ -69,7 +69,7 @@ function WishListsCards(props) {
                             AddProductsInCartHandler(props);
                             RemoveItemsFromWishListHandler(_id)
                         }}>Move to Cart
-                        <span class="material-icons-round">
+                        <span className="material-icons-round">
                         shopping_cart
                         </span>
 

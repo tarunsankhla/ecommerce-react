@@ -72,7 +72,7 @@ function CartCards(props) {
                         </div>
                     </div> 
                     <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-                        <button onClick={()=>{RemoveItemsFromCartHandler(_id)}}>Remove from Cart<span class="material-icons-round">
+                        <button onClick={()=>{RemoveItemsFromCartHandler(_id)}}>Remove from Cart<span className="material-icons-round">
                             shopping_cart
                             </span>
 

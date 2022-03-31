@@ -1,0 +1,27 @@
+.btn-discover{
+    display: flex;
+    justify-content: center;
+    min-width: 30%;
+    gap: 0.5em;
+    background-color: rgba(0,0,0,0.19);
+    padding: 0.5em;
+    font-size: 3em;
+    border-radius: 0.5em;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.discover-btn-txt{
+    color: white;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn-discover:hover{
+    background-color: white;
+    color: rgba(0,0,0,0.3);
+}
