@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate as navigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 const SignUpDetails = (state,action) =>{
     console.log(state,action);
@@ -89,17 +90,24 @@ function SignUpPage() {
                 localStorage.setItem(VAR_USER_ID,userId);
                 console.log(user,userId,token);
                 setlogin(true);
-                // navigate("/");
+             
+                Alert("success", "SuccessFully Logged In!!");
+                navigate("/");
                 // History.push("/products");   
             }
-            if(res.status === 422)
-            {
-                console.log("Use exist")
-            }
+            
         }
         catch(error)
         {
-            console.log("signup ",error)
+          console.log(error.message);
+          if(error.message.slice(error.message.length-3,error.message.length) === "422")
+            {
+                Alert("error", "Something suspicious!! The User Already Exist, try logging in");
+                console.log("Use exist")
+            }else{
+                Alert("error", "Something went wrong!! try again.");
+                console.log("signup ", error, error.status);
+          }
         }
     }
   return (

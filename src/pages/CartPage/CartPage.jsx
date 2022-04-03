@@ -15,6 +15,7 @@ import axios from 'axios';
 import CartCards from '../../components/UI/Card/CartCards/CartCards';
 import { useCart } from '../../context/CartContext';
 import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 
 function CartPage() {
@@ -47,7 +48,8 @@ function CartPage() {
                
             })();
         }catch(error){
-            console.log("Product list page error",error);
+            console.log("Product list page error", error);
+            Alert("error", "Something went wrong!! try again.");
         }
     }, []);
     

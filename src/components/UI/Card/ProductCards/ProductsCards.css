@@ -175,6 +175,15 @@ h2 {
 	.cart-card > .card-footer > .card-footer-view > .btn-addToCart {
 		padding: 0em !important;
 	}
+	.card-content-container {
+		display: flex;
+		/* grid-gap: 0.5em; */
+		/* gap: 0.5em; */
+		align-items: center;
+		flex-direction: row-reverse;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
 }
 
 @media screen and (max-width: 360px) {

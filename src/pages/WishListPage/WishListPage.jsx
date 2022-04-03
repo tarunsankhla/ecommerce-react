@@ -17,6 +17,7 @@ import axios from 'axios';
 import WishListsCards from '../../components/UI/Card/WishListCards/WishListsCards';
 import { useWishList } from '../../context/WishListContext';
 import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 
 function WishListPage() {
@@ -42,7 +43,8 @@ function WishListPage() {
                
             })();
         }catch(error){
-            console.log("Product list page error",error);
+            console.log("Product list page error", error);
+            Alert("error", "Something went wrong!! try again.");
         }
     },[]);
     console.log("wisj;list",WishListProductList);
@@ -71,7 +73,7 @@ function WishListPage() {
                         ))} */}
                         {
                             WishListState?.length ===0 ?
-                            <img src={wishListLogoSrc} className="wishlist-logo" /> :
+                            <img src={wishListLogoSrc} className="wishlist-logo" alt='wishlist-logo' /> :
                             WishListState.map((item)=>(
                                 <WishListsCards 
                                     key={item._id}

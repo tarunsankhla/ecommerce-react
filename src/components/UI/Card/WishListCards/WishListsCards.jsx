@@ -5,6 +5,7 @@ import {useWishList} from '../../../../context/WishListContext';
 import IcTwotoneShoppingCartCheckout from '../../Icons/IcTwotoneShoppingCartCheckout';
 import IcBaselineCancel from '../../Icons/IcBaselineCancel'
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
+import { Alert } from '../../Alert/Alert';
 function WishListsCards(props) {
     const {
         _id,
@@ -16,7 +17,8 @@ function WishListsCards(props) {
         discountedPrice
     } = props;
     const {WishListState, setWishListState} = useWishList();
-    const {cartState, setCartState} = useCart();
+    const { cartState, setCartState } = useCart();
+    
     console.log(props);
     const RemoveItemsFromWishListHandler = async (id) => {
         try {
@@ -29,9 +31,11 @@ function WishListsCards(props) {
             console.log(res);
             if (res.status === 200) {
                 setWishListState(res.data.wishlist);
+                Alert("success", "Removed from WishList.");
             }
         } catch (err) {
-            console.log("error ", err)
+            console.log("error ", err);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
     const AddProductsInCartHandler = async (item) => {
@@ -47,9 +51,11 @@ function WishListsCards(props) {
             console.log(res);
             if (res.status === 201) {
                 setCartState(res.data.cart);
+                Alert("success", "Added to cart.");
             }
         } catch (err) {
             console.log("error ", err.message);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
     return (

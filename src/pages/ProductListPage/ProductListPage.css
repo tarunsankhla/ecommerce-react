@@ -40,6 +40,7 @@ label{
     text-align: start;
     /* margin: auto; */
     margin-left: 25%;
+    cursor: pointer;
 }
 
 .aside-header{
@@ -138,6 +139,16 @@ label{
     gap: 1em;
 }
 
+.filter-btn-clear{
+    padding: 0;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    min-width: 30%;
+    justify-content: center;
+}
 @media screen and (max-width: 800px) {
     aside{
         /* border: 1px solid black;

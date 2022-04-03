@@ -5,6 +5,7 @@ import "./LoginPage.css";
 import {useAuth} from '../../context/AuthContext';
 import loginLogoSrc from "./../../assets/images/SVG/login.svg";
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 function LoginPage() {
     const { setlogin, userDispatch} = useAuth();
@@ -13,24 +14,32 @@ function LoginPage() {
     const navigate = useNavigate();
 
     const onSubmitHandler = async () => {
-        var object = {
-            "email": email,
-            "password": password
-        };
-        console.log(object)
-        var res = await axios.post("/api/auth/login", object);
-        console.log(res);
-        if (res.status === 200) {
-            var token = res.data.encodedToken;
-            localStorage.setItem(VAR_ENCODE_TOKEN, token)
-            var user = res.data.foundUser;
-            var userId = res.data.foundUser._id;
-            localStorage.setItem(VAR_USER_ID, userId);
-            userDispatch({email : res.data.foundUser.email, firstName :res.data.foundUser.firstName , lastName :res.data.foundUser.lastName})
-            console.log(user, userId, token);
-            setlogin(true);
-            // navigate("/");
-            // History.push("/products");
+        try {
+            var object = {
+                "email": email,
+                "password": password
+            };
+            console.log(object)
+            var res = await axios.post("/api/auth/login", object);
+            console.log(res);
+            if (res.status === 200) {
+                var token = res.data.encodedToken;
+                localStorage.setItem(VAR_ENCODE_TOKEN, token)
+                var user = res.data.foundUser;
+                var userId = res.data.foundUser._id;
+                localStorage.setItem(VAR_USER_ID, userId);
+                userDispatch({ email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName })
+                console.log(user, userId, token);
+                setlogin(true);
+                Alert("success", "SuccessFully Logged In!!");
+                // navigate("/");
+                // History.push("/products");
+            } else {
+                Alert("error", "Something went wrong!! try again.");
+            }
+        } catch (error) { 
+            console.log(error);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
 
@@ -72,7 +81,7 @@ function LoginPage() {
                                 <input type="checkbox" name="" id=""/>
                                 Remember me
                             </div>
-                            <a className="btn-link">Forgot your password?</a>
+                            <div className="btn-link">Forgot your password?</div>
                         </div>
                         <div className="login-btn-container">
                             <div className="btn login-action-btn"

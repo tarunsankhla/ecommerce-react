@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCart } from "../context/CartContext";
+import { Alert } from "../components/UI/Alert/Alert";
 import { VAR_ENCODE_TOKEN } from "../utils/Routes";
 
 
@@ -22,11 +22,13 @@ const UpdateCartService = async (stateQuantity, _id) => {
         if (res.status === 200) {
             console.log(res);
             data = [...res.data.cart];
+            Alert("success", "Done!!!.");
         }
 
         return data;
     } catch (err) {
         console.log("error ", err.message);
+        Alert("error", "Something went wrong!! try again.");
         return [];
     }
 }

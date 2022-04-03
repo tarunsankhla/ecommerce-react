@@ -11,6 +11,7 @@ import IcRoundMinus from '../../Icons/IcRoundMinus';
 import {memo} from "react";
 import {UpdateCartService} from '../../../../service/CartService';
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
+import { Alert } from '../../Alert/Alert';
 
 // rating={item.rating}
 // productType={item.productType}
@@ -51,13 +52,15 @@ function ProductCards(props) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             })
-                console.log(res);
-                if (res.status === 201) {
-                    setCartState(res.data.cart);
-                }
+            console.log(res);
+            if (res.status === 201) {
+                setCartState(res.data.cart);
+                Alert("success", "Product Added in Cart");
+            }
          
         } catch (err) {
             console.log("error ", err.message);
+            Alert("error", "Failed to add product in Cart!! try again.");
         }
     }
 
@@ -74,9 +77,11 @@ function ProductCards(props) {
                 console.log(res);
                 if (res.status === 201) {
                     setWishListState(res.data.wishlist);
+                    Alert("success", "Product added in WishList.");
                 }
         } catch (err) {
             console.log("error ", err)
+            Alert("error", "Failed to add product, try again.");
         }
     }
 
@@ -93,6 +98,12 @@ function ProductCards(props) {
             if (stateQuantity === DecrementCart && (cartItem?.qty >= 2)) {
 
                 setCartState(await UpdateCartService(stateQuantity, _id));
+            }
+            if (stateQuantity === IncrementCart && (cartItem?.qty === 4)) {
+                Alert("info", "Cannot add more then 4 quantity in Cart");
+            }
+            if (stateQuantity === DecrementCart && (cartItem?.qty === 1)) {
+                Alert("info", "Max one Product");
             }
             holder =true
         }
