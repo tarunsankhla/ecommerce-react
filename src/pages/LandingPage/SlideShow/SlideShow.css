@@ -95,3 +95,11 @@
 	font-size: 1.8em;
 	font-weight: 700;
 }
+.overlay-img-slider:hover{
+	transform: scale(1.02);
+	background-color:rgba(255, 255, 255, 0.6); ;
+}
+
+.slide-show-contatiner{
+	padding-top: 3em;
+}

@@ -29,7 +29,7 @@ export function LandingPage() {
                         alt="Landing page"/>
                 </div>
                 <div className="landing-page-content">
-                    <h1>Be Dope</h1>
+                    <h1>Be Dope...</h1>
                     <Link to="/products">
                         <DiscoverButton />
                     </Link>

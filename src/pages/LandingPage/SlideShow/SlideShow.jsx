@@ -32,8 +32,8 @@ export function SlideShow() {
         navigate(`/products?CategoryType=${name}`)
     }
     return (
-        <>
-            <h2>Category : </h2>
+        <div className="slide-show-contatiner">
+            <div className="title-handle">Category : </div>
             <ul className="underlist-img-slider">
                 <div onClick={()=>redirectToCategoryHandler("Football")} >
                     <div className="listImgSlide">
@@ -104,6 +104,6 @@ export function SlideShow() {
                 </div>
             
             </ul>
-        </>
+        </div>
     )
 }
