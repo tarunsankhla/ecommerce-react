@@ -16,6 +16,7 @@ import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 import WishListsCards from '../../components/UI/Card/WishListCards/WishListsCards';
 import { useWishList } from '../../context/WishListContext';
+import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
 
 
 function WishListPage() {
@@ -27,16 +28,16 @@ function WishListPage() {
     useEffect(()=>{
         try{
             (() => {
-                let res = axios.get("/api/user/wishlist",{ headers:{
-                    authorization:localStorage.getItem("feetz")}})
-                                .then((res)=>{
-                                    console.log(res);
-                                    setWishListProductList(res.data.wishList);
-                                })
-                                .catch((err)=>{
-                                    console.log("error ",err.message);
-                                });
-                console.log(res);
+                let res = axios.get("/api/user/wishlist",
+                    {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    });
+                
+                    console.log(res);
+                    setWishListProductList(res.data.wishList);
+             
                 // console.log(res.data.products);
                
             })();

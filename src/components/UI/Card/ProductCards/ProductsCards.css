@@ -94,6 +94,20 @@ h2 {
 .notAllowed{
 	cursor: not-allowed;
 }
+
+.elipsis {
+	text-overflow: ellipsis;
+	width: inherit;	
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+	color: var(--bold-blue-color);
+    font-weight: 800;
+}
+
+.elipsis:hover{
+	color: var(--boldy-dark-purple);
+}
 @media screen and (max-width: 1030px) {
 	.cart-card {
 		height: fit-content;
@@ -149,14 +163,17 @@ h2 {
 	}
 	.card-content {
 		font-size: 1.2rem;
-		padding: 0.7rem;
+		padding: 2px !important;
 	}
 
 	.card-footer-view * {
-		padding: 2px;
+		padding: 1px !important;
 	}
 	.hide {
 		display: none;
+	}
+	.cart-card > .card-footer > .card-footer-view > .btn-addToCart {
+		padding: 0em !important;
 	}
 }
 

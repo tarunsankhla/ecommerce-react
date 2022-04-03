@@ -4,6 +4,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import "./LoginPage.css";
 import {useAuth} from '../../context/AuthContext';
 import loginLogoSrc from "./../../assets/images/SVG/login.svg";
+import { VAR_ENCODE_TOKEN, VAR_USER_ID } from '../../utils/Routes';
 
 function LoginPage() {
     const { setlogin, userDispatch} = useAuth();
@@ -21,10 +22,10 @@ function LoginPage() {
         console.log(res);
         if (res.status === 200) {
             var token = res.data.encodedToken;
-            localStorage.setItem("feetz", token)
+            localStorage.setItem(VAR_ENCODE_TOKEN, token)
             var user = res.data.foundUser;
             var userId = res.data.foundUser._id;
-            localStorage.setItem("feetzId", userId);
+            localStorage.setItem(VAR_USER_ID, userId);
             userDispatch({email : res.data.foundUser.email, firstName :res.data.foundUser.firstName , lastName :res.data.foundUser.lastName})
             console.log(user, userId, token);
             setlogin(true);

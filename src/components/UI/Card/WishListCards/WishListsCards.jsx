@@ -4,6 +4,7 @@ import {useCart} from '../../../../context/CartContext';
 import {useWishList} from '../../../../context/WishListContext';
 import IcTwotoneShoppingCartCheckout from '../../Icons/IcTwotoneShoppingCartCheckout';
 import IcBaselineCancel from '../../Icons/IcBaselineCancel'
+import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 function WishListsCards(props) {
     const {
         _id,
@@ -20,18 +21,15 @@ function WishListsCards(props) {
     const RemoveItemsFromWishListHandler = async (id) => {
         try {
             console.log(id);
-            await axios.delete(`/api/user/wishlist/${id}`, {
+            const res = await axios.delete(`/api/user/wishlist/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
-                console.log(res);
-                if (res.status === 200) {
-                    setWishListState(res.data.wishlist);
-                }
-            }).catch((error) => {
-                console.log(error)
-            });
+            })
+            console.log(res);
+            if (res.status === 200) {
+                setWishListState(res.data.wishlist);
+            }
         } catch (err) {
             console.log("error ", err)
         }
@@ -39,20 +37,17 @@ function WishListsCards(props) {
     const AddProductsInCartHandler = async (item) => {
         try {
             console.log(item);
-            await axios.post("/api/user/cart", {
+            const res = await axios.post("/api/user/cart", {
                 "product": item
             }, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
-                console.log(res);
-                if (res.status === 201) {
-                    setCartState(res.data.cart);
-                }
-            }).catch((error) => {
-                console.log(error.message);
-            });
+            })
+            console.log(res);
+            if (res.status === 201) {
+                setCartState(res.data.cart);
+            }
         } catch (err) {
             console.log("error ", err.message);
         }

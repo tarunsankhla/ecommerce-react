@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCart } from "../context/CartContext";
+import { VAR_ENCODE_TOKEN } from "../utils/Routes";
 
 
 
@@ -8,23 +9,21 @@ const UpdateCartService = async (stateQuantity, _id) => {
     try {
         console.log(stateQuantity, _id);
         let data = [];
-        await axios.post(`/api/user/cart/${_id}`, {
+        const res = await axios.post(`/api/user/cart/${_id}`, {
             action: {
                 type: stateQuantity
             }
         }, {
             headers: {
-                authorization: localStorage.getItem("feetz")
+                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
             }
-        }).then((res) => {
+        })
+        console.log(res);
+        if (res.status === 200) {
             console.log(res);
-            if (res.status === 200) {
-                console.log(res);
-                data=  [...res.data.cart];
-            }
-        }).catch((error) => {
-            console.log(error.message);
-        });
+            data = [...res.data.cart];
+        }
+
         return data;
     } catch (err) {
         console.log("error ", err.message);

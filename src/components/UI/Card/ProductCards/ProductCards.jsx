@@ -10,6 +10,7 @@ import IcRoundPlus from '../../Icons/IcRoundPlus';
 import IcRoundMinus from '../../Icons/IcRoundMinus';
 import {memo} from "react";
 import {UpdateCartService} from '../../../../service/CartService';
+import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 
 // rating={item.rating}
 // productType={item.productType}
@@ -37,24 +38,24 @@ function ProductCards(props) {
     const {WishListState, setWishListState} = useWishList();
     const [handleCartQuantity, setHandleCartQuantity] = useState();
     let holder = true;
+    const IncrementCart = "increment";
+    const DecrementCart = "decrement";
     console.log(cartState);
     const AddProductsInCartHandler = async (item) => {
         try {
             console.log(item);
-            await axios.post("/api/user/cart", {
-                "product": item
+            const res = await axios.post("/api/user/cart", {
+                product: item
             }, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
+            })
                 console.log(res);
                 if (res.status === 201) {
                     setCartState(res.data.cart);
                 }
-            }).catch((error) => {
-                console.log(error.message);
-            });
+         
         } catch (err) {
             console.log("error ", err.message);
         }
@@ -63,20 +64,17 @@ function ProductCards(props) {
     const AddProductsInWishListHandler = async (item) => {
         try {
             console.log(item);
-            await axios.post("/api/user/wishlist", {
-                "product": item
+            const res = await axios.post("/api/user/wishlist", {
+                product: item
             }, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
+            })
                 console.log(res);
                 if (res.status === 201) {
                     setWishListState(res.data.wishlist);
                 }
-            }).catch((error) => {
-                console.log(error)
-            });
         } catch (err) {
             console.log("error ", err)
         }
@@ -88,11 +86,11 @@ function ProductCards(props) {
             holder =false
             console.log(cartState.find((cartitem) => cartitem._id === _id));
             let cartItem = cartState.find((cartitem) => cartitem._id === _id);
-            if (stateQuantity === 'increment' && (cartItem?.qty < 4)) {
+            if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
                 setCartState(await UpdateCartService(stateQuantity, _id));
             }
 
-            if (stateQuantity === 'decrement' && (cartItem?.qty >= 2)) {
+            if (stateQuantity === DecrementCart && (cartItem?.qty >= 2)) {
 
                 setCartState(await UpdateCartService(stateQuantity, _id));
             }
@@ -108,7 +106,7 @@ function ProductCards(props) {
                     loading="lazy"/>
 
                 <div className="card-content card-bg">
-                    <div className="card-body">
+                    <div className="card-body elipsis">
                         {title} </div>
                     <div className="card-content-container">
                         <h2>₹{price}</h2>
@@ -121,38 +119,32 @@ function ProductCards(props) {
                     <div className="card-footer-view">
                         <button className='btn-addToCart'>
                             {
-                            cartState.some((cartitem) => cartitem._id === _id) ? <div className='cart-quantity-container'>
-                                <span className={
-                                        `${handleCartQuantity}`
-                                    }
-                                    onClick={
-                                        () => UpdateCartHandler("increment")
-                                }><IcRoundPlus/></span>
-                                {
-                                {
-                                    ...cartState.find((cartitem) => cartitem._id === _id)
-                                } ?. qty
-                            }
-                                <span onClick={
-                                    () => UpdateCartHandler("decrement")
-                                }><IcRoundMinus/></span>
-                            </div> : <span onClick={
-                                    () => {
-                                        AddProductsInCartHandler(props)
-                                    }
-                                }
-                                className="add-cart-action">
-                                <span className='hide'>Add to Cart</span>
-                                <span className="material-icons-round icons-style">
-                                    add_shopping_cart
-                                </span>
+                                cartState.some((cartitem) => cartitem._id === _id)
+                                    ? <div className='cart-quantity-container'>
+                                        <span className={ `${handleCartQuantity}`}
+                                            onClick={ () => UpdateCartHandler(IncrementCart)}>
+                                            <IcRoundPlus />
+                                        </span>
+                                                {{...cartState.find((cartitem) => cartitem._id === _id)}?.qty}
+                                        <span onClick={
+                                            () => UpdateCartHandler(DecrementCart)}>
+                                            <IcRoundMinus />
+                                        </span>
+                                    </div>
+                                    : <span onClick={() => { AddProductsInCartHandler(props) } }
+                                        className="add-cart-action">
+                                            <span className='hide'>Add to Cart</span>
+                                            <span className="material-icons-round icons-style">
+                                                add_shopping_cart
+                                            </span>
 
-                            </span>
-                        } </button>
+                                    </span>
+                            }
+                        </button>
                     </div>
                 </div>
                 {
-                WishListState.find((cartitem) => cartitem._id === _id) ? <></> : <span className="material-icons-round badge topright-badge badge-border"
+                !WishListState.find((cartitem) => cartitem._id === _id) && <span className="material-icons-round badge topright-badge badge-border"
                     style={
                         {
                             cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'

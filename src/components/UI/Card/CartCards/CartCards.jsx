@@ -8,6 +8,7 @@ import IcRoundMinus from '../../Icons/IcRoundMinus';
 import IcRoundPlus from '../../Icons/IcRoundPlus';
 import "./CartCards.css"
 import IcRoundWishlist from '../../Icons/IcRoundWishlist';
+import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 function CartCards(props) {
     const {
         _id,
@@ -20,23 +21,22 @@ function CartCards(props) {
         quantity
     } = props;
     const {cartState, setCartState} = useCart();
-    const {WishListState, setWishListState} = useWishList();
+    const { WishListState, setWishListState } = useWishList();
+    const IncrementCart = "increment";
+    const DecrementCart = "decrement";
 
     const RemoveItemsFromCartHandler = async (id) => {
         try {
             console.log(id);
-            await axios.delete(`/api/user/cart/${id}`, {
+            const res = await axios.delete(`/api/user/cart/${id}`, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
-                console.log(res);
-                if (res.status === 200) {
-                    setCartState(res.data.cart);
-                }
-            }).catch((error) => {
-                console.log(error.message);
             });
+            console.log(res);
+            if (res.status === 200) {
+                setCartState(res.data.cart);
+            }
         } catch (err) {
             console.log("error ", err.message);
         }
@@ -45,20 +45,18 @@ function CartCards(props) {
     const addToWishlistHandler = async (item) => {
         try {
             console.log(item);
-            await axios.post("/api/user/wishlist", {
+            const res = await axios.post("/api/user/wishlist", {
                 "product": item
             }, {
                 headers: {
-                    authorization: localStorage.getItem("feetz")
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            }).then((res) => {
-                console.log(res);
-                if (res.status === 201) {
-                    setWishListState(res.data.wishlist);
-                }
-            }).catch((error) => {
-                console.log(error.message);
-            });
+            })
+
+            if (res.status === 201) {
+                setWishListState(res.data.wishlist);
+            }
+          
         } catch (err) {
             console.log("error ", err.message);
         }
@@ -67,11 +65,11 @@ function CartCards(props) {
     const UpdateCartHandler = async (stateQuantity) => {
         console.log(cartState.find((cartitem) => cartitem._id === _id));
         let cartItem = cartState.find((cartitem) => cartitem._id === _id);
-        if (stateQuantity === 'increment' && (cartItem ?. qty < 4)) {
+        if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
             setCartState(await UpdateCartService(stateQuantity, _id));
         }
 
-        if (stateQuantity === 'decrement' && (cartItem ?. qty >= 2)) {
+        if (stateQuantity === DecrementCart && (cartItem?.qty >= 2)) {
 
             setCartState(await UpdateCartService(stateQuantity, _id));
         }
@@ -93,20 +91,18 @@ function CartCards(props) {
                                 {discount}</span>
                         </div>
                         <div className="card-footer-view">
-                        <button className='btn-addToCart'>
-                            {
-                           <div  className='cart-quantity-container'>
-                                <span onClick={
-                                    () => UpdateCartHandler("increment")
-                                }><IcRoundPlus/></span>
-                                {
-                                {...cartState.find((cartitem) => cartitem._id === _id)}?.qty}
-                                <span onClick={
-                                    () => UpdateCartHandler("decrement")
-                                }><IcRoundMinus/></span>
-                            </div> 
-                        } </button>
-                    </div>
+                            <button className='btn-addToCart'>
+                                <div className='cart-quantity-container' >
+                                    <span onClick={() => UpdateCartHandler(IncrementCart)}>
+                                        <IcRoundPlus />
+                                    </span>
+                                    {{ ...cartState.find((cartitem) => cartitem._id === _id) }?.qty}
+                                    <span onClick={() => UpdateCartHandler(DecrementCart)} >
+                                        <IcRoundMinus />
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                     <div className="card-footer-view cart-card-footer cart-card-footer-flex">
                         <button onClick={
@@ -114,24 +110,20 @@ function CartCards(props) {
                                 RemoveItemsFromCartHandler(_id)
                             }
                         }>Remove from Cart
-                            <IcTwotoneShoppingCartCheckout/>
-                            {/* <span className="material-icons-round">
-                                shopping_cart
-                            </span> */}
-
-                        </button>
+                            <IcTwotoneShoppingCartCheckout/> {/* <span className="material-icons-round">
+                                                shopping_cart
+                                            </span> */} </button>
                         <button onClick={
                             () => {
                                 addToWishlistHandler(props)
                             }
                         }>Move to Wishlist
-                            <IcRoundWishlist />
+                            <IcRoundWishlist/>
                         </button>
                     </div>
                 </div>
             </div>
-        </>
-    )
+        </>)
 }
 
 export default CartCards
