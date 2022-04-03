@@ -3,24 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {makeServer} from "./server.js"
+import { makeServer } from "./server.js"
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishListProvider } from './context/WishListContext';
+import { Provider } from './context/Providers';
 
 makeServer();
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <CartProvider>
-          <WishListProvider>
-          <App />
-          </WishListProvider>
-        </CartProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    <Provider>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

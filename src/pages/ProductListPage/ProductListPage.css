@@ -110,7 +110,7 @@ label{
 .filter-btn:hover{
     transform: scale(1.1);
     /* opacity: 1.1; */
-    filter: brightness(1.1);
+    /* filter: brightness(1.1); */
 }
 
 .filter-btn-cl{

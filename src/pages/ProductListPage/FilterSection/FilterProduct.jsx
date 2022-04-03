@@ -1,20 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useReducer, useState } from 'react'
+import { useLocation } from 'react-router';
 import { FilterCategoryHandler } from "../../../utils/FiilterCategory";
 import { FilterFeatureHandler } from "../../../utils/FilterFeature";
 
 
 const FilterProduct = ({props}) =>{
     const {ProductList,setProductList,DefaultProductList} = props;
-    // console.log("filter product", ProductList,setProductList);
-    // const [state,dispatch] = useReducer(FilterByInStock,{categorytype:[]})
     const [categoryType,setCategoryType] = useState([]);
     const [feature,setFeature] = useState([]);
     const [sortByPrice,setSortByType] =useState(""); // hightolow = false & lowtohigh =true
     const [rating,setRating] =useState(null);
     const [productType,setProductType] =useState(null); // shoe = true & slides =false
     const [productStockType,setProductStockType] =useState(null);  // topseller = true & newest =false
-    // const [unCheck, setUnCheck] = useState("");
+    const location = useLocation();
+
 
     useEffect(()=>{
         // console.log("state useEffect",categoryType,feature,"sortByPrice",sortByPrice,"rating");
@@ -39,6 +39,21 @@ const FilterProduct = ({props}) =>{
     //     }
     // },[ProductList]);
 
+    console.log(location);
+
+	function urlFilter() { 
+        console.log(location.search.split("=")[1]);
+        FilterCategoryHandler(categoryType, location.search.split("=")[1]);
+    }
+    
+    useEffect(() => { 
+        if (location.search.split("=")[1]) {
+            setTimeout(() => {
+                setCategoryType([...categoryType, location.search.split("=")[1]])
+            }, 2000);
+        }
+    },[])
+	
     function Filter(object){
         (async () => {
             // var res = await axios.get("/api/products");

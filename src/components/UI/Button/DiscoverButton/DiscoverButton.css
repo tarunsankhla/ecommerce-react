@@ -1,0 +1,29 @@
+.btn-discover{
+    display: flex;
+    justify-content: center;
+    min-width: 30%;
+    /* grid-gap: 0.5em;
+    gap: 0.5em; */
+    background-color: rgba(0,0,0,0.19);
+    padding: 0 0.5em;
+    font-size: 3em;
+    border-radius: 0.5em;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+    font-family: cursive;
+}
+
+.discover-btn-txt{
+    color: var(--icons-color);
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn-discover:hover{
+    background-color: white;
+    color: rgba(0,0,0,0.3);
+}

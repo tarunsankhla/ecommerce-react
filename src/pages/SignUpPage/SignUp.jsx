@@ -5,6 +5,7 @@ import signUpAnimation from "./../../../src/assets/images/SVG/signup.svg"
 import axios from 'axios';
 import { useNavigate as navigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
+import { VAR_ENCODE_TOKEN, VAR_USER_ID } from '../../utils/Routes';
 
 const SignUpDetails = (state,action) =>{
     console.log(state,action);
@@ -82,10 +83,10 @@ function SignUpPage() {
             if(res.status === 201)
             {
                 var token = res?.data?.encodedToken;
-                localStorage.setItem("feetz",token)
+                localStorage.setItem(VAR_ENCODE_TOKEN,token)
                 var user = res?.data?.createdUser;
                 var userId =res?.data?.createdUser._id;
-                localStorage.setItem("feetzId",userId);
+                localStorage.setItem(VAR_USER_ID,userId);
                 console.log(user,userId,token);
                 setlogin(true);
                 // navigate("/");

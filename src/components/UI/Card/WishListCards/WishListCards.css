@@ -16,14 +16,33 @@
 }  
 .cart-card:hover{
     transform: scale(1.01);
-    filter: brightness(1.1);
+    /* filter: brightness(1.1); */
     /* opacity: 1.01; */
     box-shadow: 0 4px 2px var(--hovershadow1),
     0 8px 16px var(--hovershadow2),
     0 16px 10px var(--hovershadow2),
     0 26px 18px var(--hovershadow2);
 }
+.card-footer-view > .btn-addToCart {
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: transparent;
+	background-color: yellow;
+	width: fit-content;
+    min-width: 40%;
+}
 
+ .card-footer-view > .btn-addToCart:hover{
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: yellow;
+	width: fit-content;
+	align-items: center	;
+	/* transform: scale(1.01); */
+	color:  var(--icons-color);
+}
 
 @media screen and (max-width: 780px) { 
     .card-title span, h2{

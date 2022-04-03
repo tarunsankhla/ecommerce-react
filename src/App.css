@@ -1,77 +1,102 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-html{
-  font-size: 62.5%;
+html {
+	font-size: 62.5%;
 }
-:root{
-  --bg-color:rgb(249 250 251);
-  --container-bg-color: #f1f3f3;
-  --banner-bg-color:#d4d9dd;
-  --cart-button-color : rgb(53, 53, 80);
-  --border-radius:7px;
-  --shadow-bg :#f2f2f2;
+:root {
+	--bg-color: rgb(249 250 251);
+	--container-bg-color: #f1f3f3;
+	--banner-bg-color: #d4d9dd;
+	--cart-button-color: rgb(53, 53, 80);
+	--border-radius: 7px;
+	--shadow-bg: #f2f2f2;
 
-  --footer-bg-color:rgb(59, 59, 59);
-  --pink-bg-color:#ffe0e5;
-  --text-color:#27474e;
+	--footer-bg-color: rgb(59, 59, 59);
+	--pink-bg-color: #ffe0e5;
+	--text-color: #27474e;
+	--card-bg-color: #f5efff;
+	--icons-color: rgb(77, 136, 123);
 }
-body::-webkit-scrollbar{
-  width: 1rem;
+body::-webkit-scrollbar {
+	width: 1rem;
 }
-body::-webkit-scrollbar-track{
-  background-color: var(--shade-1);
+body::-webkit-scrollbar-track {
+	background-color: var(--shade-1);
 }
-body::-webkit-scrollbar-thumb{
-  background-color: var(--btn-text-color-2);
-  border-radius: 1rem;
-  border: 3px solid  var(--shade-1);
+body::-webkit-scrollbar-thumb {
+	background-color: var(--btn-text-color-2);
+	border-radius: 1rem;
+	border: 3px solid var(--shade-1);
 }
 
-body::-webkit-scrollbar:hover{
-  transform: scale(1.2);
-  cursor: pointer;
+body::-webkit-scrollbar:hover {
+	transform: scale(1.2);
+	cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.badge {
+	background-color: var(--boldy-light-purple);
+}
+
+a {
+	text-decoration: none;
+	color: var(--dark-theme-nav-text);
+}
+
+.icons-style {
+	color: var(--icons-color);
+	font-weight: 100;
+}
+
+.card-footer-view * {
+	padding: 0;
+}
+
+.title-handle{
+  color: var(--icons-color);
+  font-weight: 700;
+  font-size: 3em;
+  font-family: 'Courier New', Courier, monospace;
 }

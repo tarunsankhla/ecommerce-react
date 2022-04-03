@@ -17,7 +17,7 @@
 .cart-card:hover{
     transform: scale(1.01);
     /* opacity: 1.01; */
-    filter: brightness(1.1);
+    /* filter: brightness(1.1); */
     box-shadow: 0 4px 2px rgba(0,0,0,0.02),
     0 8px 16px rgba(0,0,0,0.03),
     0 16px 10px rgba(0,0,0,0.04),
@@ -30,6 +30,42 @@ button{
     padding: 0;
 }
 
+ .card-footer-view > .btn-addToCart {
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: transparent;
+	background-color: yellow;
+	width: fit-content;
+    min-width: 40%;
+}
+
+ .card-footer-view > .btn-addToCart:hover{
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: yellow;
+	width: fit-content;
+	align-items: center	;
+	/* transform: scale(1.01); */
+	color:  var(--icons-color);
+}
+
+
+.cart-quantity-container{
+	display: flex;
+	gap: 1px;
+	justify-content: space-evenly;
+    align-items: center;
+}
+.cart-card-footer > button *{
+    margin : 0 3px;
+}
+
+.card-content > .card-body{
+    flex-wrap: wrap;
+    display: flex;
+}
 @media screen and (max-width: 780px) { 
     .card-title span, h2{
         font-size: 1.3rem;

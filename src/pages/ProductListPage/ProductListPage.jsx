@@ -14,6 +14,7 @@ import {
 	//   product11,product14,product15
 } from "./../../../src/assets/images/Products/Products";
 import "./ProductListPage.css";
+import { useLocation } from "react-router";
 
 
 
@@ -22,7 +23,11 @@ export const ProductListPage = () => {
 	const [DefaultProductList, setDefaultProductList] = useState([]);
 	const [filterWidth, setFilteWidth] = useState(window.innerWidth <= 800); 
 	const [filterAside, setFilterAside] = useState(!(window.innerWidth <= 800));
+	
 
+	/**
+	 * this is for only CSS and for adjusting products list with filter section on resizing
+	 */
 	window.addEventListener("resize",()=>{
 		console.log(window.innerWidth);
 		setFilteWidth(window.innerWidth <= 800)
@@ -39,6 +44,7 @@ export const ProductListPage = () => {
 				setDefaultProductList(res.data.products);
 				// products=res.data.products;
 			})();
+			// setTimeout(() => urlFilter(), 0);
 		} catch (error) {
 			console.log("Product list page error", error);
 		}
@@ -48,7 +54,7 @@ export const ProductListPage = () => {
 		<div >
 			<div className="product-page-header">
 				<h4> ( Current Filtered Items : {ProductList.length} )</h4>
-				{filterWidth && <button className="filter-btn-cl" onClick={()=>setFilterAside((prev)=>!prev)}>Filter <span class="material-icons-round">
+				{filterWidth && <button className="filter-btn-cl" onClick={()=>setFilterAside((prev)=>!prev)}>Filter <span className="material-icons-round">
 					filter_alt
 				</span></button>}
 			</div>
