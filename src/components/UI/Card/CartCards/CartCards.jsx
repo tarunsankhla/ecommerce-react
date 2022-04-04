@@ -10,11 +10,13 @@ import "./CartCards.css"
 import IcRoundWishlist from '../../Icons/IcRoundWishlist';
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 import { Alert } from '../../Alert/Alert';
+import { Link } from 'react-router-dom';
+
 function CartCards(props) {
     const {
         _id,
         title,
-        productImage,
+        url,
         author,
         price,
         discount,
@@ -86,8 +88,9 @@ function CartCards(props) {
     return (
         <>
             <div className="card cart-card cart-card-horizontal cart-banner-stretch">
+                
                 <img className="card-img"
-                    src={productImage}
+                    src={url}
                     alt={author}
                     loading="lazy"/>
                 <div className="cart-card-horizontal-layout">

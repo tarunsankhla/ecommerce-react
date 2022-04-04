@@ -24,7 +24,7 @@ function ProductCards(props) {
     const {
         _id,
         title,
-        productImage,
+        url,
         author,
         price,
         discount,
@@ -114,7 +114,7 @@ function ProductCards(props) {
             <div className="card cart-card card-bg">
                 <Link to={`/product/${_id}`}>
                     <img className="card-img"
-                        src={productImage}
+                        src={url}
                         alt={author}
                         loading="lazy"/>
 

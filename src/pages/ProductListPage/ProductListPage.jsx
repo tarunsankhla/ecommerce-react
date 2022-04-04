@@ -16,12 +16,14 @@ import {
 import "./ProductListPage.css";
 import { useLocation } from "react-router";
 import { Alert } from "../../components/UI/Alert/Alert";
+import { useProduct } from "../../context/ProductContext";
 
 
 
 export const ProductListPage = () => {
 	const [ProductList, setProductList] = useState([]);
-	const [DefaultProductList, setDefaultProductList] = useState([]);
+	// const [DefaultProductList, setDefaultProductList] = useState([]);
+	const {ProductState : DefaultProductList,setProductState : setDefaultProductList} =useProduct();
 	const [filterWidth, setFilteWidth] = useState(window.innerWidth <= 800); 
 	const [filterAside, setFilterAside] = useState(!(window.innerWidth <= 800));
 	
@@ -76,7 +78,7 @@ export const ProductListPage = () => {
 								key={item._id}
 								_id={item._id}
 								title={item.title}
-								productImage={item.url}
+								url={item.url}
 								author={item.author}
 								price={item.price}
 								discount={item.discount}

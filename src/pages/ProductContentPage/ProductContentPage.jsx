@@ -10,10 +10,17 @@ import IcRoundPlus from '../../components/UI/Icons/IcRoundPlus';
 import IcRoundMinus from '../../components/UI/Icons/IcRoundMinus';
 import IcTwotoneAddShoppingCart from '../../components/UI/Icons/IcTwotoneAddShoppingCart';
 import "./ProductContentPage.css";
+import IcRoundWishlist from '../../components/UI/Icons/IcRoundWishlist';
+import { useProduct } from '../../context/ProductContext';
+import ProductCards from '../../components/UI/Card/ProductCards/ProductCards';
+import ProductNotFound from "./../../assets/images/SVG/wishlist.svg";
+import Button from '../../components/UI/Button/NormalButton/Button';
+import { Link } from 'react-router-dom';
 
 function ProductContentPage() {
     const { id } = useParams();
-    const [productContent, setProductContent] = useState();
+    const [productContent, setProductContent] = useState(false);
+    const {ProductState ,setProductState} =useProduct();
     console.log(id);
     useEffect(() => { 
         try {
@@ -24,7 +31,7 @@ function ProductContentPage() {
                 const {
                     _id,
                     title,
-                    productImage,
+                    url,
                     author,
                     price,
                     discount,
@@ -75,24 +82,27 @@ function ProductContentPage() {
     const AddProductsInWishListHandler = async (item) => {
         try {
             console.log(item);
-            const res = await axios.post("/api/user/wishlist", {
-                product: item
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
-                }
-            })
+            if (!WishListState.some((cartitem) => cartitem._id === id)) {
+                const res = await axios.post("/api/user/wishlist", {
+                    product: item
+                }, {
+                    headers: {
+                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                    }
+                })
                 console.log(res);
                 if (res.status === 201) {
                     setWishListState(res.data.wishlist);
                     Alert("success", "Product added in WishList.");
                 }
+            } else {
+                Alert("success", "Product Already in WishList.");
+            }
         } catch (err) {
             console.log("error ", err)
             Alert("error", "Failed to add product, try again.");
         }
     }
-
 
     const UpdateCartHandler = async (stateQuantity) => {
         if (holder) {
@@ -116,66 +126,152 @@ function ProductContentPage() {
             holder =true
         }
     }
-  return (
-      <div>
-          
-          <div className="card-footer">
-              <img src={productContent?.url} />
-              <div className="card-content">
-                    <div className="card-body">
-                        {productContent?.title} </div>
-                    <div className="card-title">
-                        <h2>₹{productContent?.price}</h2>
-                        <span className="text-grey">
-                            {productContent?.discount}</span>
-                        <span className="text-linethrough">₹{productContent?.discountedPrice}</span>
-                    </div>
 
+    return (
+        <div>
+            {
+                productContent ?
+            <div className='productcontent-page-container'>
+                <div className='productcontent-header'>
+                    <div className="title-handle">
+                            {productContent?.title}
+                        </div>                        
                 </div>
-                    <div className="card-footer-view">
-                        <button className='btn-addToCart'>
-                            {
-                                cartState.some((cartitem) => cartitem._id === id)
-                                    ? <div className='cart-quantity-container'>
-                                        <span className={ `${handleCartQuantity}`}
-                                            onClick={ () => UpdateCartHandler(IncrementCart)}>
-                                            <IcRoundPlus />
-                                        </span>
-                                                {{...cartState.find((cartitem) => cartitem._id === id)}?.qty}
-                                        <span onClick={
-                                            () => UpdateCartHandler(DecrementCart)}>
-                                            <IcRoundMinus />
-                                        </span>
-                                    </div>
-                                    : <span onClick={() => { AddProductsInCartHandler(productContent) } }
-                                        className="add-cart-action">
-                                            <span className='hide'>Add to Cart</span>
-                                            <span className="material-icons-round icons-style">
-                                                add_shopping_cart
-                                            </span>
-
-                                    </span>
+                <div className='productcontent-body-container'>
+                    <img src={productContent?.url} alt="productimage"
+                        className="productcontent-img" />
+                    
+                    <div className="product-content">
+                        <div className="productcontent-body">
+                            Supplier : 
+                            <span className='text-dark'>
+                                {productContent?.author}
+                            </span> 
+                        </div>
+                        <div className="productcontent-body">
+                            Description :
+                            <span className="text-dark">
+                                {productContent?.description}</span>
+                        </div>   
+                        <div className="productcontent-body">
+                            Price :
+                            <span className="text-dark">₹{productContent?.discountedPrice}</span>
+                            <span className="text-linethrough" style={{color:"red"}}>
+                                ₹{productContent?.price}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Discount :
+                            <span className="text-dark">
+                                ₹{productContent?.discount}</span>
+                        
+                        </div>
+                        <div className="productcontent-body">
+                            Product Type : <span className="text-dark">
+                                {productContent?.productType}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Feature :<span className="text-dark">
+                                {productContent?.feature}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Category :   <span className="text-dark">
+                                {productContent?.categoryName}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Category Type : <span className="text-dark">
+                                {productContent?.categoryType}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Stock Type :
+                            <span className="text-dark">
+                                {productContent?.stockType}</span>
+                        </div>
+                        <div className="productcontent-body">
+                            Rating :{
+                                Array(productContent?.rating).fill("").map(()=>(
+                                <span class="material-icons-round" style={{color :"yellow"}}>
+                                    star_rate
+                                </span>))
                             }
-                        </button>
+                        </div>
                     </div>
                 </div>
-                {
-                !WishListState.find((cartitem) => cartitem._id === id) && <span className="material-icons-round "
-                    style={
+                <div className="productcontent-footer-view">
+                    <button className='btn-addToCart'>
                         {
-                            cursor: WishListState.find((cartitem) => cartitem._id === id) ? 'not-allowed' : 'pointer'
+                        cartState.some((cartitem) => cartitem._id === id)
+                            ? <div className='cart-quantity-container'>
+                                <span className={ `${handleCartQuantity}`}
+                                    onClick={ () => UpdateCartHandler(IncrementCart)}>
+                                    <IcRoundPlus />
+                                </span>
+                                        {{...cartState.find((cartitem) => cartitem._id === id)}?.qty}
+                                <span onClick={
+                                    () => UpdateCartHandler(DecrementCart)}>
+                                    <IcRoundMinus />
+                                </span>
+                            </div>
+                            : <span onClick={() => { AddProductsInCartHandler(productContent) } }
+                                className="add-cart-action">
+                                    <span className='hide'>Add to Cart</span>
+                                    <span className="material-icons-round icons-style">
+                                        add_shopping_cart
+                                    </span>
+                                </span>
                         }
-                    }
-                    onClick={
+                    </button>
+                    <button className='wishlist-btn' onClick={
                         () => {
                             AddProductsInWishListHandler(productContent)
                         }
-                }>
-                    favorite_border
-                </span>
+                    }>Move to Wishlist
+                        <IcRoundWishlist />
+                    </button>
+                </div>
+                    </div>
+                    :
+                    <div className='notfounfd-page'>
+                        <img src={ProductNotFound} className="wishlist-logo" alt='404'/>
+                            
+                        <Link to="/"><Button name={"Go to Home"} /></Link>
+                       
+                        <div className="title-handle">
+                        No Such Product Exists
+                    </div>
+                </div>
+                
             }
-    </div>
-  )
+
+            {productContent &&
+                <div className='explore-now'>
+                    <div className="title-handle">
+                        <Link to="/products">Explore More</Link>
+                    </div>
+                    <div className="product-main-list">
+                            
+                        {ProductState?.slice(0, 12).map((item) => (
+                            <ProductCards
+                                key={item._id}
+                                _id={item._id}
+                                title={item.title}
+                                url={item.url}
+                                author={item.author}
+                                price={item.price}
+                                discount={item.discount}
+                                discountedPrice={item.discountedPrice}
+                                rating={item.rating}
+                                productType={item.productType}
+                                feature={item.feature}
+                                stockType={item.stockType}
+                                stock={item.stock}
+                                categoryType={item.categoryType}
+                            />
+                        ))}
+                    </div>
+                </div>
+            }
+        </div>
+    )
 }
 
 export default ProductContentPage

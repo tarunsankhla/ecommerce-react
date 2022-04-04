@@ -1,23 +1,115 @@
- .card-footer > .card-footer-view > .btn-addToCart {
-	padding: 0.5em;
-	align-items: center;
-	display: flex;
-	background-color: transparent;
-	background-color: yellow;
-	width: fit-content;
-	min-width: 40%;
+ .btn-addToCart {
+    /* padding: 0.5em; */
+    align-items: center;
+    display: flex;
+    background-color: transparent;
+    background-color: yellow;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 30%;
+    border: none;
+    font-weight: 600;
+    justify-content: space-evenly;
+	cursor: pointer;
+	border-radius: 0.5em;
 }
 
- .card-footer > .card-footer-view > .btn-addToCart:hover{
+.btn-addToCart:hover{
 	padding: 0.5em;
 	align-items: center;
 	display: flex;
 	background-color: yellow;
 	width: fit-content;
 	align-items: center	;
-	/* transform: scale(1.01); */
+	border: none;
 	color:  var(--icons-color);
 }
-.card-footer > .card-footer-view > .btn-addToCart {
-    padding: 0em !important;
+ .btn-addToCart {
+    padding: 0em;
+}
+
+.productcontent-page-container{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	flex-direction: column;
+	gap: 1em;
+	padding-bottom: 5em;
+    padding-top: 2em;
+}
+
+.product-content{
+	display: flex;
+	flex-direction: column;
+	font-size: 2em;
+}
+
+.productcontent-body-container {
+	display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+	padding-bottom: 1em;
+	padding-top: 2em;
+}
+
+.productcontent-body{
+	display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+	padding: 0.5em;
+	font-size: 1em;
+}
+
+.productcontent-img{
+	object-fit: contain;
+    width: 40vw;
+}
+
+.text-dark{
+	font-weight: 600;
+	font-size: 1.2em;
+
+}
+
+.productcontent-header{
+    display: flex;
+    /* font-size: 2em; */
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 1em 1em 0;
+	align-items: center;
+}
+
+.wishlist-btn{
+	outline: 3px solid #4d887b;
+    min-width: 30%;
+    padding: 1em;
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+	border-radius: 0.5em;
+    /* font-size: 2em;*/
+	cursor: pointer;
+}
+
+.productcontent-footer-view{
+	display: flex;
+	flex-wrap: wrap;
+	width :100%;
+	padding: 1em;
+    gap: 1em;
+	justify-content: center;
+}
+/* .productcontent-footer-view *{
+	font-size: 1.3em;
+	justify-content: center;
+	border-radius: 0.5em;
+} */
+
+.explore-now{
+	padding: 3em 0 5em;
+	min-height: 50vh;
 }

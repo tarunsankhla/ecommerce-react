@@ -6,11 +6,13 @@ import IcTwotoneShoppingCartCheckout from '../../Icons/IcTwotoneShoppingCartChec
 import IcBaselineCancel from '../../Icons/IcBaselineCancel'
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 import { Alert } from '../../Alert/Alert';
+import { Link } from 'react-router-dom';
+
 function WishListsCards(props) {
     const {
         _id,
         title,
-        productImage,
+        url,
         author,
         price,
         discount,
@@ -61,8 +63,9 @@ function WishListsCards(props) {
     return (
         <>
             <div className="card cart-card">
+            <Link to={`/product/${_id}`}>
                 <img className="card-img"
-                    src={productImage}
+                    src={url}
                     alt={author}
                     loading="lazy"/>
 
@@ -76,7 +79,8 @@ function WishListsCards(props) {
                         <span className="text-linethrough">₹{discountedPrice}</span>
                     </div>
 
-                </div>
+                    </div>
+                    </Link>
                 <div className="card-footer">
                     <div className="card-footer-view">
                         <button className='btn-addToCart'

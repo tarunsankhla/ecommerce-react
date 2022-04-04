@@ -77,7 +77,7 @@ function CartPage() {
                                     key={item._id}
                                     _id={item._id}
                                     title={item.title}
-                                    productImage={item.productImage}
+                                    url={item.url}
                                     author={item.author}
                                     price={item.price}
                                     discount={item.discount}

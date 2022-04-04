@@ -26,10 +26,10 @@ function WishListPage() {
     const {WishListState,setWishListState} =useWishList();
     console.log("auth login ",login);
     console.log("login auth",login);
-    useEffect(()=>{
+    useEffect(  ()=>{
         try{
-            (() => {
-                let res = axios.get("/api/user/wishlist",
+            ( async() => {
+                let res = await axios.get("/api/user/wishlist",
                     {
                         headers: {
                             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
@@ -65,7 +65,7 @@ function WishListPage() {
                                         key={item._id}
                                         _id={item._id}
                                         title={item.title}  
-                                        productImage={item.url}   
+                                        url={item.url}   
                                         author={item.author} 
                                         price={item.price}
                                         discount={item.discount}  
@@ -79,7 +79,7 @@ function WishListPage() {
                                     key={item._id}
                                     _id={item._id}
                                     title={item.title}  
-                                    productImage={item.productImage}   
+                                    url={item.url}   
                                     author={item.author} 
                                     price={item.price}
                                     discount={item.discount}  
