@@ -36,8 +36,9 @@ export function LandingPage() {
                     </Link>
                 </div>
             </div>
+            <SlideShow />
             <ArrivalsBanner />
-            <SlideShow/>
+           
         </>
     )
 }

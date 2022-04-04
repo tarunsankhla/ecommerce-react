@@ -33,7 +33,8 @@ export function SlideShow() {
     }
     return (
         <div className="slide-show-contatiner">
-            <div className="title-handle">Category : </div>
+           
+            <div className="title-handle">Choose your Category</div>
             <ul className="underlist-img-slider">
                 <div onClick={()=>redirectToCategoryHandler("Football")} >
                     <div className="listImgSlide">

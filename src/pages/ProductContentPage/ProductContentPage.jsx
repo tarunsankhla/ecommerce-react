@@ -1,41 +1,47 @@
 import axios from 'axios';
-import React, {useState} from 'react';
-import {useCart} from '../../../../context/CartContext';
-import {useWishList} from '../../../../context/WishListContext';
-import Palette from "react-palette";
-import {arrivalBanner5} from "../../../../assets/images/Products/Products";
-import "./ProductsCards.css";
-import {IcTwotoneShoppingCart} from "../../Icons/IcTwotoneAddShoppingCart";
-import IcRoundPlus from '../../Icons/IcRoundPlus';
-import IcRoundMinus from '../../Icons/IcRoundMinus';
-import {memo} from "react";
-import {UpdateCartService} from '../../../../service/CartService';
-import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
-import { Alert } from '../../Alert/Alert';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { Alert } from '../../components/UI/Alert/Alert';
+import { useCart } from '../../context/CartContext';
+import { useWishList } from '../../context/WishListContext';
+import { UpdateCartService } from '../../service/CartService';
+import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
+import IcRoundPlus from '../../components/UI/Icons/IcRoundPlus';
+import IcRoundMinus from '../../components/UI/Icons/IcRoundMinus';
+import IcTwotoneAddShoppingCart from '../../components/UI/Icons/IcTwotoneAddShoppingCart';
+import "./ProductContentPage.css";
 
-// rating={item.rating}
-// productType={item.productType}
-// feature={item.feature}
-// stockType={item.stockType}
-// stock={item.stock}
-// categoryType={item.categoryType}
-function ProductCards(props) {
-    const {
-        _id,
-        title,
-        productImage,
-        author,
-        price,
-        discount,
-        discountedPrice,
-        rating,
-        productType,
-        feature,
-        stockType,
-        stock,
-        categoryType
-    } = props;
+function ProductContentPage() {
+    const { id } = useParams();
+    const [productContent, setProductContent] = useState();
+    console.log(id);
+    useEffect(() => { 
+        try {
+			(async () => {
+				var res = await axios.get("/api/products");
+                console.log(res);
+                setProductContent([...res.data.products].find((product) => product._id === id));
+                const {
+                    _id,
+                    title,
+                    productImage,
+                    author,
+                    price,
+                    discount,
+                    discountedPrice
+                } =[...res.data.products].find((product) => product._id === id)
+                console.log("product set", [...res.data.products].find((product) => product._id === id));
+				// console.log(res.data.products);
+				// setProductList(res.data.products);
+				// setDefaultProductList(res.data.products);
+				// products=res.data.products;
+			})();
+		} catch (error) {
+			console.log("Product list page error", error);
+			Alert("error", "Some error occured!! refresh page and try again");
+		}
+    }, [])
+    
     const {cartState, setCartState} = useCart();
     const {WishListState, setWishListState} = useWishList();
     const [handleCartQuantity, setHandleCartQuantity] = useState();
@@ -43,6 +49,7 @@ function ProductCards(props) {
     const IncrementCart = "increment";
     const DecrementCart = "decrement";
     console.log(cartState);
+    console.log(productContent);
     const AddProductsInCartHandler = async (item) => {
         try {
             console.log(item);
@@ -90,15 +97,15 @@ function ProductCards(props) {
     const UpdateCartHandler = async (stateQuantity) => {
         if (holder) {
             holder =false
-            console.log(cartState.find((cartitem) => cartitem._id === _id));
-            let cartItem = cartState.find((cartitem) => cartitem._id === _id);
+            console.log(cartState.find((cartitem) => cartitem._id === id));
+            let cartItem = cartState.find((cartitem) => cartitem._id === id);
             if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
-                setCartState(await UpdateCartService(stateQuantity, _id));
+                setCartState(await UpdateCartService(stateQuantity, id));
             }
 
             if (stateQuantity === DecrementCart && (cartItem?.qty >= 2)) {
 
-                setCartState(await UpdateCartService(stateQuantity, _id));
+                setCartState(await UpdateCartService(stateQuantity, id));
             }
             if (stateQuantity === IncrementCart && (cartItem?.qty === 4)) {
                 Alert("info", "Cannot add more then 4 quantity in Cart");
@@ -109,43 +116,38 @@ function ProductCards(props) {
             holder =true
         }
     }
-    return (
-        <>
-            <div className="card cart-card card-bg">
-                <Link to={`/product/${_id}`}>
-                    <img className="card-img"
-                        src={productImage}
-                        alt={author}
-                        loading="lazy"/>
+  return (
+      <div>
+          
+          <div className="card-footer">
+              <img src={productContent?.url} />
+              <div className="card-content">
+                    <div className="card-body">
+                        {productContent?.title} </div>
+                    <div className="card-title">
+                        <h2>₹{productContent?.price}</h2>
+                        <span className="text-grey">
+                            {productContent?.discount}</span>
+                        <span className="text-linethrough">₹{productContent?.discountedPrice}</span>
+                    </div>
 
-                    <div className="card-content card-bg">
-                        <div className="card-body elipsis">
-                            {title} </div>
-                        <div className="card-content-container">
-                            <h2>₹{price}</h2>
-                            <span className="text-grey">
-                                {discount}</span>
-                            <span className="text-linethrough discount-price">₹{discountedPrice}</span>
-                        </div>
-                        </div>
-                </Link>
-                <div className="card-footer">
+                </div>
                     <div className="card-footer-view">
                         <button className='btn-addToCart'>
                             {
-                                cartState.some((cartitem) => cartitem._id === _id)
+                                cartState.some((cartitem) => cartitem._id === id)
                                     ? <div className='cart-quantity-container'>
                                         <span className={ `${handleCartQuantity}`}
                                             onClick={ () => UpdateCartHandler(IncrementCart)}>
                                             <IcRoundPlus />
                                         </span>
-                                                {{...cartState.find((cartitem) => cartitem._id === _id)}?.qty}
+                                                {{...cartState.find((cartitem) => cartitem._id === id)}?.qty}
                                         <span onClick={
                                             () => UpdateCartHandler(DecrementCart)}>
                                             <IcRoundMinus />
                                         </span>
                                     </div>
-                                    : <span onClick={() => { AddProductsInCartHandler(props) } }
+                                    : <span onClick={() => { AddProductsInCartHandler(productContent) } }
                                         className="add-cart-action">
                                             <span className='hide'>Add to Cart</span>
                                             <span className="material-icons-round icons-style">
@@ -158,35 +160,22 @@ function ProductCards(props) {
                     </div>
                 </div>
                 {
-                !WishListState.find((cartitem) => cartitem._id === _id) && <span className="material-icons-round badge topright-badge badge-border"
+                !WishListState.find((cartitem) => cartitem._id === id) && <span className="material-icons-round "
                     style={
                         {
-                            cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'
+                            cursor: WishListState.find((cartitem) => cartitem._id === id) ? 'not-allowed' : 'pointer'
                         }
                     }
                     onClick={
                         () => {
-                            AddProductsInWishListHandler(props)
+                            AddProductsInWishListHandler(productContent)
                         }
                 }>
                     favorite_border
                 </span>
-            } </div>
-        </>
-    )
+            }
+    </div>
+  )
 }
 
-export default memo(ProductCards);
-// {
-// "product":{
-// "_id": "7980eb16-d3c7-4121-9835-06e1c5669717",
-// "title": "Men Premium Shoe",
-// "author": "Sneaker",
-// "price": "5000",
-// "categoryName": "non-fiction",
-// "url": "/static/media/product1.9ed97c94.jpg",
-// "discount": "-30% off",
-// "discountedPrice": 3000,
-// "description": "",
-// "id": "1"}
-//         }
+export default ProductContentPage

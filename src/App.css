@@ -100,3 +100,8 @@ a {
   font-size: 3em;
   font-family: 'Courier New', Courier, monospace;
 }
+
+
+.pointer {
+	cursor: pointer;
+}

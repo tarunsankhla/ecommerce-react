@@ -1,0 +1,23 @@
+ .card-footer > .card-footer-view > .btn-addToCart {
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: transparent;
+	background-color: yellow;
+	width: fit-content;
+	min-width: 40%;
+}
+
+ .card-footer > .card-footer-view > .btn-addToCart:hover{
+	padding: 0.5em;
+	align-items: center;
+	display: flex;
+	background-color: yellow;
+	width: fit-content;
+	align-items: center	;
+	/* transform: scale(1.01); */
+	color:  var(--icons-color);
+}
+.card-footer > .card-footer-view > .btn-addToCart {
+    padding: 0em !important;
+}

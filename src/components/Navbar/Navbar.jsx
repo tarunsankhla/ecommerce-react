@@ -28,8 +28,7 @@ export function Navbar() {
     }
     return (
         <>
-            <marquee>
-                we have special discount on sneakers</marquee>
+            
             <div className="navbar">
                 <NavLink className="project-title" to="/">
                     <img src={LogoImage}
