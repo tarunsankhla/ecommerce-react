@@ -13,13 +13,8 @@ import {UpdateCartService} from '../../../../service/CartService';
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
 import { Alert } from '../../Alert/Alert';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../../context/AuthContext';
 
-// rating={item.rating}
-// productType={item.productType}
-// feature={item.feature}
-// stockType={item.stockType}
-// stock={item.stock}
-// categoryType={item.categoryType}
 function ProductCards(props) {
     const {
         _id,
@@ -39,26 +34,37 @@ function ProductCards(props) {
     const {cartState, setCartState} = useCart();
     const {WishListState, setWishListState} = useWishList();
     const [handleCartQuantity, setHandleCartQuantity] = useState();
+    const {login, setlogin} = useAuth()
     let holder = true;
     const IncrementCart = "increment";
     const DecrementCart = "decrement";
     console.log(cartState);
+    
     const AddProductsInCartHandler = async (item) => {
         try {
             console.log(item);
-            const res = await axios.post("/api/user/cart", {
-                product: item
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+            if (login) {
+                if (!cartState.some((cartitem) => cartitem._id === _id)) {
+                    if (holder) {
+                        holder = false;
+                        const res = await axios.post("/api/user/cart", {
+                            product: item
+                        }, {
+                            headers: {
+                                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                            }
+                        })
+                        console.log(res);
+                        if (res.status === 201) {
+                            setCartState(res.data.cart);
+                            Alert("success", "Product Added in Cart");
+                        }
+                        holder = true;
+                    }
                 }
-            })
-            console.log(res);
-            if (res.status === 201) {
-                setCartState(res.data.cart);
-                Alert("success", "Product Added in Cart");
+            } else {
+                Alert("error", "You need to Login!!");
             }
-         
         } catch (err) {
             console.log("error ", err.message);
             Alert("error", "Failed to add product in Cart!! try again.");
@@ -68,18 +74,42 @@ function ProductCards(props) {
     const AddProductsInWishListHandler = async (item) => {
         try {
             console.log(item);
-            const res = await axios.post("/api/user/wishlist", {
-                product: item
-            }, {
-                headers: {
-                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+            if (login) {
+                if (!WishListState.some((cartitem) => cartitem._id === _id)) {
+                    const res = await axios.post("/api/user/wishlist", {
+                        product: item
+                    }, {
+                        headers: {
+                            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                        }
+                    })
+                    console.log(res);
+                    if (res.status === 201) {
+                        setWishListState(res.data.wishlist);
+                        Alert("success", "Product added in WishList.");
+                    }
                 }
-            })
-                console.log(res);
-                if (res.status === 201) {
-                    setWishListState(res.data.wishlist);
-                    Alert("success", "Product added in WishList.");
+                else {
+                    try {
+                        console.log(_id);
+                        const res = await axios.delete(`/api/user/wishlist/${_id}`, {
+                            headers: {
+                                authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                            }
+                        })
+                        console.log(res);
+                        if (res.status === 200) {
+                            setWishListState(res.data.wishlist);
+                            Alert("success", "Removed from WishList.");
+                        }
+                    } catch (err) {
+                        console.log("error ", err);
+                        Alert("error", "Something went wrong!! try again.");
+                    }
                 }
+            } else {
+                Alert("error", "You need to Login!!");
+            }
         } catch (err) {
             console.log("error ", err)
             Alert("error", "Failed to add product, try again.");
@@ -158,20 +188,27 @@ function ProductCards(props) {
                     </div>
                 </div>
                 {
-                !WishListState.find((cartitem) => cartitem._id === _id) && <span className="material-icons-round badge topright-badge badge-border"
-                    style={
-                        {
-                            cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'
-                        }
-                    }
-                    onClick={
-                        () => {
-                            AddProductsInWishListHandler(props)
-                        }
-                }>
-                    favorite_border
-                </span>
-            } </div>
+                    !WishListState.some((cartitem) => cartitem._id === _id)
+                    ? <span className="material-icons-round badge topright-badge badge-border"
+                            style={{
+                                    cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'
+                                }}
+                            onClick={() => {
+                                    AddProductsInWishListHandler(props)
+                                }}>
+                            favorite_border
+                        </span>
+                        :<span className="material-icons-round badge topright-badge badge-border"
+                            style={{
+                                    backgroundColor:"gray"
+                                }}
+                            onClick={() => {
+                                    AddProductsInWishListHandler(props)
+                                }}>
+                            favorite_border
+                        </span>
+                }
+            </div>
         </>
     )
 }

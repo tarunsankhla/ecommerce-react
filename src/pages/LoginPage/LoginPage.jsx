@@ -28,7 +28,7 @@ function LoginPage() {
                 var user = res.data.foundUser;
                 var userId = res.data.foundUser._id;
                 localStorage.setItem(VAR_USER_ID, userId);
-                userDispatch({ email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName })
+                userDispatch({ email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName });
                 console.log(user, userId, token);
                 setlogin(true);
                 Alert("success", "SuccessFully Logged In!!");

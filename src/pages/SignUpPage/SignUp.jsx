@@ -33,7 +33,7 @@ function SignUpPage() {
         firstName :"",
         lastName:"",
     });
-    const {login ,setlogin } = useAuth();
+    const {login ,setlogin, userDispatch } = useAuth();
 
 
     function HasAlphabets(letter) {
@@ -87,7 +87,8 @@ function SignUpPage() {
                 localStorage.setItem(VAR_ENCODE_TOKEN,token)
                 var user = res?.data?.createdUser;
                 var userId =res?.data?.createdUser._id;
-                localStorage.setItem(VAR_USER_ID,userId);
+              localStorage.setItem(VAR_USER_ID, userId);
+              userDispatch({ email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName })
                 console.log(user,userId,token);
                 setlogin(true);
              

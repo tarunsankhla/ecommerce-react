@@ -22,10 +22,10 @@ function ProductContentPage() {
     const [productContent, setProductContent] = useState(false);
     const {ProductState ,setProductState} =useProduct();
     console.log(id);
-    useEffect(() => { 
+    useEffect(() => {
         try {
-			(async () => {
-				var res = await axios.get("/api/products");
+            (async () => {
+                var res = await axios.get("/api/products");
                 console.log(res);
                 setProductContent([...res.data.products].find((product) => product._id === id));
                 const {
@@ -36,18 +36,18 @@ function ProductContentPage() {
                     price,
                     discount,
                     discountedPrice
-                } =[...res.data.products].find((product) => product._id === id)
+                } = [...res.data.products].find((product) => product._id === id)
                 console.log("product set", [...res.data.products].find((product) => product._id === id));
-				// console.log(res.data.products);
-				// setProductList(res.data.products);
-				// setDefaultProductList(res.data.products);
-				// products=res.data.products;
-			})();
-		} catch (error) {
-			console.log("Product list page error", error);
-			Alert("error", "Some error occured!! refresh page and try again");
-		}
-    }, [])
+                // console.log(res.data.products);
+                // setProductList(res.data.products);
+                // setDefaultProductList(res.data.products);
+                // products=res.data.products;
+            })();
+        } catch (error) {
+            console.log("Product list page error", error);
+            Alert("error", "Some error occured!! refresh page and try again");
+        }
+    }, id);
     
     const {cartState, setCartState} = useCart();
     const {WishListState, setWishListState} = useWishList();
@@ -250,7 +250,10 @@ function ProductContentPage() {
                     <div className="product-main-list">
                             
                         {ProductState?.slice(0, 12).map((item) => (
-                            <ProductCards
+                            <p  onClick={() => { 
+                                document.body.scrollTop =0;
+                                document.documentElement.scrollTop =0;
+                              }}><ProductCards
                                 key={item._id}
                                 _id={item._id}
                                 title={item.title}
@@ -265,7 +268,9 @@ function ProductContentPage() {
                                 stockType={item.stockType}
                                 stock={item.stock}
                                 categoryType={item.categoryType}
-                            />
+                                />
+                            
+                            </p>
                         ))}
                     </div>
                 </div>

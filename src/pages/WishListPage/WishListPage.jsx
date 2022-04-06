@@ -58,19 +58,6 @@ function WishListPage() {
                 <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
                 <main className="main">
                     <div className="wishlist-main-list">
-                        {/* {WishListProductList?.length ===0 ? 
-                                "WishList is empty": 
-                                WishListProductList?.map((item)=>(
-                                    <WishListsCards 
-                                        key={item._id}
-                                        _id={item._id}
-                                        title={item.title}  
-                                        url={item.url}   
-                                        author={item.author} 
-                                        price={item.price}
-                                        discount={item.discount}  
-                                        discountedPrice={item.discountedPrice} />
-                        ))} */}
                         {
                             WishListState?.length ===0 ?
                             <img src={wishListLogoSrc} className="wishlist-logo" alt='wishlist-logo' /> :
