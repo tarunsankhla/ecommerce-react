@@ -9,11 +9,14 @@ import IcRoundPlus from '../../Icons/IcRoundPlus';
 import "./CartCards.css"
 import IcRoundWishlist from '../../Icons/IcRoundWishlist';
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
+import { Alert } from '../../Alert/Alert';
+import { Link } from 'react-router-dom';
+
 function CartCards(props) {
     const {
         _id,
         title,
-        productImage,
+        url,
         author,
         price,
         discount,
@@ -27,24 +30,22 @@ function CartCards(props) {
 
     const RemoveItemsFromCartHandler = async (id) => {
         try {
-            console.log(id);
             const res = await axios.delete(`/api/user/cart/${id}`, {
                 headers: {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
-            console.log(res);
             if (res.status === 200) {
                 setCartState(res.data.cart);
+                Alert("success", "Successfully removed items from cart.");
             }
         } catch (err) {
-            console.log("error ", err.message);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
 
     const addToWishlistHandler = async (item) => {
         try {
-            console.log(item);
             const res = await axios.post("/api/user/wishlist", {
                 "product": item
             }, {
@@ -55,10 +56,11 @@ function CartCards(props) {
 
             if (res.status === 201) {
                 setWishListState(res.data.wishlist);
+                Alert("success", "Successfully added product in WishList.");
             }
           
         } catch (err) {
-            console.log("error ", err.message);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
 
@@ -68,17 +70,22 @@ function CartCards(props) {
         if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
             setCartState(await UpdateCartService(stateQuantity, _id));
         }
-
         if (stateQuantity === DecrementCart && (cartItem?.qty >= 2)) {
-
             setCartState(await UpdateCartService(stateQuantity, _id));
+        }
+        if (stateQuantity === IncrementCart && (cartItem?.qty === 4)) {
+            Alert("info", "Cannot add more then 4 quantity in Cart");
+        }
+        if (stateQuantity === DecrementCart && (cartItem?.qty === 1)) {
+            Alert("info", "Max one Product");
         }
     }
     return (
         <>
             <div className="card cart-card cart-card-horizontal cart-banner-stretch">
+                
                 <img className="card-img"
-                    src={productImage}
+                    src={url}
                     alt={author}
                     loading="lazy"/>
                 <div className="cart-card-horizontal-layout">
@@ -105,19 +112,14 @@ function CartCards(props) {
                         </div>
                     </div>
                     <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-                        <button onClick={
-                            () => {
+                        <button onClick={() => {
                                 RemoveItemsFromCartHandler(_id)
-                            }
-                        }>Remove from Cart
-                            <IcTwotoneShoppingCartCheckout/> {/* <span className="material-icons-round">
-                                                shopping_cart
-                                            </span> */} </button>
-                        <button onClick={
-                            () => {
+                            }}>Remove from Cart
+                            <IcTwotoneShoppingCartCheckout />
+                        </button>
+                        <button onClick={() => {
                                 addToWishlistHandler(props)
-                            }
-                        }>Move to Wishlist
+                            }}>Move to Wishlist
                             <IcRoundWishlist/>
                         </button>
                     </div>

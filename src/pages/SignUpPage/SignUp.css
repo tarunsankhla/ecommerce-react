@@ -20,7 +20,6 @@
     background-color: transparent;
     width: 50vw;
     height: fit-content;
-    /* box-shadow: 0 0 5px 0 #e0e5e5; */
     border-radius: var(--border-radius);
     font-size: 1.5rem;
     padding: 2rem 0;

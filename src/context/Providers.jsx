@@ -2,6 +2,7 @@ import {createContext} from "react";
 import {BrowserRouter} from "react-router-dom";
 import {AuthProvider} from "./AuthContext";
 import {CartProvider} from "./CartContext";
+import {ProductProvider} from "./ProductContext";
 import {WishListProvider} from "./WishListContext";
 
 const Provider = ({children}) => {
@@ -9,11 +10,17 @@ const Provider = ({children}) => {
         <BrowserRouter>
             <AuthProvider>
                 <CartProvider>
-                    <WishListProvider> {children} </WishListProvider>
+                    <WishListProvider>
+                        <ProductProvider>
+                            {children}
+                        </ProductProvider>
+                    </WishListProvider>
                 </CartProvider>
             </AuthProvider>
         </BrowserRouter>
     )
 }
 
-export { Provider };
+export {
+    Provider
+};

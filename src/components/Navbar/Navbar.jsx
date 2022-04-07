@@ -8,28 +8,27 @@ import { useCart } from "../../context/CartContext";
 import { useWishList } from "../../context/WishListContext";
 import { IcTwotoneShoppingCart } from "../../components/UI/Icons/IcTwotoneShoppingCart";
 import { IcRoundWishlist } from "../../components/UI/Icons/IcRoundWishlist";
-import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from "../../utils/Routes";
+import { ROUTE_PATH_ProfilePage, VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from "../../utils/Routes";
+import { useNavigate} from "react-router-dom";
 
 
 export function Navbar() {
     const { login, setlogin, userState } = useAuth();
     const { cartState: cartItems, setCartState } = useCart();
     const { WishListState, setWishListState } = useWishList();
-
-    // console.log("Auther Login", login, setlogin, userState);
-    // console.log("card context", cartItems, setCartState);
-    // console.log("wishlist context", WishListState, setWishListState);
+    const navigate = useNavigate();
 
     const OnSignOut = () => {
         setlogin(false);
         localStorage.removeItem(VAR_ENCODE_TOKEN);
         localStorage.removeItem(VAR_USER_ID);
         localStorage.getItem(VAR_USER_DETAILS);
+        setCartState([]);
+        setWishListState([]);
     }
     return (
         <>
-            <marquee>
-                we have special discount on sneakers</marquee>
+            
             <div className="navbar">
                 <NavLink className="project-title" to="/">
                     <img src={LogoImage}
@@ -48,9 +47,6 @@ export function Navbar() {
 
                     <Link to="/wishlist">
                         <NavLink to="/wishlist" className="badge-container">
-                            {/* <span className="material-icons-round drawer-icons">
-                                favorite_border
-                            </span> */}
                             <IcRoundWishlist />
                             {
                                 login && <div className="badge  badge-warning topright-badge">
@@ -60,9 +56,6 @@ export function Navbar() {
                             } </NavLink>
                     </Link>
                     <NavLink className="badge-container" to="/cart">
-                        {/* <span className="material-icons-round drawer-icons">
-                            shopping_cart_checkout
-                        </span> */}
                         <IcTwotoneShoppingCart color='red' />
                         {
                             login && <div className="badge  badge-warning topright-badge">
@@ -79,7 +72,7 @@ export function Navbar() {
                             <NavLink className="btn btn-login" to="/signup">SignUp</NavLink>
                         </>
                     } </div>
-                    <div> {
+                    <div onClick={() => { navigate(ROUTE_PATH_ProfilePage)}} style={{cursor:"pointer"}}> {
                         login && <div className="profile-initials">
                             {
                                 userState?.firstName[0]?.toString().toUpperCase() || ""

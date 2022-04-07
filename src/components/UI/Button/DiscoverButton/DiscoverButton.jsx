@@ -5,7 +5,7 @@ import "./DiscoverButton.css";
 function DiscoverButton() {
     return (
         <div className="btn-discover">
-            <div className="discover-btn-txt">Discover</div>
+            <div className="discover-btn-txt"> Explore </div>
             <IcRoundDoubleArrow/>
         </div>
     );

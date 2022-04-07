@@ -15,6 +15,7 @@ import axios from 'axios';
 import CartCards from '../../components/UI/Card/CartCards/CartCards';
 import { useCart } from '../../context/CartContext';
 import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 
 function CartPage() {
@@ -32,22 +33,13 @@ function CartPage() {
     useEffect(()=>{
         try{
             (async () => {
-                // console.log("res");
-                // const header ={
-                //     "authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIyN2FmYzkzOC03YTJlLTRmMTAtODcyOS03YzM1MTJmZjU2YTciLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20iLCJpYXQiOjE2NDc2ODI4MjJ9.N7gxKttjoGKg1a5FYjrldNDyF7PCMrtgQxy20LlTfTQ"
-                // }
                 var res = await axios.get("/api/user/cart",{ headers:{
                     authorization:localStorage.getItem(VAR_ENCODE_TOKEN)}})
-                
-                console.log(res);
-                setCartProductList(res.data.cart);
-                               
-                console.log(res);
-                // console.log(res.data.products);
-               
+
+                setCartProductList(res.data.cart);               
             })();
         }catch(error){
-            console.log("Product list page error",error);
+            Alert("error", "Something went wrong!! try again.");
         }
     }, []);
     
@@ -62,50 +54,44 @@ function CartPage() {
     <div className="product-page-container">
           {!login
                 ?
-                // <iframe src="https://embed.lottiefiles.com/animation/94113" loading='lazy' className='animation-login'></iframe> : 
                     <img src={cartLogoSrc} className="cart-logo" alt='cartlog'/>
                 :<>
                     <main className="main">
                         <h3>Total Items in Cart: {cartState.length}</h3>
                         <div className="product-main-list">
-                        {cartState.length ===0 ? 
-                            <img src={cartLogoSrc} className="cart-logo" alt='cart-logo' />: 
-                            cartState?.map((item)=>(
-                                <CartCards 
-                                    key={item._id}
-                                    _id={item._id}
-                                    title={item.title}
-                                    productImage={item.productImage}
-                                    author={item.author}
-                                    price={item.price}
-                                    discount={item.discount}
-                                    discountedPrice={item.discountedPrice}
-                                    quantity={item.qty} />
-                    ))}
-                        
+                            {cartState.length ===0 ? 
+                                <img src={cartLogoSrc} className="cart-logo" alt='cart-logo' />: 
+                                cartState?.map((item)=>(
+                                    <CartCards 
+                                        key={item._id}
+                                        _id={item._id}
+                                        title={item.title}
+                                        url={item.url}
+                                        author={item.author}
+                                        price={item.price}
+                                        discount={item.discount}
+                                        discountedPrice={item.discountedPrice}
+                                        quantity={item.qty} />
+                            ))}
                         </div>
                     </main>
                     <div className="cart-aside">
                         <div className="cart-aside-header">
                             <h3>Price Details</h3>
                         </div>
-                      <div className="cart-aside-container">
-                          {AllProductInCart.length == 0 ?
-                            <div className="cart-aside-list">
-                                <span>(No items)</span>
-                                <span>$0 </span>
-                          </div>
-                              : AllProductInCart?.map((cartItems) => (
+                        <div className="cart-aside-container">
+                            {AllProductInCart.length == 0 ?
                                 <div className="cart-aside-list">
-                                      <span>{ cartItems.name}</span>
-                                <span>$ {cartItems.price} </span>
-                          </div>
-                              ))
-                          }
-                            {/* <div className="cart-aside-list">
-                                <span>Discount</span>
-                                <span>-$1999</span>
-                            </div> */}
+                                    <span>(No items)</span>
+                                    <span>$0 </span>
+                                </div>
+                                : AllProductInCart?.map((cartItems) => (
+                                    <div className="cart-aside-list">
+                                        <span>{ cartItems.name}</span>
+                                    <span>$ {cartItems.price} </span>
+                                </div>
+                                ))
+                            }
                             <div className="cart-aside-list">
                                 <span>Delivery Charges</span>
                                 <span>$49</span>
@@ -117,8 +103,7 @@ function CartPage() {
                         </div>
                     <div className="cart-aside-footer">
                         <div className="cart-aside-list">
-                            <span>You will save ₹1999 on this order</span>
-                            
+                            <span>You will save ₹1999 on this order</span>      
                         </div>
                         <button>Place Order</button>
                     </div>

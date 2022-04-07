@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate as navigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 const SignUpDetails = (state,action) =>{
     console.log(state,action);
@@ -32,7 +33,7 @@ function SignUpPage() {
         firstName :"",
         lastName:"",
     });
-    const {login ,setlogin } = useAuth();
+    const {login ,setlogin, userDispatch } = useAuth();
 
 
     function HasAlphabets(letter) {
@@ -77,46 +78,45 @@ function SignUpPage() {
                 "firstName":state.firstName,
                 "lastName":state.lastName
             };
-            console.log(object)
             var res = await axios.post("/api/auth/signup",object);
-            console.log(res);   
             if(res.status === 201)
             {
                 var token = res?.data?.encodedToken;
                 localStorage.setItem(VAR_ENCODE_TOKEN,token)
                 var user = res?.data?.createdUser;
                 var userId =res?.data?.createdUser._id;
-                localStorage.setItem(VAR_USER_ID,userId);
-                console.log(user,userId,token);
+                localStorage.setItem(VAR_USER_ID, userId);
+                userDispatch({ email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName })
                 setlogin(true);
-                // navigate("/");
-                // History.push("/products");   
+                Alert("success", "SuccessFully Logged In!!");
+                navigate("/");  
             }
-            if(res.status === 422)
-            {
-                console.log("Use exist")
-            }
+            
         }
         catch(error)
         {
-            console.log("signup ",error)
+          console.log(error.message);
+          if(error.message.slice(error.message.length-3,error.message.length) === "422")
+            {
+                Alert("error", "Something suspicious!! The User Already Exist, try logging in");
+            }else{
+                Alert("error", "Something went wrong!! try again.");
+          }
         }
     }
   return (
     <>
     <div className="signup-body-container">
-        <img src={signUpAnimation} className="signupImage"/>
+        <img src={signUpAnimation} className="signupImage" alt='signupImg'/>
         <div className="signup-container">
             <div className="title-header">
             <p>Create your profile and get first <br/>access to the very best of products, inspiration and community.
             </p>
             </div>
             <div className="signup-credential-container">
-                {/* <label>Email Address</label> */}
                 <input type="email" placeholder="Email Address - xyz@gmail.com" onChange={(e)=>dispatch({email : e.target.value})} />
             </div>
             <div className="signup-credential-container">
-                {/* <label>Password</label> */}
                 <input type="password" placeholder="Password" name="" 
                 id=""  style={{ borderColor: passwordCheckError, outlineColor: passwordCheckError }}
                 onChange={(e) => {
@@ -134,7 +134,6 @@ function SignUpPage() {
                 </p>
             </div>
             <div className="signup-credential-container">
-                {/* <label>Confirm Password</label> */}
                 <input type="password" placeholder="Confirm Password" name="" 
                 id="" style={{ borderColor: passwordCheckError, outlineColor: passwordCheckError }}
                 onChange={(e) => {
@@ -145,11 +144,9 @@ function SignUpPage() {
      
             </div>
             <div className="signup-credential-container">
-                {/* <label>First Name</label> */}
                 <input type="email" placeholder="First Name" onChange={(e)=>dispatch({firstName : e.target.value})}/>
             </div>
             <div className="signup-credential-container">
-                {/* <label>Last Name</label> */}
                 <input type="email" placeholder="Last Name" onChange={(e)=>dispatch({lastName : e.target.value})} />
             </div>
             <div className="signup-remember-container">

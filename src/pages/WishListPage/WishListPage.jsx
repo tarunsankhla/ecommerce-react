@@ -17,6 +17,7 @@ import axios from 'axios';
 import WishListsCards from '../../components/UI/Card/WishListCards/WishListsCards';
 import { useWishList } from '../../context/WishListContext';
 import { VAR_ENCODE_TOKEN } from '../../utils/Routes';
+import { Alert } from '../../components/UI/Alert/Alert';
 
 
 function WishListPage() {
@@ -25,69 +26,51 @@ function WishListPage() {
     const {WishListState,setWishListState} =useWishList();
     console.log("auth login ",login);
     console.log("login auth",login);
-    useEffect(()=>{
+    useEffect(  ()=>{
         try{
-            (() => {
-                let res = axios.get("/api/user/wishlist",
+            ( async() => {
+                let res = await axios.get("/api/user/wishlist",
                     {
                         headers: {
                             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                         }
                     });
-                
-                    console.log(res);
                     setWishListProductList(res.data.wishList);
-             
-                // console.log(res.data.products);
-               
             })();
         }catch(error){
-            console.log("Product list page error",error);
+            Alert("error", "Something went wrong!! try again.");
         }
     },[]);
     console.log("wisj;list",WishListProductList);
     return (
         <div className="wishlist-page-container">
-        {   !login ?
-            // <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
-            <img src={wishListLogoSrc} className="wishlist-logo" />
-            :
-            <> 
-                <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
-                <main className="main">
-                    <div className="wishlist-main-list">
-                        {/* {WishListProductList?.length ===0 ? 
-                                "WishList is empty": 
-                                WishListProductList?.map((item)=>(
+            {
+                !login ? 
+                    <img src={wishListLogoSrc} className="wishlist-logo" alt='whistlist-logo'/>
+                :
+                <> 
+                    <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
+                    <main className="main">
+                        <div className="wishlist-main-list">
+                            {
+                                WishListState?.length ===0 ?
+                                <img src={wishListLogoSrc} className="wishlist-logo" alt='wishlist-logo' /> :
+                                WishListState.map((item)=>(
                                     <WishListsCards 
                                         key={item._id}
                                         _id={item._id}
                                         title={item.title}  
-                                        productImage={item.url}   
+                                        url={item.url}   
                                         author={item.author} 
                                         price={item.price}
                                         discount={item.discount}  
                                         discountedPrice={item.discountedPrice} />
-                        ))} */}
-                        {
-                            WishListState?.length ===0 ?
-                            <img src={wishListLogoSrc} className="wishlist-logo" /> :
-                            WishListState.map((item)=>(
-                                <WishListsCards 
-                                    key={item._id}
-                                    _id={item._id}
-                                    title={item.title}  
-                                    productImage={item.productImage}   
-                                    author={item.author} 
-                                    price={item.price}
-                                    discount={item.discount}  
-                                    discountedPrice={item.discountedPrice} />
-                    ))
-                        }
-                    </div>
-                </main> 
-            </>
-        }
+                        ))
+                            }
+                        </div>
+                    </main> 
+                </>
+            }
         </div>
     )
 }

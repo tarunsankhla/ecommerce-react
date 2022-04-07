@@ -16,9 +16,8 @@ import {IcRoundDoubleArrow} from "./../../components/UI/Icons/IcRoundDoubleArrow
 import "./LandingPage.css"
 import {Link, NavLink} from "react-router-dom";
 import DiscoverButton from "../../components/UI/Button/DiscoverButton/DiscoverButton";
-// import { NavLink } from "react-router-dom";
+import ArrivalsBanner from "./ArrivalsBanner/ArrivalsBanner";
 export function LandingPage() {
-
 
     return (
         <>
@@ -35,8 +34,9 @@ export function LandingPage() {
                     </Link>
                 </div>
             </div>
-            
-            <SlideShow/>
+            <SlideShow />
+            <ArrivalsBanner />
+           
         </>
     )
 }

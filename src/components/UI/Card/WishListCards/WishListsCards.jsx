@@ -5,18 +5,22 @@ import {useWishList} from '../../../../context/WishListContext';
 import IcTwotoneShoppingCartCheckout from '../../Icons/IcTwotoneShoppingCartCheckout';
 import IcBaselineCancel from '../../Icons/IcBaselineCancel'
 import { VAR_ENCODE_TOKEN } from '../../../../utils/Routes';
+import { Alert } from '../../Alert/Alert';
+import { Link } from 'react-router-dom';
+
 function WishListsCards(props) {
     const {
         _id,
         title,
-        productImage,
+        url,
         author,
         price,
         discount,
         discountedPrice
     } = props;
     const {WishListState, setWishListState} = useWishList();
-    const {cartState, setCartState} = useCart();
+    const { cartState, setCartState } = useCart();
+    
     console.log(props);
     const RemoveItemsFromWishListHandler = async (id) => {
         try {
@@ -26,12 +30,12 @@ function WishListsCards(props) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             })
-            console.log(res);
             if (res.status === 200) {
                 setWishListState(res.data.wishlist);
+                Alert("success", "Removed from WishList.");
             }
         } catch (err) {
-            console.log("error ", err)
+            Alert("error", "Something went wrong!! try again.");
         }
     }
     const AddProductsInCartHandler = async (item) => {
@@ -44,19 +48,20 @@ function WishListsCards(props) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             })
-            console.log(res);
             if (res.status === 201) {
                 setCartState(res.data.cart);
+                Alert("success", "Added to cart.");
             }
         } catch (err) {
-            console.log("error ", err.message);
+            Alert("error", "Something went wrong!! try again.");
         }
     }
     return (
         <>
             <div className="card cart-card">
+            <Link to={`/product/${_id}`}>
                 <img className="card-img"
-                    src={productImage}
+                    src={url}
                     alt={author}
                     loading="lazy"/>
 
@@ -70,25 +75,20 @@ function WishListsCards(props) {
                         <span className="text-linethrough">₹{discountedPrice}</span>
                     </div>
 
-                </div>
+                    </div>
+                    </Link>
                 <div className="card-footer">
                     <div className="card-footer-view">
                         <button className='btn-addToCart'
-                            onClick={
-                                () => {
+                            onClick={() => {
                                     AddProductsInCartHandler(props);
                                     RemoveItemsFromWishListHandler(_id)
-                                }
-                        }>Move to Cart {/* <span className="material-icons-round">
-                        shopping_cart
-                        </span> */}
+                                }}>Move to Cart
                             <IcTwotoneShoppingCartCheckout/>
                         </button>
                     </div>
                 </div>
-                <span onClick={
-                        () => RemoveItemsFromWishListHandler(_id)
-                    }
+                <span onClick={() => RemoveItemsFromWishListHandler(_id) }
                     className=" badge topright-badge ">
                     <IcBaselineCancel/>
                 </span>
