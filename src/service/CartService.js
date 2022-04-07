@@ -7,7 +7,6 @@ import { VAR_ENCODE_TOKEN } from "../utils/Routes";
 /**The method is used to increment the quantity of cart */
 const UpdateCartService = async (stateQuantity, _id) => {
     try {
-        console.log(stateQuantity, _id);
         let data = [];
         const res = await axios.post(`/api/user/cart/${_id}`, {
             action: {

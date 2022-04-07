@@ -28,11 +28,9 @@ function WishListsCards(props) {
     const {WishListState, setWishListState} = useWishList();
     const { cartState, setCartState } = useCart();
     const [handleCartQuantity, setHandleCartQuantity] = useState();
-    
-    console.log(props);
+
     const RemoveItemsFromWishListHandler = async (id) => {
         try {
-            console.log(id);
             const res = await axios.delete(`/api/user/wishlist/${id}`, {
                 headers: {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
@@ -70,7 +68,6 @@ function WishListsCards(props) {
     const UpdateCartHandler = async (stateQuantity) => {
         if (holder) {
             holder =false
-            console.log(cartState.find((cartitem) => cartitem._id === _id));
             let cartItem = cartState.find((cartitem) => cartitem._id === _id);
             if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
                 setCartState(await UpdateCartService(stateQuantity, _id));

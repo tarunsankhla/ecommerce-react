@@ -23,9 +23,8 @@ import { Alert } from '../../components/UI/Alert/Alert';
 function WishListPage() {
     const { login } = useAuth();
     const [WishListProductList,setWishListProductList] = useState([]);
-    const {WishListState,setWishListState} =useWishList();
-    console.log("auth login ",login);
-    console.log("login auth",login);
+    const { WishListState, setWishListState } = useWishList();
+    
     useEffect(  ()=>{
         try{
             ( async() => {
@@ -40,8 +39,8 @@ function WishListPage() {
         }catch(error){
             Alert("error", "Something went wrong!! try again.");
         }
-    },[]);
-    console.log("wisj;list",WishListProductList);
+    }, []);
+    
     return (
         <div className="wishlist-page-container">
             {
