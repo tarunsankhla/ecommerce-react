@@ -26,7 +26,6 @@ function ProductContentPage() {
         try {
             (async () => {
                 var res = await axios.get("/api/products");
-                console.log(res);
                 setProductContent([...res.data.products].find((product) => product._id === id));
                 const {
                     _id,
@@ -36,15 +35,9 @@ function ProductContentPage() {
                     price,
                     discount,
                     discountedPrice
-                } = [...res.data.products].find((product) => product._id === id)
-                console.log("product set", [...res.data.products].find((product) => product._id === id));
-                // console.log(res.data.products);
-                // setProductList(res.data.products);
-                // setDefaultProductList(res.data.products);
-                // products=res.data.products;
+                } = [...res.data.products].find((product) => product._id === id);
             })();
         } catch (error) {
-            console.log("Product list page error", error);
             Alert("error", "Some error occured!! refresh page and try again");
         }
     }, id);
@@ -55,33 +48,28 @@ function ProductContentPage() {
     let holder = true;
     const IncrementCart = "increment";
     const DecrementCart = "decrement";
-    console.log(cartState);
-    console.log(productContent);
+
     const AddProductsInCartHandler = async (item) => {
         try {
-            console.log(item);
             const res = await axios.post("/api/user/cart", {
                 product: item
             }, {
                 headers: {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
-            })
-            console.log(res);
+            });
             if (res.status === 201) {
                 setCartState(res.data.cart);
                 Alert("success", "Product Added in Cart");
             }
          
         } catch (err) {
-            console.log("error ", err.message);
             Alert("error", "Failed to add product in Cart!! try again.");
         }
     }
 
     const AddProductsInWishListHandler = async (item) => {
         try {
-            console.log(item);
             if (!WishListState.some((cartitem) => cartitem._id === id)) {
                 const res = await axios.post("/api/user/wishlist", {
                     product: item
@@ -89,8 +77,7 @@ function ProductContentPage() {
                     headers: {
                         authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                     }
-                })
-                console.log(res);
+                });
                 if (res.status === 201) {
                     setWishListState(res.data.wishlist);
                     Alert("success", "Product added in WishList.");
@@ -99,15 +86,13 @@ function ProductContentPage() {
                 Alert("success", "Product Already in WishList.");
             }
         } catch (err) {
-            console.log("error ", err)
             Alert("error", "Failed to add product, try again.");
         }
     }
 
     const UpdateCartHandler = async (stateQuantity) => {
         if (holder) {
-            holder =false
-            console.log(cartState.find((cartitem) => cartitem._id === id));
+            holder = false;
             let cartItem = cartState.find((cartitem) => cartitem._id === id);
             if (stateQuantity === IncrementCart && (cartItem?.qty < 4)) {
                 setCartState(await UpdateCartService(stateQuantity, id));

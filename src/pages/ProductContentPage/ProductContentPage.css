@@ -74,7 +74,6 @@
 
 .productcontent-header{
     display: flex;
-    /* font-size: 2em; */
 	flex-wrap: wrap;
 	justify-content: space-around;
 	padding: 1em 1em 0;
@@ -103,11 +102,6 @@
     gap: 1em;
 	justify-content: center;
 }
-/* .productcontent-footer-view *{
-	font-size: 1.3em;
-	justify-content: center;
-	border-radius: 0.5em;
-} */
 
 .explore-now{
 	padding: 3em 0 5em;

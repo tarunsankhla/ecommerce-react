@@ -7,10 +7,6 @@
 .aside{
     flex-basis: 27rem;
     background-color: var(--shadow-bg);
-    /* height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    margin: auto; */
 }
 
 
@@ -25,20 +21,16 @@
     color: aqua;
 }
 label{
-    /* display: block; */
     font-size: 1.5rem;
     font-weight: 500;
 }
 
 .product-page-category input{
-    /* padding: 1rem; */
     margin-left: 10px;
 }
 
 .product-page-category div{
-    /* padding: 0.5rem; */
     text-align: start;
-    /* margin: auto; */
     margin-left: 25%;
     cursor: pointer;
 }
@@ -55,7 +47,6 @@ label{
 
 .product-page-category{
     padding: 1em;
-    /* width: fit-content; */
 }
 .rating-container{
     padding: 1em;
@@ -71,7 +62,6 @@ label{
 
 .sort-by-conatianer div{
     text-align: start;
-    /* margin: auto; */
     margin-left: 25%;
 }
 
@@ -110,18 +100,13 @@ label{
 
 .filter-btn:hover{
     transform: scale(1.1);
-    /* opacity: 1.1; */
-    /* filter: brightness(1.1); */
 }
 
 .filter-btn-cl{
     padding: 1rem;
     outline: white;
     border: none;
-    /* text-align: center; */
-    /* align-self: center; */
     align-items: center;
-    /* margin: 0; */
     display: flex;
     font-weight: 800;
     min-width: 15%;
@@ -133,7 +118,6 @@ label{
 
 .product-page-header{
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
     gap: 1em;
@@ -151,18 +135,6 @@ label{
 }
 @media screen and (max-width: 800px) {
     aside{
-        /* border: 1px solid black;
-        flex-basis: 15rem;
-        min-width: 65vw;
-        height: 100%;
-        width: 0;
-        left: 20%;
-        background-color: white;
-        height: 65vh;
-        overflow: scroll; */
-        /* margin: auto;*/
-        /* position: absolute; */
-        /* top: 27%; */
         border-top: 2px solid black;
         z-index: 1;
         transition: 0.5s;
@@ -178,7 +150,6 @@ label{
         flex-wrap: wrap;
     }
     .product-page-category div {
-       
         margin-left:0;
     }
     

@@ -11,7 +11,9 @@ const Provider = ({children}) => {
             <AuthProvider>
                 <CartProvider>
                     <WishListProvider>
-                        <ProductProvider>{children}</ProductProvider>
+                        <ProductProvider>
+                            {children}
+                        </ProductProvider>
                     </WishListProvider>
                 </CartProvider>
             </AuthProvider>

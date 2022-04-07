@@ -16,9 +16,7 @@
     background-color: var(--banner-bg-color);
     margin: 1rem;
     flex-grow: 1;
-    /* padding: 1rem; */
     cursor: pointer;
-    /* max-width: 50%; */
 }
 
 .banner:hover{
@@ -29,7 +27,6 @@
 .banner-img{
     min-width: 15rem;
     height: auto;
-    /* padding :1rem; */
 }
 
 .banner-tag{
@@ -55,12 +52,10 @@
 .banner-content > h1{
     font-weight: 700;
     font-size: 2.5rem;
-    /* line-height: 4.2rem; */
 }
 
 .banner-content-desc{
     font-size: 1.5rem;
     color: var(--icons-color);
     font-weight: 700;
-    /* line-height: 2.7rem; */
 }

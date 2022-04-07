@@ -62,10 +62,6 @@ const FilterProduct = ({props}) =>{
 	
     function Filter(object){
         (async () => {
-            // var res = await axios.get("/api/products");
-            // console.log(res);
-            // var products=res.data.products;
-            // setProductList(()=>{
             console.log(DefaultProductList.filter((item) => {
                 console.log(object.categoryType.includes(item.categoryType));
                 return ((object.categoryType.includes(item.categoryType))
@@ -118,18 +114,6 @@ const FilterProduct = ({props}) =>{
             
     }
 
-    // function FilterSortByPrice(orderBool){
-    //     setProductList(
-    //         [...[...ProductList].sort((a,b)=>{
-    //             if (orderBool) {
-    //                 return a.price - b.price;
-    //                 // return a.price < b.price ? -1 : a.price > b.price ? 1 :0;
-    //             }
-    //             return b.price - a.price
-    //             // return a.price > b.price ? -1 : a.price < b.price ? 1 :0;
-    //         })]
-    //     )
-    // }
 
     const ClearFilterHandler = () => { 
         setProductList([...DefaultProductList]);

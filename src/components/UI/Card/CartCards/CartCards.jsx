@@ -30,26 +30,22 @@ function CartCards(props) {
 
     const RemoveItemsFromCartHandler = async (id) => {
         try {
-            console.log(id);
             const res = await axios.delete(`/api/user/cart/${id}`, {
                 headers: {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             });
-            console.log(res);
             if (res.status === 200) {
                 setCartState(res.data.cart);
                 Alert("success", "Successfully removed items from cart.");
             }
         } catch (err) {
-            console.log("error ", err.message);
             Alert("error", "Something went wrong!! try again.");
         }
     }
 
     const addToWishlistHandler = async (item) => {
         try {
-            console.log(item);
             const res = await axios.post("/api/user/wishlist", {
                 "product": item
             }, {
@@ -64,7 +60,6 @@ function CartCards(props) {
             }
           
         } catch (err) {
-            console.log("error ", err.message);
             Alert("error", "Something went wrong!! try again.");
         }
     }
@@ -117,19 +112,14 @@ function CartCards(props) {
                         </div>
                     </div>
                     <div className="card-footer-view cart-card-footer cart-card-footer-flex">
-                        <button onClick={
-                            () => {
+                        <button onClick={() => {
                                 RemoveItemsFromCartHandler(_id)
-                            }
-                        }>Remove from Cart
-                            <IcTwotoneShoppingCartCheckout/> {/* <span className="material-icons-round">
-                                                shopping_cart
-                                            </span> */} </button>
-                        <button onClick={
-                            () => {
+                            }}>Remove from Cart
+                            <IcTwotoneShoppingCartCheckout />
+                        </button>
+                        <button onClick={() => {
                                 addToWishlistHandler(props)
-                            }
-                        }>Move to Wishlist
+                            }}>Move to Wishlist
                             <IcRoundWishlist/>
                         </button>
                     </div>

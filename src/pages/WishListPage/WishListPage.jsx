@@ -35,48 +35,42 @@ function WishListPage() {
                             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                         }
                     });
-                
-                    console.log(res);
                     setWishListProductList(res.data.wishList);
-             
-                // console.log(res.data.products);
-               
             })();
         }catch(error){
-            console.log("Product list page error", error);
             Alert("error", "Something went wrong!! try again.");
         }
     },[]);
     console.log("wisj;list",WishListProductList);
     return (
         <div className="wishlist-page-container">
-        {   !login ?
-            // <iframe className='animation-login' src="https://embed.lottiefiles.com/animation/78126" loading='lazy'></iframe> 
-            <img src={wishListLogoSrc} className="wishlist-logo" />
-            :
-            <> 
-                <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
-                <main className="main">
-                    <div className="wishlist-main-list">
-                        {
-                            WishListState?.length ===0 ?
-                            <img src={wishListLogoSrc} className="wishlist-logo" alt='wishlist-logo' /> :
-                            WishListState.map((item)=>(
-                                <WishListsCards 
-                                    key={item._id}
-                                    _id={item._id}
-                                    title={item.title}  
-                                    url={item.url}   
-                                    author={item.author} 
-                                    price={item.price}
-                                    discount={item.discount}  
-                                    discountedPrice={item.discountedPrice} />
-                    ))
-                        }
-                    </div>
-                </main> 
-            </>
-        }
+            {
+                !login ? 
+                    <img src={wishListLogoSrc} className="wishlist-logo" alt='whistlist-logo'/>
+                :
+                <> 
+                    <h1 className="title-wishlist"> WishList Contains {WishListState.length} Items</h1>
+                    <main className="main">
+                        <div className="wishlist-main-list">
+                            {
+                                WishListState?.length ===0 ?
+                                <img src={wishListLogoSrc} className="wishlist-logo" alt='wishlist-logo' /> :
+                                WishListState.map((item)=>(
+                                    <WishListsCards 
+                                        key={item._id}
+                                        _id={item._id}
+                                        title={item.title}  
+                                        url={item.url}   
+                                        author={item.author} 
+                                        price={item.price}
+                                        discount={item.discount}  
+                                        discountedPrice={item.discountedPrice} />
+                        ))
+                            }
+                        </div>
+                    </main> 
+                </>
+            }
         </div>
     )
 }

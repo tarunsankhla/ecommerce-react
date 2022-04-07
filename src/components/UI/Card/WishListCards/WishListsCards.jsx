@@ -30,13 +30,11 @@ function WishListsCards(props) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             })
-            console.log(res);
             if (res.status === 200) {
                 setWishListState(res.data.wishlist);
                 Alert("success", "Removed from WishList.");
             }
         } catch (err) {
-            console.log("error ", err);
             Alert("error", "Something went wrong!! try again.");
         }
     }
@@ -50,13 +48,11 @@ function WishListsCards(props) {
                     authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                 }
             })
-            console.log(res);
             if (res.status === 201) {
                 setCartState(res.data.cart);
                 Alert("success", "Added to cart.");
             }
         } catch (err) {
-            console.log("error ", err.message);
             Alert("error", "Something went wrong!! try again.");
         }
     }
@@ -84,21 +80,15 @@ function WishListsCards(props) {
                 <div className="card-footer">
                     <div className="card-footer-view">
                         <button className='btn-addToCart'
-                            onClick={
-                                () => {
+                            onClick={() => {
                                     AddProductsInCartHandler(props);
                                     RemoveItemsFromWishListHandler(_id)
-                                }
-                        }>Move to Cart {/* <span className="material-icons-round">
-                        shopping_cart
-                        </span> */}
+                                }}>Move to Cart
                             <IcTwotoneShoppingCartCheckout/>
                         </button>
                     </div>
                 </div>
-                <span onClick={
-                        () => RemoveItemsFromWishListHandler(_id)
-                    }
+                <span onClick={() => RemoveItemsFromWishListHandler(_id) }
                     className=" badge topright-badge ">
                     <IcBaselineCancel/>
                 </span>

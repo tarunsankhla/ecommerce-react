@@ -17,9 +17,7 @@ import "./LandingPage.css"
 import {Link, NavLink} from "react-router-dom";
 import DiscoverButton from "../../components/UI/Button/DiscoverButton/DiscoverButton";
 import ArrivalsBanner from "./ArrivalsBanner/ArrivalsBanner";
-// import { NavLink } from "react-router-dom";
 export function LandingPage() {
-
 
     return (
         <>

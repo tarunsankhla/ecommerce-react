@@ -38,7 +38,6 @@ function ProductCards(props) {
     let holder = true;
     const IncrementCart = "increment";
     const DecrementCart = "decrement";
-    console.log(cartState);
     
     const AddProductsInCartHandler = async (item) => {
         try {
@@ -66,7 +65,6 @@ function ProductCards(props) {
                 Alert("error", "You need to Login!!");
             }
         } catch (err) {
-            console.log("error ", err.message);
             Alert("error", "Failed to add product in Cart!! try again.");
         }
     }
@@ -83,7 +81,6 @@ function ProductCards(props) {
                             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
                         }
                     })
-                    console.log(res);
                     if (res.status === 201) {
                         setWishListState(res.data.wishlist);
                         Alert("success", "Product added in WishList.");
@@ -103,7 +100,6 @@ function ProductCards(props) {
                             Alert("success", "Removed from WishList.");
                         }
                     } catch (err) {
-                        console.log("error ", err);
                         Alert("error", "Something went wrong!! try again.");
                     }
                 }
@@ -111,7 +107,6 @@ function ProductCards(props) {
                 Alert("error", "You need to Login!!");
             }
         } catch (err) {
-            console.log("error ", err)
             Alert("error", "Failed to add product, try again.");
         }
     }
@@ -164,40 +159,39 @@ function ProductCards(props) {
                         <button className='btn-addToCart'>
                             {
                                 cartState.some((cartitem) => cartitem._id === _id)
-                                    ? <div className='cart-quantity-container'>
-                                        <span className={ `${handleCartQuantity}`}
-                                            onClick={ () => UpdateCartHandler(IncrementCart)}>
-                                            <IcRoundPlus />
-                                        </span>
-                                                {{...cartState.find((cartitem) => cartitem._id === _id)}?.qty}
-                                        <span onClick={
-                                            () => UpdateCartHandler(DecrementCart)}>
-                                            <IcRoundMinus />
-                                        </span>
-                                    </div>
-                                    : <span onClick={() => { AddProductsInCartHandler(props) } }
-                                        className="add-cart-action">
-                                            <span className='hide'>Add to Cart</span>
-                                            <span className="material-icons-round icons-style">
-                                                add_shopping_cart
+                                    ?   <div className='cart-quantity-container'>
+                                            <span className={ `${handleCartQuantity}`}
+                                                onClick={ () => UpdateCartHandler(IncrementCart)}>
+                                                <IcRoundPlus />
                                             </span>
+                                                    {{...cartState.find((cartitem) => cartitem._id === _id)}?.qty}
+                                            <span onClick={() => UpdateCartHandler(DecrementCart)}>
+                                                <IcRoundMinus />
+                                            </span>
+                                        </div>
+                                    :   <span onClick={() => { AddProductsInCartHandler(props) } }
+                                            className="add-cart-action">
+                                                <span className='hide'>Add to Cart</span>
+                                                <span className="material-icons-round icons-style">
+                                                    add_shopping_cart
+                                                </span>
 
-                                    </span>
+                                        </span>
                             }
                         </button>
                     </div>
                 </div>
                 {
                     !WishListState.some((cartitem) => cartitem._id === _id)
-                    ? <span className="material-icons-round badge topright-badge badge-border"
-                            style={{
-                                    cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'
-                                }}
-                            onClick={() => {
-                                    AddProductsInWishListHandler(props)
-                                }}>
-                            favorite_border
-                        </span>
+                        ? <span className="material-icons-round badge topright-badge badge-border"
+                                style={{
+                                        cursor: WishListState.find((cartitem) => cartitem._id === _id) ? 'not-allowed' : 'pointer'
+                                    }}
+                                onClick={() => {
+                                        AddProductsInWishListHandler(props)
+                                    }}>
+                                favorite_border
+                            </span>
                         :<span className="material-icons-round badge topright-badge badge-border"
                             style={{
                                     backgroundColor:"gray"
@@ -214,16 +208,3 @@ function ProductCards(props) {
 }
 
 export default memo(ProductCards);
-// {
-// "product":{
-// "_id": "7980eb16-d3c7-4121-9835-06e1c5669717",
-// "title": "Men Premium Shoe",
-// "author": "Sneaker",
-// "price": "5000",
-// "categoryName": "non-fiction",
-// "url": "/static/media/product1.9ed97c94.jpg",
-// "discount": "-30% off",
-// "discountedPrice": 3000,
-// "description": "",
-// "id": "1"}
-//         }

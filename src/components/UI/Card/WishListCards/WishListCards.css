@@ -16,8 +16,6 @@
 }  
 .cart-card:hover{
     transform: scale(1.01);
-    /* filter: brightness(1.1); */
-    /* opacity: 1.01; */
     box-shadow: 0 4px 2px var(--hovershadow1),
     0 8px 16px var(--hovershadow2),
     0 16px 10px var(--hovershadow2),

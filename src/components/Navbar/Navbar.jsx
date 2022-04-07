@@ -17,9 +17,6 @@ export function Navbar() {
     const { cartState: cartItems, setCartState } = useCart();
     const { WishListState, setWishListState } = useWishList();
     const navigate = useNavigate();
-    // console.log("Auther Login", login, setlogin, userState);
-    // console.log("card context", cartItems, setCartState);
-    // console.log("wishlist context", WishListState, setWishListState);
 
     const OnSignOut = () => {
         setlogin(false);
@@ -59,9 +56,6 @@ export function Navbar() {
                             } </NavLink>
                     </Link>
                     <NavLink className="badge-container" to="/cart">
-                        {/* <span className="material-icons-round drawer-icons">
-                            shopping_cart_checkout
-                        </span> */}
                         <IcTwotoneShoppingCart color='red' />
                         {
                             login && <div className="badge  badge-warning topright-badge">

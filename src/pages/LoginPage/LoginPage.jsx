@@ -19,9 +19,7 @@ function LoginPage() {
                 "email": email,
                 "password": password
             };
-            console.log(object)
             var res = await axios.post("/api/auth/login", object);
-            console.log(res);
             if (res.status === 200) {
                 var token = res.data.encodedToken;
                 localStorage.setItem(VAR_ENCODE_TOKEN, token)
@@ -29,16 +27,13 @@ function LoginPage() {
                 var userId = res.data.foundUser._id;
                 localStorage.setItem(VAR_USER_ID, userId);
                 userDispatch({ email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName });
-                console.log(user, userId, token);
                 setlogin(true);
                 Alert("success", "SuccessFully Logged In!!");
-                // navigate("/");
-                // History.push("/products");
+                navigate(-1);
             } else {
                 Alert("error", "Something went wrong!! try again.");
             }
         } catch (error) { 
-            console.log(error);
             Alert("error", "Something went wrong!! try again.");
         }
     }
@@ -50,15 +45,11 @@ function LoginPage() {
     return (
         <>
             <div className="login-body-container">
-                {/* <button onClick={()=>{navigate("/")}}>clickc it</button>  */}
                 <img src={loginLogoSrc}
-                    className="login-logo" alt='login-logo'/> {/* <iframe src="https://embed.lottiefiles.com/animation/83168" loading='lazy' className='animation-login-1' ></iframe> */}
-                {/* </div> */}
+                    className="login-logo" alt='login-logo'/>
                 <div className="login-container">
                     <div className="title-header">
-
                         <div className="login-credential-container">
-                            {/* <label>Email Address</label> */}
                             <input placeholder="Email Address - xyz@gmail.com"
                                 value={email}
                                 onChange={
@@ -66,15 +57,9 @@ function LoginPage() {
                                 }/>
                         </div>
                         <div className="login-credential-container">
-                            {/* <label>Password</label> */}
-                            <input type="password"
-                                value={password}
-                                onChange={
-                                    (e) => setPassword(e.target.value)
-                                }
-                                name=""
-                                placeholder="Password"
-                                id=""/>
+                            <input type="password" value={password} onChange={
+                                    (e) => setPassword(e.target.value)}
+                                name=""  placeholder="Password" id=""/>
                         </div>
                         <div className="login-rem-forgetpass-container">
                             <div>

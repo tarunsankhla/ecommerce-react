@@ -22,7 +22,6 @@ import { useProduct } from "../../context/ProductContext";
 
 export const ProductListPage = () => {
 	const [ProductList, setProductList] = useState([]);
-	// const [DefaultProductList, setDefaultProductList] = useState([]);
 	const {ProductState : DefaultProductList,setProductState : setDefaultProductList} =useProduct();
 	const [filterWidth, setFilteWidth] = useState(window.innerWidth <= 800); 
 	const [filterAside, setFilterAside] = useState(!(window.innerWidth <= 800));
@@ -36,18 +35,15 @@ export const ProductListPage = () => {
 		setFilteWidth(window.innerWidth <= 800)
 		setFilterAside(!(window.innerWidth <= 800))
 	})
-	// var products;
+
 	useEffect(() => {
 		try {
 			(async () => {
 				var res = await axios.get("/api/products");
 				console.log(res);
-				// console.log(res.data.products);
 				setProductList(res.data.products);
 				setDefaultProductList(res.data.products);
-				// products=res.data.products;
-			})();
-			// setTimeout(() => urlFilter(), 0);
+			})();;
 		} catch (error) {
 			console.log("Product list page error", error);
 			Alert("error", "Some error occured!! refresh page and try again");
