@@ -74,15 +74,19 @@
 8. Search [Search](https://feetz.netlify.app/products/search?query=football).
 -  search for an item from the list via the input textbox on the header navbar.
 
-8. Sign-up Page [SignUpPage](https://feetz.netlify.app/login)
+9. Sign-up Page [SignUpPage](https://feetz.netlify.app/login)
 - email, first name, last name, password & confirm password.
 -  hide-show icon button that shows or hides my password.
 
-9. Login Page [LoginPage](https://feetz.netlify.app/login)
+  10. Login Page [LoginPage](https://feetz.netlify.app/login)
  - login email & password.
  - guest user
- 10. Logout
+ 
+ 11. Logout
  - logoutbutton Nav
+ 
+ 12. Order Summary on  [CartPage](https://feetz.netlify.app/cart).
+
 
  ## Demo
 
