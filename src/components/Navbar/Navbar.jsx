@@ -28,7 +28,8 @@ export function Navbar() {
         setWishListState([]);
     }
 
-    const RedirectSearchQueryHandler = () => { 
+    const RedirectSearchQueryHandler = (e) => { 
+        e.preventDefault();
         console.log(searchQuery);
         navigate(`/products/search?query=${searchQuery}`,{state : searchQuery});
 		setSearchQuery("");
@@ -44,12 +45,13 @@ export function Navbar() {
                 </NavLink>
 
                 <div className="input-icons">
-                    
-                    <input type="tel" className="input-field" name="main-search" id="main-search" placeholder="Search...."
-                    onChange={(e)=>setSearchQuery(e.target.value)}/>
-                    <span className="material-icons-round icon" onClick={() => { RedirectSearchQueryHandler(); }}>
-                        search
-                    </span>
+                    <form onSubmit={RedirectSearchQueryHandler}>
+                        <span className="material-icons-round icon" style={{color:"white"}} onClick={() => { RedirectSearchQueryHandler(); }}>
+                            search
+                        </span>
+                        <input type="tel" className="input-field" name="main-search" id="main-search" placeholder="Search...."
+                        onChange={(e)=>setSearchQuery(e.target.value)}/>
+                    </form>
                 </div>
                 <div className="navbar-action">
 
