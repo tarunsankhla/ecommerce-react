@@ -15,6 +15,64 @@ Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports 
   <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo_banner.png" alt="logoImage" width="100%" height="auto" /></p>
  <br/>
 
+
+
+## Feature
+
+1. Home Page
+  -  page with a list of few categories.
+  - If  click on any one of the categories I will be redirected to the product list page with the selected category.
+  - Also has Latest Arrival onclick to product list page.
+
+2. Product Listing Page
+ - All product are listed and can be filtered using section of filters.
+ - Price( low to high & high to low.) / Category (various categorie) / Ratings
+ -  clear filters to clear all the applied filters.
+ - Add to Cart on product cards to add products and max of 4 and minimum 1 and can remove from cart oncart page.
+ - Add to Wishlist and remove from wishlist 
+
+3. Cart  Management
+ - From navbar you can got to cart page
+ -  addmore quantity to product and also remove from cart and can also add to wishlist
+ -  on increasing quantity price is also calulated accordingly
+ -  and Bill summary containg all product cost X quantity
+
+4. Wishlist Management
+ - Navigate from navbar
+-  can remove items from wishlist and also move them to cart
+
+5. Product Detail Page
+  - You ca click on product cards and navigate to product page and can see all details and even add to cart and add to wishlist , if product already exist then can increment and decrement quantity    
+  
+ 
+ 6. Loading & Alerts
+- Add item to the cart
+- Remove Item from the cart
+- Increase or Decrease item in the cart
+ - Move an item from the cart to the wishlist
+- Add item to the wishlist
+ - Remove Item from the wishlist
+ - Move an item from wishlist to cart
+
+
+7. User Profile
+ - user profile with details containing this email Id, First Name and Last Name and Can edit and update
+
+8. Sign-up Page
+- email, first name, last name, password & confirm password.
+-  hide-show icon button that shows or hides my password.
+
+9. Login Page
+ - login email & password.
+ - guest user
+ 10. Logout
+ - logoutbutton Nav
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
