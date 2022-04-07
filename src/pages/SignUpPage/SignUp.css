@@ -105,6 +105,29 @@ input[type=radio]{
 button:disabled{
     cursor:not-allowed;
 }
+
+/*  */
+
+.password-holder > input{
+	width: 80%;
+	padding: 0.5em;
+	margin: 0 0 0 0.5em;
+	border: 2px solid transparent !important;
+	outline: none;
+	font-size: 1.5rem;
+    background-color: #e8f0fe !important;
+
+}
+
+.password-holder{
+	align-items: center;
+    display: flex;
+    margin: 0.5em;
+    background: #e8f0fe;
+    justify-content: space-around;
+	border-radius: 0.5em;
+	width: 100%;
+}
 @media screen and (max-width: 800px) {
     .signup-container{
         width: 100vw;

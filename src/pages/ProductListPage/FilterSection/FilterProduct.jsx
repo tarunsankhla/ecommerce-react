@@ -7,7 +7,7 @@ import { FilterFeatureHandler } from "../../../utils/FilterFeature";
 
 
 const FilterProduct = ({props}) =>{
-    const {ProductList,setProductList,DefaultProductList} = props;
+    const {ProductList,setProductList,DefaultProductList,setDefaultProductList} = props;
     const [categoryType,setCategoryType] = useState([]);
     const [feature,setFeature] = useState([]);
     const [sortByPrice,setSortByPrice] =useState(""); // hightolow = false & lowtohigh =true
@@ -15,6 +15,7 @@ const FilterProduct = ({props}) =>{
     const [productType,setProductType] =useState(null); // shoe = true & slides =false
     const [productStockType,setProductStockType] =useState(null);  // topseller = true & newest =false
     const location = useLocation();
+    const [searchQueryItem, SetSearchQueryItem] = useState();
     console.log(location);
 
 
@@ -33,33 +34,49 @@ const FilterProduct = ({props}) =>{
         
        
     },[categoryType,feature,sortByPrice,rating,productType,productStockType])
-    
-    // console.log("default",DefaultProductList)
-    // useEffect(()=>{
-    //     if (sortByPrice !== "") {
-    //         console.log("Sort by price",sortByPrice);
-    //         FilterSortByPrice(sortByPrice)
-    //     }
-    // },[ProductList]);
-
-    console.log(location);
-    console.log(FilterCategoryHandler(categoryType, location.search.split("=")[1]));
-
-
-	// function urlFilter() { 
-    //     console.log(location.search.split("=")[1]);
-    //     FilterCategoryHandler(categoryType, location.search.split("=")[1]);
-    // }
-    
+   
     useEffect(() => { 
-        if (location.search.split("=")[1]) {
-            setTimeout(() => {
-                setCategoryType([...categoryType, location.search.split("=")[1]]);
-                CheckCategoryHandler(location.search.split("=")[1]);
-            }, 2000);
+        SearchQueryHandler();
+       
+    },[DefaultProductList,location.state])
+    
+    const SearchQueryHandler = () => { 
+        if (location.pathname.includes("search")) {
+            console.log("found  search");
+            if (location.search.split("=")[1])
+            {
+                // let searchedItem = location.search.split("=")[1].toLowerCase();
+                let searchedItem = location.state.toLowerCase();
+                console.log("found  search", searchedItem, DefaultProductList);
+                SetSearchQueryItem(searchedItem);
+                setTimeout(() => {
+                        let FilteredArray = [...DefaultProductList.filter((item) => {
+                            return ((item.title.toLowerCase().includes(searchedItem))
+                                || (item.description.toLowerCase().includes(searchedItem))
+                                || (item.categoryName.toLowerCase().includes(searchedItem))
+                                || (item.feature.toLowerCase().includes(searchedItem))
+                                || (item.productType.toLowerCase().includes(searchedItem))
+                                || (item.stockType.toLowerCase().includes(searchedItem))
+                            )
+                        })]
+                    console.log(FilteredArray);
+                    
+                    setProductList([...FilteredArray])
+                }, 2000);
+            }
+            
         }
-    },[])
-	
+        else {
+            console.log("found  search");
+            if (location.search.split("=")[1]) {
+                setTimeout(() => {
+                    setCategoryType([...categoryType, location.search.split("=")[1]]);
+                    CheckCategoryHandler(location.search.split("=")[1]);
+                }, 2000);
+            }
+        }
+    }
+
     function Filter(object){
         (async () => {
             console.log(DefaultProductList.filter((item) => {
@@ -72,39 +89,67 @@ const FilterProduct = ({props}) =>{
             }))
             // })
             if (object.categoryType.length || object.feature.length || object.rating || object.productStockType || object.productType) {
-                
-                    let FilteredArray = [...DefaultProductList.filter((item) => {
-                        console.log(object.categoryType.includes(item.categoryType));
-                        return (object.categoryType.includes(item.categoryType)
-                            || (object.feature.includes(item.feature))
-                            || (object.rating ? item.rating >= object.rating : false)
-                            || (object.productType ? item.productType === object.productType : false)
-                            || (object.productStockType ? item.stockType === object.productStockType : false))
             
+                let FilteredArray = [...DefaultProductList.filter((item) => {
+                    console.log(object.categoryType.includes(item.categoryType));
+                    return (object.categoryType.includes(item.categoryType)
+                        || (object.feature.includes(item.feature))
+                        || (object.rating ? item.rating >= object.rating : false)
+                        || (object.productType ? item.productType === object.productType : false)
+                        || (object.productStockType ? item.stockType === object.productStockType : false))
+        
+                })]
+                
+                if (location.pathname.includes("search")) {
+                    console.log("filter search inside")
+                    FilteredArray = [...FilteredArray.filter((item) => {
+                        return ((item.title.toLowerCase().includes(searchQueryItem))
+                            || (item.description.toLowerCase().includes(searchQueryItem))
+                            || (item.categoryName.toLowerCase().includes(searchQueryItem))
+                            || (item.feature.toLowerCase().includes(searchQueryItem))
+                            || (item.productType.toLowerCase().includes(searchQueryItem))
+                            || (item.stockType.toLowerCase().includes(searchQueryItem))
+                        )
                     })]
-                    if (object.sortByPrice !== "") {
-                        console.log("Sort by price",sortByPrice);
-                        FilteredArray.sort((a, b) => { 
-                            if (object.sortByPrice) { 
-                                return a.price - b.price;
-                            }
-                            return b.price - a.price;
-                        })
-                    }
-                    setProductList([...FilteredArray])
-            }
-            else {
+                }
+                
                 if (object.sortByPrice !== "") {
                     console.log("Sort by price",sortByPrice);
-                    setProductList([...DefaultProductList].sort((a, b) => {
+                    FilteredArray.sort((a, b) => { 
+                        if (object.sortByPrice) { 
+                            return a.price - b.price;
+                        }
+                        return b.price - a.price;
+                    })
+                }
+                setProductList([...FilteredArray])
+            }
+            else {
+                let FilteredArray;
+                if (location.pathname.includes("search")) {
+                    console.log("filter search inside")
+                    FilteredArray = [...DefaultProductList.filter((item) => {
+                        return ((item.title.toLowerCase().includes(searchQueryItem))
+                            || (item.description.toLowerCase().includes(searchQueryItem))
+                            || (item.categoryName.toLowerCase().includes(searchQueryItem))
+                            || (item.feature.toLowerCase().includes(searchQueryItem))
+                            || (item.productType.toLowerCase().includes(searchQueryItem))
+                            || (item.stockType.toLowerCase().includes(searchQueryItem))
+                        )
+                    })]
+                    setProductList([...FilteredArray]);
+                }else {
+                    setProductList([...DefaultProductList]);
+                }
+                if (object.sortByPrice !== "") {
+                    console.log("Sort by price",sortByPrice);
+                    setProductList([...FilteredArray].sort((a, b) => {
                         if (object.sortByPrice) {
                             return a.price - b.price;
                         }
                         return b.price - a.price;
                     }));
-                } else {
-                    setProductList([...DefaultProductList]);
-                }
+                } 
                 
             }
            
@@ -114,14 +159,28 @@ const FilterProduct = ({props}) =>{
             
     }
 
-
     const ClearFilterHandler = () => { 
-        setProductList([...DefaultProductList]);
+        // (async () => {
+        //     var res = await axios.get("/api/products");
+        //     console.log(res);
+        //     setProductList(res.data.products);
+        //     setDefaultProductList(res.data.products);
+        // })();
+        setProductList( [...DefaultProductList.filter((item) => {
+            return ((item.title.toLowerCase().includes(searchQueryItem))
+                || (item.description.toLowerCase().includes(searchQueryItem))
+                || (item.categoryName.toLowerCase().includes(searchQueryItem))
+                || (item.feature.toLowerCase().includes(searchQueryItem))
+                || (item.productType.toLowerCase().includes(searchQueryItem))
+                || (item.stockType.toLowerCase().includes(searchQueryItem))
+            )
+        })])
         setCategoryType([]);
         setFeature([]);
         setProductStockType("");
         setProductType("");
         setRating("");
+        setSortByPrice("");
     }
 
     /**
@@ -129,14 +188,14 @@ const FilterProduct = ({props}) =>{
     */
     const CheckCategoryHandler = (value) => { 
     
-        console.log(categoryType.includes(value), value);
+        // console.log(categoryType.includes(value), value);
         return categoryType.includes(value);
     }
     /**
          * The method is just to check the existing Feature filter applied
     */
     const CheckFeatureHandler = (value) => { 
-        console.log(feature.includes(value), value);
+        // console.log(feature.includes(value), value);
         return feature.includes(value);
     }
 
@@ -144,7 +203,7 @@ const FilterProduct = ({props}) =>{
     * The method is just to check the existing ProductStockType filter applied 
     */
      const CheckProductStockTypeHandler = (value) => { 
-        console.log(feature === value, value);
+        // console.log(feature === value, value);
         return productStockType === value;
     }
     
@@ -152,7 +211,7 @@ const FilterProduct = ({props}) =>{
     * The method is just to check the existing Product Type filter applied 
     */
      const CheckProductTypeHandler = (value) => { 
-        console.log(feature === value, value);
+        // console.log(feature === value, value);
         return productType === value;
     }
 
@@ -160,10 +219,12 @@ const FilterProduct = ({props}) =>{
     * The method is just to check the existing rating Type filter applied 
     */
      const CheckRatingTypeHandler = (value) => { 
-        console.log(feature === value, value);
+        // console.log(feature === value, value);
         return rating === value;
     }
 
+
+    
     return (
         <aside className="aside">
             <div className="aside-header">
@@ -186,6 +247,26 @@ const FilterProduct = ({props}) =>{
                         <input type="radio" id="topseller" name="stocktype" value="TopSeller" checked={CheckProductStockTypeHandler("TopSeller")}
                       />
                         <label htmlFor="topseller">TopSeller</label>
+                    </div>
+                </div>
+                 {/* sort by price */}
+                 <div className="sort-by-conatianer">
+                    <h4>Sort by</h4> 
+                    <div className='sortby-filter pointer' style={{ backgroundColor: (sortByPrice !== "" && sortByPrice) ? "rgba(0,0,0,0.1)" : "transparent" }} onClick={() => {
+                                // FilterSortByPrice(true);
+                                setSortByPrice(true);
+                            }}>
+                        {/* <input type="radio" id="lth" name="price" value="lth" value={sortByPrice}
+                            /> */}
+                        <label htmlFor="lth">Price - Low to High </label>
+                    </div>
+                    
+                    <div className='sortby-filter pointer'  style={{ backgroundColor: sortByPrice !== "" && (sortByPrice ? "transparent" : "rgba(0,0,0,0.1)" ) }} onClick={() => {
+                                // FilterSortByPrice(false);
+                                setSortByPrice(false);
+                            }}>
+                        {/* <input type="radio" id="htl" name="price" value="htl" /> */}
+                        <label htmlFor="htl">Price - High to Low</label>
                     </div>
                 </div>
                 {/* productType : "slides shoes"*/}
@@ -300,26 +381,7 @@ const FilterProduct = ({props}) =>{
                         <label htmlFor="Lace">Lace</label>
                     </div>
                 </div>
-                {/* sort by price */}
-                <div className="sort-by-conatianer">
-                    <h4>Sort by</h4> 
-                    <div className='pointer'  onClick={() => {
-                                // FilterSortByPrice(true);
-                                setSortByPrice(true);
-                            }}>
-                        <input type="radio" id="lth" name="price" value="lth"
-                            />
-                        <label htmlFor="lth">Price - Low to High </label>
-                    </div>
-                    
-                    <div className='pointer'   onClick={() => {
-                                // FilterSortByPrice(false);
-                                setSortByPrice(false);
-                            }}>
-                        <input type="radio" id="htl" name="price" value="htl" />
-                        <label htmlFor="htl">Price - High to Low</label>
-                    </div>
-                </div>
+               
             </div>
         </aside>
     )

@@ -151,6 +151,16 @@ option{
     font-weight: 700;
 }
   
+
+.sortby-filter{
+    padding: 1em;
+    cursor: pointer;
+}
+
+.sortby-filter:hover{
+    background-color: rgba(0,0,0,0.1);
+    transform: scale(1.01);
+}
 @media screen and (max-width: 800px) {
     aside{
         border-top: 2px solid black;

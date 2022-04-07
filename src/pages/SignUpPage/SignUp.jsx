@@ -33,7 +33,8 @@ function SignUpPage() {
         firstName :"",
         lastName:"",
     });
-    const {login ,setlogin, userDispatch } = useAuth();
+  const { login, setlogin, userDispatch } = useAuth();
+  const [passwordType, setPasswordType] = useState("password");
 
 
     function HasAlphabets(letter) {
@@ -99,11 +100,15 @@ function SignUpPage() {
           if(error.message.slice(error.message.length-3,error.message.length) === "422")
             {
                 Alert("error", "Something suspicious!! The User Already Exist, try logging in");
-            }else{
-                Alert("error", "Something went wrong!! try again.");
-          }
+            }
         }
-    }
+  }
+  
+  
+  const PasswordVisibilityHandler = () => { console.log(passwordType);
+    setPasswordType((prev) => prev === "password" ? "text" : "password")
+    
+}
   return (
     <>
     <div className="signup-body-container">
@@ -117,21 +122,31 @@ function SignUpPage() {
                 <input type="email" placeholder="Email Address - xyz@gmail.com" onChange={(e)=>dispatch({email : e.target.value})} />
             </div>
             <div className="signup-credential-container">
-                <input type="password" placeholder="Password" name="" 
-                id=""  style={{ borderColor: passwordCheckError, outlineColor: passwordCheckError }}
-                onChange={(e) => {
-                    PasswordCheck(e.target.value);
-                  }}/>
-                <p className='error'>
-                    {confirmPassword.length > 0 && confirmPassword.length < 7
-                    ? "password should be minimum 7 letter"
-                    : ""}
+              <div className='password-holder'>
+                  <input  type={passwordType} placeholder="Password" name="" 
+                        id=""  style={{ borderColor: passwordCheckError, outlineColor: passwordCheckError }}
+                        onChange={(e) => {
+                            PasswordCheck(e.target.value);
+                      }} />
+                  {passwordType === "password" ?
+                                        <span className="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
+                                            visibility
+                                        </span>
+                                        : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                                            visibility_off
+                                        </span>}
+                       </div>                  
+                  <p className='error'>
+                      {confirmPassword.length > 0 && confirmPassword.length < 7
+                      ? "password should be minimum 7 letter"
+                      : ""}
+                  </p>
+                  <p className='error'>
+                      {confirmPassword.length > 0 &&
+                      !passwordCheckError &&
+                      "Password should contain a number, alphabet & special character"}
                 </p>
-                <p className='error'>
-                    {confirmPassword.length > 0 &&
-                    !passwordCheckError &&
-                    "Password should contain a number, alphabet & special character"}
-                </p>
+             
             </div>
             <div className="signup-credential-container">
                 <input type="password" placeholder="Confirm Password" name="" 

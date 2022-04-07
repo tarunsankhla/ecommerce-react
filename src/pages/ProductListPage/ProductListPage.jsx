@@ -25,7 +25,8 @@ export const ProductListPage = () => {
 	const {ProductState : DefaultProductList,setProductState : setDefaultProductList} =useProduct();
 	const [filterWidth, setFilteWidth] = useState(window.innerWidth <= 800); 
 	const [filterAside, setFilterAside] = useState(!(window.innerWidth <= 800));
-	
+	const location = useLocation();
+    console.log(location);
 
 	/**
 	 * this is for only CSS and for adjusting products list with filter section on resizing
@@ -49,6 +50,47 @@ export const ProductListPage = () => {
 			Alert("error", "Some error occured!! refresh page and try again");
 		}
 	}, []);
+	// useEffect(() => { 
+	// 	if (location.pathname.includes("search")) {
+    //         console.log("found  search");
+    //         if (location.search.split("=")[1])
+    //         {
+    //             let searchedItem = location.search.split("=")[1].toLowerCase();
+    //             console.log("found  search", searchedItem, DefaultProductList);
+                
+	// 			setTimeout(() => {
+	// 				(async () => {
+	// 					var res = await axios.get("/api/products");
+	// 					console.log(res);
+	// 					var ProductData = res.data.products;
+					
+    //                     let FilteredArray = [...ProductData.filter((item) => {
+    //                         return ((item.title.toLowerCase().includes(searchedItem))
+    //                             || (item.description.toLowerCase().includes(searchedItem))
+    //                             || (item.categoryName.toLowerCase().includes(searchedItem))
+    //                             || (item.feature.toLowerCase().includes(searchedItem))
+    //                             || (item.productType.toLowerCase().includes(searchedItem))
+    //                             || (item.stockType.toLowerCase().includes(searchedItem))
+    //                         )
+	// 					})]
+					
+	// 					console.log(FilteredArray);
+	// 					// item.categoryType.toLowerCase().includes(searchedItem))
+	// 					// || (item.feature.toLowerCase().includes(searchedItem))
+	// 					// || (item.categoryName.toLowerCase().includes(searchedItem))
+	// 					// || (item.description.toLowerCase().includes(searchedItem))
+	// 					// || (item.productType.toLowerCase().includes(searchedItem))
+	// 					// || (item.stockType.toLowerCase().includes(searchedItem))
+	// 					// || (item.author.toLowerCase().includes(searchedItem))
+	// 					// || (item.title.toLowerCase().includes(searchedItem))
+	// 					setDefaultProductList([...FilteredArray])
+	// 					setProductList([...FilteredArray]);
+	// 				})();
+    //             }, 2000);
+    //         }
+            
+    //     }
+	// },[])
 	
 	return (
 		<div >
@@ -60,7 +102,7 @@ export const ProductListPage = () => {
 			</div>
 			<div className="product-page-container">
 				{filterAside && <FilterProduct
-					props={{ ProductList, setProductList, DefaultProductList }}
+					props={{ ProductList, setProductList, DefaultProductList, setDefaultProductList }}
 					/>}
 				
 				<main className="main">

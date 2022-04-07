@@ -1,5 +1,5 @@
 import "../Navbar/Navbar.css";
-import React, { PureComponent } from 'react'
+import React, { PureComponent, useState } from 'react'
 // // import { Link, NavLink } from "react-router-dom";
 import { logo as LogoImage } from "../../assets/images/Products/Products";
 import { Link, NavLink } from "react-router-dom";
@@ -16,6 +16,7 @@ export function Navbar() {
     const { login, setlogin, userState } = useAuth();
     const { cartState: cartItems, setCartState } = useCart();
     const { WishListState, setWishListState } = useWishList();
+    const [ searchQuery, setSearchQuery ] = useState("");
     const navigate = useNavigate();
 
     const OnSignOut = () => {
@@ -25,6 +26,12 @@ export function Navbar() {
         localStorage.getItem(VAR_USER_DETAILS);
         setCartState([]);
         setWishListState([]);
+    }
+
+    const RedirectSearchQueryHandler = () => { 
+        console.log(searchQuery);
+        navigate(`/products/search?query=${searchQuery}`,{state : searchQuery});
+		setSearchQuery("");
     }
     return (
         <>
@@ -37,11 +44,12 @@ export function Navbar() {
                 </NavLink>
 
                 <div className="input-icons">
-                    <span className="material-icons-round icon">
+                    
+                    <input type="tel" className="input-field" name="main-search" id="main-search" placeholder="Search...."
+                    onChange={(e)=>setSearchQuery(e.target.value)}/>
+                    <span className="material-icons-round icon" onClick={() => { RedirectSearchQueryHandler(); }}>
                         search
                     </span>
-                    <input type="tel" className="input-field" name="main-search" id="main-search" placeholder="Search...." />
-
                 </div>
                 <div className="navbar-action">
 

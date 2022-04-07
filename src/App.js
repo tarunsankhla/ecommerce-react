@@ -11,7 +11,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUp';
 import CartPage from './pages/CartPage/CartPage';
 import { useAuth } from "./context/AuthContext";
-import { ROUTE_PATH_CartPage, ROUTE_PATH_LandingPage, ROUTE_PATH_LoginPage,ROUTE_PATH_ProductContentPage, ROUTE_PATH_Mockman, ROUTE_PATH_ProductListPage, ROUTE_PATH_SignupPage, ROUTE_PATH_Unknown, ROUTE_PATH_WishListPage, ROUTE_PATH_ProfilePage } from "./utils/Routes"
+import { ROUTE_PATH_CartPage, ROUTE_PATH_LandingPage,ROUTE_PATH_ProductListPage_Search, ROUTE_PATH_LoginPage,ROUTE_PATH_ProductContentPage, ROUTE_PATH_Mockman, ROUTE_PATH_ProductListPage, ROUTE_PATH_SignupPage, ROUTE_PATH_Unknown, ROUTE_PATH_WishListPage, ROUTE_PATH_ProfilePage } from "./utils/Routes"
 import NotFoundPage404 from './pages/NotFoundPage404/NotFoundPage404';
 import ProductContentPage from './pages/ProductContentPage/ProductContentPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
@@ -23,6 +23,7 @@ function App() {
         <Route element={<Main />}>
           <Route path={ROUTE_PATH_LandingPage} element={<LandingPage />} />
           <Route path={ROUTE_PATH_ProductListPage} element={<ProductListPage />} />
+          <Route path={ROUTE_PATH_ProductListPage_Search} element={<ProductListPage />} />
           <Route path={ROUTE_PATH_ProductContentPage} element={<ProductContentPage />} />
           <Route path={ROUTE_PATH_WishListPage} element={<WishListPage />} />
           <Route path={ROUTE_PATH_CartPage} element={<CartPage />} />
