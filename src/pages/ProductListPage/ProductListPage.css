@@ -133,6 +133,24 @@ label{
     min-width: 30%;
     justify-content: center;
 }
+
+datalist {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 0px;
+    gap: 2em;
+  }
+
+.card-img{
+object-fit: contain !important;
+}
+
+option{
+    font-size: 1em;
+    font-weight: 700;
+}
+  
 @media screen and (max-width: 800px) {
     aside{
         border-top: 2px solid black;

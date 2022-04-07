@@ -171,10 +171,7 @@ const FilterProduct = ({props}) =>{
                 <button className='filter-btn-clear pointer' onClick={()=>ClearFilterHandler()}>Clear<IcBaselineCancel color="red"/></button>
             </div>
             <div className='aside-body'>
-                {/* <div className="price-container">
-                    <h4>Price</h4>
-                    <input type="range" value="50" max="100" min="0" className="price-slider"/>
-                </div> */}
+          
                
                 {/* stockType : "Newest TopSeller",radio */}
                 <div className="sort-by-conatianer">
@@ -239,7 +236,20 @@ const FilterProduct = ({props}) =>{
                         <label htmlFor="Regular">Regular</label>
                     </div>
                 </div>
+
                 {/* ratin 1,2,3,4 */}
+                <div className="rating-container">
+                    <h4>Rating</h4>
+                    <datalist id="tickmarks">
+                        <option value="1000" label="1>"></option>
+                        <option value="2000" label="2>"></option>
+                        <option value="3000" label="3>"></option>
+                        <option value="4000" label="4>"></option>
+                    </datalist>
+                    
+                    <input type="range" step="1" max="4" min="0" className="price-slider" value={rating ?? 0}
+                        onChange={(e) => {setRating(e.target.value)}}/>
+                </div>
                 <div className="rating-container">
                     <h4>Rating</h4>
                     <div className='pointer'   onClick={(e)=>setRating(e.target.value)}>
