@@ -3,15 +3,28 @@
  You can check the Website on  [Feetz Live App](https://feetz.netlify.app/).
 
 
-Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports footwear. All in here!!
+
  <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo.png" alt="logoImage" width="200px" height="200px" /></p>
  <br/>
- 
+ ---
+
+## 📕 Table of Contents
+
+
+- [About](#About)
+- [Features It has](#Feature)
+- [Demo](#Demo)
+- [Getting Started](#Getting-Started-with-Create-React-App)
+- [Connect with me](#Connect-with-me)
+
+---
  ![Forks](https://img.shields.io/github/forks/tarunsankhla/Ecommerce) &nbsp;&nbsp;&nbsp;
 ![Stars](https://img.shields.io/github/stars/tarunsankhla/Ecommerce) &nbsp;&nbsp;&nbsp;
 [![Netlify Status](https://api.netlify.com/api/v1/badges/adcfa4f3-f1ea-4b60-bda0-c477df35810f/deploy-status)](https://app.netlify.com/sites/feetz/deploys) &nbsp;&nbsp;&nbsp;
  <hr/>
  
+ # About
+ Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports footwear. All in here!!
   <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo_banner.png" alt="logoImage" width="100%" height="auto" /></p>
  <br/>
 
@@ -19,25 +32,25 @@ Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports 
 
 ## Feature
 
-1. Home Page
+1. Home Page  [HomePage](https://feetz.netlify.app/).
   -  page with a list of few categories.
   - If  click on any one of the categories I will be redirected to the product list page with the selected category.
   - Also has Latest Arrival onclick to product list page.
 
-2. Product Listing Page
+2. Product Listing Page [ProductListingPage](https://feetz.netlify.app/products).
  - All product are listed and can be filtered using section of filters.
  - Price( low to high & high to low.) / Category (various categorie) / Ratings
  -  clear filters to clear all the applied filters.
  - Add to Cart on product cards to add products and max of 4 and minimum 1 and can remove from cart oncart page.
  - Add to Wishlist and remove from wishlist 
 
-3. Cart  Management
+3. Cart  Management  [CartPage](https://feetz.netlify.app/cart).
  - From navbar you can got to cart page
  -  addmore quantity to product and also remove from cart and can also add to wishlist
  -  on increasing quantity price is also calulated accordingly
  -  and Bill summary containg all product cost X quantity
 
-4. Wishlist Management
+4. Wishlist Management  [WishListPage](https://feetz.netlify.app/wishlist).
  - Navigate from navbar
 -  can remove items from wishlist and also move them to cart
 
@@ -55,20 +68,27 @@ Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports 
  - Move an item from wishlist to cart
 
 
-7. User Profile
+7. User Profile [ProfilePage](https://feetz.netlify.app/profile).
  - user profile with details containing this email Id, First Name and Last Name and Can edit and update
 
-8. Sign-up Page
+8. Search [Search](https://feetz.netlify.app/products/search?query=football).
+-  search for an item from the list via the input textbox on the header navbar.
+
+8. Sign-up Page [SignUpPage](https://feetz.netlify.app/login)
 - email, first name, last name, password & confirm password.
 -  hide-show icon button that shows or hides my password.
 
-9. Login Page
+9. Login Page [LoginPage](https://feetz.netlify.app/login)
  - login email & password.
  - guest user
  10. Logout
  - logoutbutton Nav
 
+ ## Demo
 
+
+
+https://user-images.githubusercontent.com/47709623/162271343-3499c84c-a0a6-40a3-9ea7-b8fec8709e17.mp4
 
 
 
@@ -143,3 +163,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+ ## Connect with me
+<p align="center">
+<a href="https://twitter.com/tarunsankhla21" target="blank"><img align="center" src="https://img.icons8.com/fluency/2x/twitter-circled.png" alt="tarunsankhla21" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/tarun-sankhla/" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linkedin.png" alt="tarun sankhla" height="50" width="50" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://instagram.com/tarun_sankhla_" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/instagram.png" alt="tarun_sankhla_" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://linktr.ee/tarunsank" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linktree.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+<a href="https://tarunsankhla.hashnode.dev/" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/blog.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+  
+  
+  
+</p>
+
