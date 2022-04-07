@@ -1,3 +1,20 @@
+# Feetz
+
+ You can check the Website on  [Feetz Live App](https://feetz.netlify.app/).
+
+
+Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports footwear. All in here!!
+ <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo.png" alt="logoImage" width="200px" height="200px" /></p>
+ <br/>
+ 
+ ![Forks](https://img.shields.io/github/forks/tarunsankhla/Ecommerce) &nbsp;&nbsp;&nbsp;
+![Stars](https://img.shields.io/github/stars/tarunsankhla/Ecommerce) &nbsp;&nbsp;&nbsp;
+[![Netlify Status](https://api.netlify.com/api/v1/badges/adcfa4f3-f1ea-4b60-bda0-c477df35810f/deploy-status)](https://app.netlify.com/sites/feetz/deploys) &nbsp;&nbsp;&nbsp;
+ <hr/>
+ 
+  <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo_banner.png" alt="logoImage" width="100%" height="auto" /></p>
+ <br/>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
