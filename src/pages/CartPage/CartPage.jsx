@@ -77,7 +77,7 @@ function CartPage() {
                     </main>
                     <div className="cart-aside">
                         <div className="cart-aside-header">
-                            <h3>Price Details</h3>
+                            <h3>Order Summary</h3>
                         </div>
                         <div className="cart-aside-container">
                             {AllProductInCart.length == 0 ?
