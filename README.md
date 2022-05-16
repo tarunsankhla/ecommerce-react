@@ -24,7 +24,7 @@
  <hr/>
  
  # About
- Feetz is Ecommerce platform for variety of footwear from boots, snicker, sports footwear. All in here!!
+ Feetz is an eCommerce platform for a variety of footwear from boots, Snickers, and sports footwear. All in here!!
   <p align="center"> <img src="https://github.com/tarunsankhla/Ecommerce/blob/master/asset/img/logo_banner.png" alt="logoImage" width="100%" height="auto" /></p>
  <br/>
 
