@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./CartPage.css";
-import {
-    product1,product2,
-    product3,product4,
-    product5,product6,
-    product8,product7,
-    product9,product12,
-     product10,product13,
-      product11,product14,product15
- } from "./../../../src/assets/images/Products/Products";
+import { useNavigate as Navigate } from 'react-router';
  import cartLogoSrc from "./../../assets/images/SVG/cart.svg"
 import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
@@ -29,7 +21,10 @@ function CartPage() {
     console.log(AllProductInCart);
     let TotalProductQuantity = cartState?.reduce((acc, cur) => acc += cur.qty, 0);
     let FinalPrice = cartState?.reduce((acc, cur) => acc += cur.price * cur.qty, 0) + 49;
-    console.log("login auth",login);
+    const navigate = Navigate();
+    
+
+
     useEffect(()=>{
         try{
             (async () => {
@@ -56,7 +51,7 @@ function CartPage() {
                 ?
                     <img src={cartLogoSrc} className="cart-logo" alt='cartlog'/>
                 :<>
-                    <main className="main">
+                    <main className="main flex-grow">
                         <h3>Total Items in Cart: {cartState.length}</h3>
                         <div className="product-main-list">
                             {cartState.length ===0 ? 
@@ -80,7 +75,7 @@ function CartPage() {
                             <h3>Order Summary</h3>
                         </div>
                         <div className="cart-aside-container">
-                            {AllProductInCart.length == 0 ?
+                            {AllProductInCart.length === 0 ?
                                 <div className="cart-aside-list">
                                     <span>(No items)</span>
                                     <span>$0 </span>
@@ -105,7 +100,7 @@ function CartPage() {
                         <div className="cart-aside-list">
                             <span>You will save ₹1999 on this order</span>      
                         </div>
-                        <button>Place Order</button>
+                        <button onClick={()=>navigate("/checkout")}>Place Order</button>
                     </div>
                     </div> 
                 </>

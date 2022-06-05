@@ -1,23 +1,11 @@
 import {SlideShow} from "./SlideShow/SlideShow";
-import axios from "axios";
-import {
-    landingPageHeadImg1,
-    landingPageHeadImg2,
-    landingPageHeadImg3,
-    landingPageHeadImg5,
-    landingPageHeadImg4,
-    landingPageHeadImg6,
-    landingPageHeadImg7,
-    landingPageHeadImg7webp,
-    landingPageHeadImg4webp
-} from "./../../assets/images/Products/Products";
-import {IcRoundDoubleArrow} from "./../../components/UI/Icons/IcRoundDoubleArrow";
-
-import "./LandingPage.css"
-import {Link, NavLink} from "react-router-dom";
+import {landingPageHeadImg4webp} from "./../../assets/images/Products/Products";
+import {Link} from "react-router-dom";
 import DiscoverButton from "../../components/UI/Button/DiscoverButton/DiscoverButton";
 import ArrivalsBanner from "./ArrivalsBanner/ArrivalsBanner";
-export function LandingPage() {
+import "./LandingPage.css"
+
+export default function LandingPage() {
 
     return (
         <>

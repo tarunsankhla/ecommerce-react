@@ -20,7 +20,7 @@ import { useProduct } from "../../context/ProductContext";
 
 
 
-export const ProductListPage = () => {
+export default function ProductListPage(){
 	const [ProductList, setProductList] = useState([]);
 	const {ProductState : DefaultProductList,setProductState : setDefaultProductList} =useProduct();
 	const [filterWidth, setFilteWidth] = useState(window.innerWidth <= 800); 
@@ -107,7 +107,7 @@ export const ProductListPage = () => {
 				
 				<main className="main">
 					<div className="product-page-header">
-						<h4> ( Current Filtered Items : {ProductList.length} )</h4>
+						<h4> ( Current Filtered Items : {ProductList?.length} )</h4>
 					</div>	
 					<div className="product-main-list">
 						

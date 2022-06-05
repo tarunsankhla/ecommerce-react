@@ -5,6 +5,7 @@ import {Navbar} from './components/Navbar/Navbar'
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from './utils/Routes';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
 
 function Main() {
     console.log("Main");
@@ -12,8 +13,9 @@ function Main() {
     var userID = localStorage.getItem(VAR_USER_ID);
     return (
         <div>
-            <Navbar/>
-            <Outlet />
+            <Navbar />
+            <div className='outlet'><Outlet /></div>
+            
             <ToastContainer style={{fontSize:"1.5em"}} />
             <Footer/>
         </div>

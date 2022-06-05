@@ -21,7 +21,6 @@ const UpdateCartService = async (stateQuantity, _id) => {
             data = [...res.data.cart];
             Alert("success", "Done!!!.");
         }
-
         return data;
     } catch (err) {
         Alert("error", "Something went wrong!! try again.");
