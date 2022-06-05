@@ -5,52 +5,63 @@ import {VAR_ENCODE_TOKEN} from '../../utils/Routes';
 import { useNavigate as Navigate } from 'react-router';
 import { useCart } from '../../context/CartContext';
 import "./CheckoutPage.css";
+import AddressModal from '../../components/UI/AddressModal/AddressModal';
 
 const CheckoutPage = () => {
   const [addressList, setAddressList] = useState([]);
   const { cartState, setCartState } = useCart();
+  const [ showModal, setShowModal ] = useState(false);
+  const navigate = Navigate();
   let TotalPrice = cartState?.reduce((acc, cur) => acc += Number(cur.price), 0);
-  let AllProductInCart = cartState?.map((item) => { 
-     return  {name :item.title , price : item.price * item.qty}
-  })
-  console.log(AllProductInCart);
+  let AllProductInCart = cartState?.map((item) => { return  {name :item.title , price : item.price * item.qty}})
   let TotalProductQuantity = cartState?.reduce((acc, cur) => acc += cur.qty, 0);
   let FinalPrice = cartState?.reduce((acc, cur) => acc += cur.price * cur.qty, 0) + 49;
-  const navigate = Navigate();
+  
 
-    useEffect(() => {
-        try {
-            (async () => {
-                var res = await axios.get("/api/user/address", {
-                    headers: {
-                        authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
-                    }
-                })
-                console.log(res);
-                setAddressList(res.data.addressList);
-            })();
-        } catch (error) {
-            Alert("error", "Something went wrong!! try again.");
-        }
-    }, [])
+  useEffect(() => {
+    getAddress();
+  }, []);
+
+  useEffect(() => {
+    getAddress();
+  }, [showModal]);
+  
+  
+    function getAddress() {
+      try {
+        (async () => {
+            var res = await axios.get("/api/user/address", {
+                headers: {
+                    authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+                }
+            })
+            console.log(res);
+            setAddressList(res.data.addressList);
+        })();
+      } catch (error) {
+          Alert("error", "Something went wrong!! try again.");
+      }
+    }
     return (
       <div className='checkout-page-container'>
         <main>main
           <div>
             <h4>All Address</h4>
             <hr />
-            {addressList?.map((address => (
-              <div key={address._id} className="box address-box">
-                <p>Name: { address.name}</p>
-                <p>Email Addres: </p>
-                <p>Street:  { address.street}</p>
-                <p>City:  { address.city}</p>
-                <p>State:  { address.state}</p>
-                <p>PinCode:  {address.pincode}</p>
-                <button>Select Address</button>
-              </div>
-            )))}
-            <button>Add Address</button>
+            <div className='product-page-container'>
+              {addressList?.map((address => (
+                <div key={address._id} className="box address-box">
+                  <p>Name: { address.name}</p>
+                  <p>Email Addres: </p>
+                  <p>Street:  { address.street}</p>
+                  <p>City:  { address.city}</p>
+                  <p>State:  { address.state}</p>
+                  <p>PinCode:  {address.pincode}</p>
+                  <button className='action-btn'>Select Address</button>
+                </div>
+              )))}
+            </div>
+            <button className='action-btn' onClick={()=> setShowModal(true)}>Add Address</button>
           </div>
         </main>
         <aside className='checkout-aside'>
@@ -97,6 +108,8 @@ const CheckoutPage = () => {
               }>Place Order</button>
           </div>
         </aside>
+
+        {showModal && <AddressModal setModal={ setShowModal}/> }
       </div>
     )
 }

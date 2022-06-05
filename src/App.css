@@ -29,6 +29,8 @@ html {
 	--text-color: #27474e;
 	--card-bg-color: #f5efff;
 	--primary-color :rgb(77, 136, 123);
+	--main-color: rgb(117, 117, 204);
+	--main-hover-color: rgb(91, 91, 228);
 	--icons-color: rgb(77, 136, 123);
 }
 body::-webkit-scrollbar {
@@ -277,7 +279,7 @@ a {
     grid-gap: 0.5em;
     gap: 0.5em;
     color: white;
-    background-color: var(--primary-color);
+    background-color: var(--main-color);
     border: none;
     outline: none;
 	cursor: pointer;
@@ -287,7 +289,7 @@ a {
 
 .action-btn:hover{
 	transform: scale(1.03);
-	background-color: var(--primary-hover-color);
+	background-color: var(--main-hover-color);
 }
 
 .logo{
@@ -300,3 +302,16 @@ a {
 }
 
 /* common utility end */
+
+
+.fixed-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0,0,0,0.1);
+	height: 100vh;
+    width: 100vw;
+}

@@ -27,6 +27,6 @@
     margin: 1em auto;
 	margin-top: 10em;
     /* width: 100vw; */
-    background-color: var(--primary-color);
-    color:var(--primary-color);
+    background-color: var(--main-color);
+    color:var(--main-color);
 }
